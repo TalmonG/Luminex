@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
     // Reference to ScriptA
     public GroundCheck groundCheck;
 
-    public GameObject player;
+    //public GameObject player;
+    public GameObject mainCamera;
 
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
@@ -87,7 +88,8 @@ public class PlayerController : MonoBehaviour
 
     void CameraFlip()
     {
-        player.transform.Rotate(0f, 0f, 180f);
+        //player.transform.Rotate(0f, 0f, 180f);
+        mainCamera.transform.Rotate(0f, 0f, 180f);
     }
 
     IEnumerator InvertCooldown()
@@ -102,4 +104,5 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Cooldown ended");
         isInvertReady = true;
     }
+
 }

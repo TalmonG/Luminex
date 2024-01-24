@@ -11,10 +11,12 @@ public class GroundCheck : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider)
     {
         isGrounded = collider != null && (((1 << collider.gameObject.layer) & platformLayerMask) !=0);
+        //Debug.Log("Player is Grounded");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isGrounded = false;
+        //Debug.Log("Player is not Grounded");
     }
 }
