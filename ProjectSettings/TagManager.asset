@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - isGround
+  - TriFungusSentinel
+  - MycoticJuggernaut
   layers:
   - Default
   - TransparentFX
