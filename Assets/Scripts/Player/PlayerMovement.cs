@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        AudioManager.Instance.PlaySFX("Jump");
         // Check the direction of gravity
         float gravityDirection = Mathf.Sign(rb.gravityScale);
 
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void InvertGravity()
     {
+        AudioManager.Instance.PlaySFX("Gravity Shift");
         rb.gravityScale *= -1;
 
         //Flips Camera
