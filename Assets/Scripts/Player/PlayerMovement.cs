@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float InvertCooldownTime = 0.5f;
 
     private Rigidbody2D rb;
+    public Animator animator;
 
     void Start()
     {
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     {
         // Movement
         float horizontalInput = Input.GetAxis("Horizontal");
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput)); // Abs = turn num to positive
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
         // Check the direction of gravity
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Invert gravity and rotate camera
-        if (Input.GetKeyDown(KeyCode.Space) && isInvertReady == true && groundCheck.isGrounded == true)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isInvertReady == true && groundCheck.isGrounded == true)
         {
             StartCoroutine(InvertCooldown());
         }

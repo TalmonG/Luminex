@@ -1,0 +1,412 @@
+fileFormatVersion: 2
+guid: 3ff9ee94d43922d4097f08e99159c61c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7857082298191699960
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_0
+  - first:
+      213: 2504474995110321627
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_1
+  - first:
+      213: 5781932026424808295
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_2
+  - first:
+      213: -6910705161864794262
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_3
+  - first:
+      213: -1560881904694046892
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_4
+  - first:
+      213: -7601676630114608642
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_5
+  - first:
+      213: -8506436176429833164
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_6
+  - first:
+      213: -2394768180003246872
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_7
+  - first:
+      213: 3723945601628662727
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_8
+  - first:
+      213: -3332608540783627653
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_9
+  - first:
+      213: 8471636988958463227
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_10
+  - first:
+      213: -8865692296737959091
+    second: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_11
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8002645474906f290800000000000000
+      internalID: -7857082298191699960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_1
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2048
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdd16602dbea1c220800000000000000
+      internalID: 2504474995110321627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_2
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2048
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76351864b8c8d3050800000000000000
+      internalID: 5781932026424808295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_3
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 2048
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f279f054e3810a0800000000000000
+      internalID: -6910705161864794262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_4
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 2048
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45f40667d22a65ae0800000000000000
+      internalID: -1560881904694046892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef951ac516b618690800000000000000
+      internalID: -7601676630114608642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_6
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1024
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4342e57dd5113f980800000000000000
+      internalID: -8506436176429833164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_7
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1024
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec6f7f370314ced0800000000000000
+      internalID: -2394768180003246872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_8
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 1024
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb64fb5bcc1ea330800000000000000
+      internalID: 3723945601628662727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_9
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 1024
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b72b827603230c1d0800000000000000
+      internalID: -3332608540783627653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4dde0f4fc419570800000000000000
+      internalID: 8471636988958463227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MCRunningAnimation-ezgif.com-gif-to-sprite-converter_11
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 1200
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d43540d14dbb6f480800000000000000
+      internalID: -8865692296737959091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 522dbac1adedfdd4bb60c64d93679253
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_0: -7857082298191699960
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_1: 2504474995110321627
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_10: 8471636988958463227
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_11: -8865692296737959091
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_2: 5781932026424808295
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_3: -6910705161864794262
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_4: -1560881904694046892
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_5: -7601676630114608642
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_6: -8506436176429833164
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_7: -2394768180003246872
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_8: 3723945601628662727
+      MCRunningAnimation-ezgif.com-gif-to-sprite-converter_9: -3332608540783627653
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
