@@ -22,32 +22,40 @@ public class PlayerScript : MonoBehaviour
     Quaternion EndRotation;
     int i = 1;
     int FacingDirection;
-    bool Grotate=false;
+    bool Grotate = false;
     int degrees = 0;
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
-    bool Dimension;
+    public bool isNormalDimension = true;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        cam=Camera.main;
+        cam = Camera.main;
         BulletSpawnPos = transform.GetChild(0).GetChild(1).gameObject;
         Arm = transform.GetChild(0).gameObject;
         FloorCollider = transform.GetChild(2).gameObject;
-        Head =transform.GetChild(1).gameObject;
+        Head = transform.GetChild(1).gameObject;
         MousePosObj = GameObject.Find("CursorPosition");
+
+        isNormalDimension = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        // Dimension Switch
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true)
         {
-            Dimension = true;
+            isNormalDimension = false;
+            Debug.Log("Not Noraml");
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false)
+        {
+            isNormalDimension = true;
+            Debug.Log("normal");
         }
 
         if ((Input.GetAxis("Mouse ScrollWheel"))>0)
