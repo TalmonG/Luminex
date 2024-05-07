@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CreditScene.unity
     guid: 2e75c7d9e3a82fb4699ca139ad91d035
   - enabled: 1
-    path: Assets/Scenes/LevelOne.unity
+    path: Assets/Scenes/TalmonsOldLevel.unity
     guid: 8b499b07717f58a439a6469c6d262a29
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
