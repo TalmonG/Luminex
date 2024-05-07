@@ -50,12 +50,10 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true)
         {
             isNormalDimension = false;
-            Debug.Log("Not Noraml");
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false)
         {
             isNormalDimension = true;
-            Debug.Log("normal");
         }
 
         if ((Input.GetAxis("Mouse ScrollWheel"))>0)
