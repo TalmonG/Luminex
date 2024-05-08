@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 83b32b7ed7bc3f4458b7b789238bb0af
+guid: ac89bf4c4fd0df349837fc00320fbabd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8445162125393013770
-    second: kjgrmag0yob11_0
+      213: -8501867410701294691
+    second: square_middle_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 55
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kjgrmag0yob11_0
+      name: square_middle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2560
-        height: 1440
+        width: 55
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f3dd559ac1ccca80800000000000000
-      internalID: -8445162125393013770
+      spriteID: d93eda182ac430a80800000000000000
+      internalID: -8501867410701294691
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      kjgrmag0yob11_0: -8445162125393013770
+      square_middle_0: -8501867410701294691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

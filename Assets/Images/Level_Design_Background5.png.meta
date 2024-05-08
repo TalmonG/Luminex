@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 83b32b7ed7bc3f4458b7b789238bb0af
+guid: 74ae6077ec484b1468b2af4625867266
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8445162125393013770
-    second: kjgrmag0yob11_0
+      213: 8813643773075169233
+    second: Level_Design_Background5_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kjgrmag0yob11_0
+      name: Level_Design_Background5_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2560
-        height: 1440
+        width: 175
+        height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f3dd559ac1ccca80800000000000000
-      internalID: -8445162125393013770
+      spriteID: 1df9afe905a505a70800000000000000
+      internalID: 8813643773075169233
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      kjgrmag0yob11_0: -8445162125393013770
+      Level_Design_Background5_0: 8813643773075169233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

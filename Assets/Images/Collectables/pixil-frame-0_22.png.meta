@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 83b32b7ed7bc3f4458b7b789238bb0af
+guid: bbfa0f4d9a3326e4fb97a28a87fd2d76
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8445162125393013770
-    second: kjgrmag0yob11_0
+      213: 3199583515955340300
+    second: pixil-frame-0_22_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kjgrmag0yob11_0
+      name: pixil-frame-0_22_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1440
+        x: 2
+        y: 2
+        width: 28
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f3dd559ac1ccca80800000000000000
-      internalID: -8445162125393013770
+      spriteID: c04a6b17144376c20800000000000000
+      internalID: 3199583515955340300
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      kjgrmag0yob11_0: -8445162125393013770
+      pixil-frame-0_22_0: 3199583515955340300
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

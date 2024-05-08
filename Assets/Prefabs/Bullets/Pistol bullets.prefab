@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 5510fa254cfd5084688b659d99528d25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,6 +96,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8120019279595754243}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -119,7 +120,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +132,6 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.45, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &887457734
@@ -142,12 +143,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8120019279595754243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d343336a43663a428051bf198cb57e0, type: 3}
+  m_Script: {fileID: 11500000, guid: c8332cfd061e7cd49bd2bf427cc4bace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   gravityScale: 0
-  BulletImpactEffect: {fileID: 9185412532042347259, guid: 2721bc6776932c440ac5546df3a6aac0, type: 3}
+  BulletImpactEffect: {fileID: 8120019279595754243}
+  ExplosionPrefab: {fileID: 8120019279595754243}
 --- !u!50 &-5881841130118149428
 Rigidbody2D:
   serializedVersion: 4
@@ -177,7 +179,7 @@ Rigidbody2D:
   m_Constraints: 0
 --- !u!95 &1221384270445938303
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -191,6 +193,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
