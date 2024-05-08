@@ -27,7 +27,53 @@ public class PlayerScript : MonoBehaviour
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
+
+    public int level;
+
+    //Restriction Variables
+    public bool canSwitchDimensions = false;
     public bool isNormalDimension = true;
+
+    public bool canGRotate = false;
+
+    void LevelChecker()
+    {
+        // Level Restrictions
+        if (level == -1)
+        {
+            canSwitchDimensions = false;
+        }
+        else if (level == 0)
+        {
+            canSwitchDimensions = false;
+        }
+        else if (level == 1)
+        {
+            canSwitchDimensions = true;
+        }
+        else if (level == 2)
+        {
+            canSwitchDimensions = true;
+        }
+        else if (level == 3)
+        {
+            canSwitchDimensions = true;
+        }
+        else if (level == 4)
+        {
+            canSwitchDimensions = true;
+        }
+        else if (level == 5)
+        {
+            canSwitchDimensions = true;
+        }
+        else
+        {
+            Debug.Log("Level Detectoin Error. Level: " + level + " is being detected.");
+            Debug.Log("Likely need to add an incremental system in SceneManagerscript to increment 'level' variable in player script. Hope that helps");
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,14 +92,22 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+
         // Dimension Switch
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true && canSwitchDimensions == true)
         {
             isNormalDimension = false;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false)
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false && canSwitchDimensions == true)
         {
             isNormalDimension = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == false)
+        {
+            LevelChecker();
+            //Debug.Log("Checking");
         }
 
         if ((Input.GetAxis("Mouse ScrollWheel"))>0)
@@ -81,7 +135,7 @@ public class PlayerScript : MonoBehaviour
         ArmSprite = Arm.transform.GetChild(ActiveWeapon).gameObject;
         CurrentWeaponScript = ArmSprite.GetComponent<Weapon>();
 
-        if (Input.GetKeyDown(KeyCode.C)&&isgrounded&&(degrees%180==0))
+        if (Input.GetKeyDown(KeyCode.C)&&isgrounded&&(degrees%180==0) && canGRotate == true)
         {
             rb.gravityScale *= -1;
             degrees = 0;
