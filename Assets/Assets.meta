@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Assets.meta
-guid: 1cd71027da3985744b9ea0b93a27da0a
+<<<<<<<< HEAD:Assets/Animations/Arm.meta
+guid: d954af6484562544092886121c7fc311
 ========
-guid: 15731171c74fe3b4ea29f3f66780ea8c
->>>>>>>> main:Assets/Animations/Arm.meta
+guid: 1cd71027da3985744b9ea0b93a27da0a
+>>>>>>>> origin/Alfie:Assets/Assets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

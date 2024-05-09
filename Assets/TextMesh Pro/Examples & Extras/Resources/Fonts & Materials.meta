@@ -1,6 +1,10 @@
 fileFormatVersion: 2
-guid: 20b44b7253482994a9606942936a366b
+<<<<<<<< HEAD:Assets/Scenes/MiloLevel.unity.meta
+guid: 2590217aecea5b04fa38b1214f7c38f9
+========
+guid: 4f1e85c79acf49968737939ce8b445c7
 folderAsset: yes
+>>>>>>>> main:Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

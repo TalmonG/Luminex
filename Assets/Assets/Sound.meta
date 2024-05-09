@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Assets/Sound.meta
-guid: 1eb1cdbfe209fad4ea9504a449804aa3
+<<<<<<<< HEAD:Assets/Animations/Run back.meta
+guid: b9d9014be6e57584d9ee0252cb0226de
 ========
-guid: 015de27e13c14104ea8ba1d2f4966a2d
->>>>>>>> main:Assets/Animations/Run back.meta
+guid: 1eb1cdbfe209fad4ea9504a449804aa3
+>>>>>>>> origin/Alfie:Assets/Assets/Sound.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
