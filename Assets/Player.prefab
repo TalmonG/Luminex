@@ -290,6 +290,10 @@ MonoBehaviour:
   Bullet: {fileID: 8120019279595754243, guid: b6c675175e82aaa4db1757be1cd7bfb3, type: 3}
   LookRotation: {x: 0, y: 0, z: 0, w: 0}
   ActiveWeapon: 0
+  level: 0
+  canSwitchDimensions: 0
+  isNormalDimension: 1
+  canGRotate: 0
   Health: 100
   Oxygen: 100
 --- !u!95 &213095140
@@ -605,6 +609,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 8120019279595754243, guid: b6c675175e82aaa4db1757be1cd7bfb3, type: 3}
   isReloading: 0
+  ReserveAmmo: 0
+  MagAmmo: 0
+  CurrentWeapon: 0
 --- !u!4 &694065156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 778385853604526820, guid: 9cb8cf5ba94a6cc4d869e7f492529b68, type: 3}
