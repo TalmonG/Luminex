@@ -15,6 +15,6 @@ public class ShowValueText : MonoBehaviour
     // Update is called once per frame
     public void textUpdate(float value)
     {
-        percentageText.text = Mathf.RoundToInt(value * 100) + "%";
+        percentageText.text = value + "%";
     }
 }

@@ -24,8 +24,6 @@ public class UIManager : MonoBehaviour
 
     private GameObject[] keyBindButtons;
 
-    public GameObject Music;
-    private AudioSource AudioSource;
     private void Awake()
     {
         keyBindButtons = GameObject.FindGameObjectsWithTag("keybind");
@@ -33,8 +31,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        Music = GameObject.FindWithTag("GameMusic");
-        AudioSource = Music.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,7 +42,6 @@ public class UIManager : MonoBehaviour
     public void onClickStartButton()
     {
         SceneManager.LoadScene("Tutorial");
-        AudioSource.Pause();
     }
 
     public void onClickLoadButton()
