@@ -28,6 +28,11 @@ public class PlayerScript : MonoBehaviour
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
     bool Dimension;
+    public int Health;
+    int MaxHealth=100;
+    public int Oxygen;
+    int MaxOxygen=100;
+    float oxygenTimer=0;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +49,22 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GlobalReferenceScript.instance.Health.value = Health;
+        GlobalReferenceScript.instance.Oxygen.value = Oxygen;
+
+        if (Dimension)
+        {
+            
+            oxygenTimer += Time.deltaTime;
+
+            Oxygen =  MaxOxygen-(int) oxygenTimer*2;
+
+            Debug.Log(oxygenTimer);
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            oxygenTimer = 0;
             Dimension = true;
         }
 
@@ -61,6 +79,9 @@ public class PlayerScript : MonoBehaviour
             ActiveWeapon--;
             ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
         }
+
+
+
        //S Debug.Log(transform.GetChild(0).transform.GetChild(ActiveWeapon).gameObject);
 
         for (int i = 0; i < transform.GetChild(0).transform.childCount; i++)
@@ -68,8 +89,17 @@ public class PlayerScript : MonoBehaviour
             if (i != ActiveWeapon)
             {
                 transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(false);
+                GlobalReferenceScript.instance.CurrentWeaponSymbol[i].enabled = false;
+
             }
-            else { transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(true); }
+            else
+            { 
+                transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(true);
+                GlobalReferenceScript.instance.CurrentWeaponSymbol[i].enabled = true;
+
+            }
+
+
         }
 
         ArmSprite = Arm.transform.GetChild(ActiveWeapon).gameObject;
@@ -188,7 +218,7 @@ public class PlayerScript : MonoBehaviour
 
         Vector3 TargetCamPos = (MousePosObj.transform.position-transform.position);
         TargetCamPos.x *= FacingDirection;
-        TargetCamPos.y /= 2;
+        TargetCamPos.y /= 2*i;
         TargetCamPos.x /= 3;
         cam.transform.localPosition = TargetCamPos+(Vector3.forward*-10);
 

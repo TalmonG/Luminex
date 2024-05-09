@@ -30,7 +30,6 @@ public class Turret : MonoBehaviour
             Quaternion lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
             lookrotation.eulerAngles += Vector3.forward * -90;
             transform.rotation = lookrotation;
-            Debug.Log("ss");
 
         }
 

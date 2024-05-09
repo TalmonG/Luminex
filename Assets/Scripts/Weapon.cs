@@ -93,8 +93,8 @@ public class Weapon : MonoBehaviour
         canvas=GameObject.Find("Canvas");
         CurrentWeaponTxtObj=canvas.transform.GetChild(0).gameObject;
         AmmoTxtObj=canvas.transform.GetChild(1).gameObject;
-        CurrentWeaponText=CurrentWeaponTxtObj.GetComponent<TextMeshProUGUI>();
-        AmmoText=AmmoTxtObj.GetComponent<TextMeshProUGUI>();
+        CurrentWeaponText=GlobalReferenceScript.instance.CurrentWeaponText;
+        AmmoText = GlobalReferenceScript.instance.AmmoCounter;
 
         Player = transform.parent.transform.parent.gameObject;
         
@@ -106,7 +106,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentWeaponText.text = "Current Weapon: " + WeaponNames[CurrentWeapon];
+        CurrentWeaponText.text =  WeaponNames[CurrentWeapon];
         AmmoText.text = (Ammo[CurrentWeapon, 1 ] / AmmoPerBullet[CurrentWeapon]).ToString()+" / " + (Ammo[CurrentWeapon, 0] / AmmoPerBullet[CurrentWeapon]).ToString();
 
     }
