@@ -21,7 +21,7 @@ public class BulletScript : MonoBehaviour
          Rigidbody2D playerrb = Player.GetComponent<Rigidbody2D>();
          Vector3 PlayerVelocity = playerrb.velocity;*/
 
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
 
         rb.velocity= transform.right*speed;

@@ -16,7 +16,7 @@ public class FloorCollisionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject.Find("Player").GetComponent<Animator>().SetBool("OnFloor",OnFloor);
+        GameObject.FindWithTag("Player").GetComponent<Animator>().SetBool("OnFloor",OnFloor);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -40,8 +40,8 @@ public class FloorCollisionScript : MonoBehaviour
         {
             if (collision.CompareTag("ground"))
             {
-                GameObject.Find("Player").GetComponent<Animator>().SetTrigger("OnLand");
-                GameObject.Find("Player").GetComponent<Animator>().ResetTrigger("OnJump");
+                GameObject.FindWithTag("Player").GetComponent<Animator>().SetTrigger("OnLand");
+                GameObject.FindWithTag("Player").GetComponent<Animator>().ResetTrigger("OnJump");
 
             }
 
