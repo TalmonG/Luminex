@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8670448618632429318}
   - component: {fileID: 8901461107992340019}
   - component: {fileID: 6852567003555468552}
+  - component: {fileID: 2228368369131045527}
   - component: {fileID: 8384764390297728732}
   m_Layer: 0
   m_Name: Exit Door
@@ -96,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 6012762202289621013}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7bf9d73bfeb9f014b819ed2f5d10980e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 308ebc7a2d66f524484177799cd204fd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,6 +109,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2228368369131045527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012762202289621013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e831f255221e04287c4ac1a7b45705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &8384764390297728732
 BoxCollider2D:
   m_ObjectHideFlags: 0
