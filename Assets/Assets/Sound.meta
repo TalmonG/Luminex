@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Assets/Sound.meta
 guid: 1eb1cdbfe209fad4ea9504a449804aa3
+========
+guid: 015de27e13c14104ea8ba1d2f4966a2d
+>>>>>>>> main:Assets/Animations/Run back.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

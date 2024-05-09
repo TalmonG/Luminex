@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TileMaps/Tiles/FloorTiles/Level_DesignFloor_0.asset.meta
+guid: 7badf752aaead4746ae8c934514f287e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
+guid: 81c4cbf8c4387d14d8d189defa838e46
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>>> origin/Milo:Assets/Prefabs/Level/Doors/Materials/Door Designyellow.mat.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

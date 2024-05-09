@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Audio.meta
 guid: ac00d4e45eb756e459ddc0adc5f29be6
+========
+guid: e4cc2fef0df7e984cbaceb4dd0443af9
+>>>>>>>> main:Assets/Animations/Jump.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
