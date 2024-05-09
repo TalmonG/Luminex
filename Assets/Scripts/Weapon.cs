@@ -17,10 +17,10 @@ public class Weapon : MonoBehaviour
     GameObject canvas, CurrentWeaponTxtObj, AmmoTxtObj;
     GameObject Player;
     TextMeshProUGUI CurrentWeaponText, AmmoText;
-    int ReserveAmmo, MagAmmo, CurrentWeapon;
+    public int ReserveAmmo, MagAmmo, CurrentWeapon;
     int[] BurstAmmount= new int[4] {1,3,6,1};
     string[] WeaponNames= new string[4] {"Pistol","Battle Rifle","Shotgun","Grenade-Launcher"};
-    int[,] Ammo = { {10,10 },{12,24 },{36,360 },{5,10 } };
+    public int[,] Ammo = { {10,10 },{12,24 },{36,360 },{5,10 } };
     int[,] MaxAmmoValue = { { 10, 100 }, { 12, 120 },{36,360 }, { 5, 20 } };
     float[,] RateOfFire = { {0.3f,0 },{0.5f,0.1f },{1.3f,0 }, { 1.3f, 0 } };
     float[] AccuracyValue = {1 , 0.1f , 15 , 1};
