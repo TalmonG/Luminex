@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Images/Collectables.meta
 guid: 3bb666e0098516b43a86c79e984f93a8
+========
+guid: 745e6374e98f0704ab4557020e161f8d
+>>>>>>>> origin/Milo:Assets/HUD.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

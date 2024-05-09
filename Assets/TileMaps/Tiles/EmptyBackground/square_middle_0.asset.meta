@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TileMaps/Tiles/EmptyBackground/square_middle_0.asset.meta
 guid: 53cc22cdad069f448967228db2bf19ab
+========
+guid: 89bde327017a21b4dad03974464063cd
+>>>>>>>> origin/Milo:Assets/LevelElements/Exit Doors/Open animation/OpenAnim.anim.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

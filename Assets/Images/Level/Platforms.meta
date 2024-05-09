@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Images/Level/Platforms.meta
 guid: e530908629b64584aacffede16704b15
+========
+guid: 57f1393d1dabf8b43b992b5da4165880
+>>>>>>>> origin/Milo:Assets/Prefabs/Level.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

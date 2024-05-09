@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/ExitDoor.cs.meta
 guid: 8b1843e0bf97f544b871fafee3bb593c
+========
+guid: 18345b2ab02f85144ab282642d557763
+>>>>>>>> origin/Milo:Assets/Scripts/GlobalReferenceScript.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

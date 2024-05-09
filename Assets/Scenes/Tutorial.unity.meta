@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Tutorial.unity.meta
 guid: 55de3f93135e4f642bb36389c9c7810e
+========
+guid: 5d5af0422d483774ca114d0ac7716710
+>>>>>>>> origin/Milo:Assets/Scenes/HUB Level.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

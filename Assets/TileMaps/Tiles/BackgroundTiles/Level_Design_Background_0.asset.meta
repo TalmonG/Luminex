@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TileMaps/Tiles/BackgroundTiles/Level_Design_Background_0.asset.meta
 guid: 1473437141110c04b81030e7dae4d2bd
+========
+guid: 7bf9d73bfeb9f014b819ed2f5d10980e
+>>>>>>>> origin/Milo:Assets/LevelElements/Exit Doors/Open animation/Door Animation frame0_0.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
