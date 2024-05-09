@@ -27,7 +27,9 @@ public class Collectables : MonoBehaviour
             int currentWeaponIndex = weapon.CurrentWeapon;
 
             // Add 20 ammo to the current weapon's reserve ammo
-            weapon.Ammo[currentWeaponIndex, 0] += 20;
+            weapon.Ammo[currentWeaponIndex, 1] += 20;
+            Destroy(gameObject);
+
         }
     }
 
@@ -48,6 +50,5 @@ public class Collectables : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AddAmmoToCurrentWeapon();
-        Destroy(gameObject);
     }
 }
