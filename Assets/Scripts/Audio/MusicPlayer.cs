@@ -21,7 +21,10 @@ public class MusicPlayer : MonoBehaviour
         //set volume
         musicVolume = PlayerPrefs.GetFloat("Volume");
         AudioSource.volume = musicVolume;
-        VolumeSlider.value = musicVolume;
+        if (VolumeSlider != null)
+        {
+            VolumeSlider.value = musicVolume;
+        }
     }
 
     // Update is called once per frame
