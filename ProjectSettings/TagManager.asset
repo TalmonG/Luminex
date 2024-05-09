@@ -12,6 +12,7 @@ TagManager:
   - GameMusic
   - Managers
   - HUDCanvas
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
