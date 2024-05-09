@@ -12,6 +12,7 @@ TagManager:
   - GameMusic
   - Managers
   - HUDCanvas
+  - Sporefiend
   layers:
   - Default
   - TransparentFX
