@@ -6,6 +6,9 @@ using UnityEngine;
 public class EnemyAiScript : MonoBehaviour
 {
     public GameObject player;
+    public List<Transform> points;
+    public int nextID;
+    int idchangeValue = 1;
     public float speed;
 
     private float distance;

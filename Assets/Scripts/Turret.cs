@@ -53,7 +53,7 @@ public class Turret : MonoBehaviour
         Debug.DrawRay(transform.position, direction);
 
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > 1)
         {
             timer = 0;
             shoot();
