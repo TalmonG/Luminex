@@ -160,7 +160,7 @@ public class PlayerScript : MonoBehaviour
         ArmSprite = Arm.transform.GetChild(ActiveWeapon).gameObject;
         CurrentWeaponScript = ArmSprite.GetComponent<Weapon>();
 
-        if (Input.GetKeyDown(KeyCode.C) && isgrounded && (degrees % 180 == 0) && canGRotate == true)
+        if (Input.GetKeyDown(KeyCode.C) && isgrounded && (degrees % 180 == 0))
         {
             rb.gravityScale *= -1;
             degrees = 0;
