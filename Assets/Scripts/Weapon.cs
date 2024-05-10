@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
     float[] AccuracyValue = {1 , 0.1f , 15 , 1};
     int[] AmmoPerBullet = {1,3,6 , 1};
     PlayerScript playerScript;
+    bool isNewGame;
     
 
     public void Fire()
@@ -101,6 +102,8 @@ public class Weapon : MonoBehaviour
         playerScript = Player.GetComponent<PlayerScript>();
 
         CurrentWeapon = playerScript.ActiveWeapon;
+
+        
     }
 
     // Update is called once per frame
@@ -108,6 +111,8 @@ public class Weapon : MonoBehaviour
     {
         CurrentWeaponText.text =  WeaponNames[CurrentWeapon];
         AmmoText.text = (Ammo[CurrentWeapon, 1 ] / AmmoPerBullet[CurrentWeapon]).ToString()+" / " + (Ammo[CurrentWeapon, 0] / AmmoPerBullet[CurrentWeapon]).ToString();
+
+        SetWeaponPrefs();
 
     }
 
@@ -163,9 +168,53 @@ public class Weapon : MonoBehaviour
     }
 
 
-    void icon()
+  void SaveWeaponPrefs()
     {
-        Debug.Log("chheese");
+        //SET PISTOL AMMO
+        PlayerPrefs.SetInt("PistolAmmo", Ammo[0,0]);
+        PlayerPrefs.SetInt("ReservePistolAmmo",Ammo[0,1]);
+
+        //SET PISTOL AMMO
+        PlayerPrefs.SetInt("RifleAmmo", Ammo[1,0]);
+        PlayerPrefs.SetInt("ReserveRifleAmmo", Ammo[1,1]);
+
+        //SET PISTOL AMMO
+        PlayerPrefs.SetInt("ShotgunAmmo", Ammo[2,0]);
+        PlayerPrefs.SetInt("ReserveShotgunAmmo", Ammo[2,1]);
+
+        //SET PISTOL AMMO
+        PlayerPrefs.SetInt("GLAmmo", Ammo[3,0]);
+        PlayerPrefs.SetInt("ReserveGLAmmo", Ammo[3,1]);
+
+
+
+
+    }
+
+    void SetWeaponPrefs()
+    {
+        // PlayerPrefs.
+
+        if (!isNewGame)
+        {
+            Ammo[0, 0]= PlayerPrefs.GetInt("PistolAmmo");
+            Ammo[0, 1]=PlayerPrefs.GetInt("ReservePistolAmmo" );
+
+            //SET PISTOL AMMO
+            Ammo[1, 0] = PlayerPrefs.GetInt("RifleAmmo" );
+            Ammo[1, 1] = PlayerPrefs.GetInt("ReserveRifleAmmo");
+
+            //SET PISTOL AMMO
+            Ammo[2, 0] = PlayerPrefs.GetInt("ShotgunAmmo");
+            Ammo[2, 1] = PlayerPrefs.GetInt("ReserveShotgunAmmo");
+
+            //SET PISTOL AMMO
+            Ammo[3, 0] = PlayerPrefs.GetInt("GLAmmo");
+            Ammo[3, 1] = PlayerPrefs.GetInt("ReserveGLAmmo");
+
+        }
+
+
     }
 
 }

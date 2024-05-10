@@ -12,6 +12,8 @@ TagManager:
   - GameMusic
   - Managers
   - HUDCanvas
+  - Sporefiend
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - FloorTilemapLayer
   - 
   - 
   - 
