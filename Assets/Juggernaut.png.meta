@@ -176,7 +176,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Juggernaut_0: -3809741253021568641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

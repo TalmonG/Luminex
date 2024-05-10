@@ -35,11 +35,11 @@ public class ShopScript : MonoBehaviour
         {
 
         }
-        else if (GameObject.FindWithTag("UpgradeToken"))
+        else if (GameObject.FindWithTag("UpgradeTokenShopButton"))
         {
 
         }
-        else if (GameObject.FindWithTag("RifleBulletShopButton"))
+        else if (GameObject.FindWithTag("Jetpack"))
         {
 
         }
