@@ -198,7 +198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 98
   m_Sprite: {fileID: 21300000, guid: ba9573aedb2b17b48ab801cec10bcb79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -421,7 +421,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: f6c41033a9bd90e40b87d1de3a856f14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -540,6 +540,10 @@ PrefabInstance:
     - target: {fileID: 778385853604526817, guid: 9cb8cf5ba94a6cc4d869e7f492529b68, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778385853604526819, guid: 9cb8cf5ba94a6cc4d869e7f492529b68, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 778385853604526820, guid: 9cb8cf5ba94a6cc4d869e7f492529b68, type: 3}
       propertyPath: m_LocalPosition.x
@@ -681,6 +685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenade-LauncherArm
       objectReference: {fileID: 0}
+    - target: {fileID: 6417438631808065719, guid: 9702904d216eb83439d6593d8e24705f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -718,6 +726,10 @@ PrefabInstance:
     - target: {fileID: 9197199072941002241, guid: cdd1e640ed15afb45bf8f29f27a737d0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197199072941002243, guid: cdd1e640ed15afb45bf8f29f27a737d0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9197199072941002244, guid: cdd1e640ed15afb45bf8f29f27a737d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -789,6 +801,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 61f13fe2582a24248b533b9853a79f5b, type: 3}
+    - target: {fileID: 406094855269536170, guid: c0d80b41fa7829043b2d32b73af45170, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 406094855269536173, guid: c0d80b41fa7829043b2d32b73af45170, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.294
