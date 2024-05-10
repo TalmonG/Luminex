@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Images/Materials/Entrance_Door_Design.mat.meta
+guid: a7d8cf5df07e9ea4bbb3a900cca57569
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+========
+guid: 100914177e6aae44f881bcfb1a6c7378
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+>>>>>>>> origin/Milo:Assets/tilemap/Level_Design_Background4_0.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

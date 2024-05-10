@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Animations/Land.meta
+guid: 3c521be3956ece847acdd6caf5c9fc41
+========
 guid: 4b827e15eaee14f4cbdcfb66f8e9e714
+>>>>>>>> origin/Alfie:Assets/Scripts/UI.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

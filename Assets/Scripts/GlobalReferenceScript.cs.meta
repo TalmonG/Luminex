@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/ExitDoor.cs.meta
+guid: 97a795d8fa9b23a48bbae16a0c85b6e1
+========
+guid: 18345b2ab02f85144ab282642d557763
+>>>>>>>> origin/Milo:Assets/Scripts/GlobalReferenceScript.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

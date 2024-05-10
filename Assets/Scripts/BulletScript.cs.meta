@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Player.cs.meta
+guid: c8332cfd061e7cd49bd2bf427cc4bace
+========
+guid: 5d343336a43663a428051bf198cb57e0
+>>>>>>>> main:Assets/BulletScript.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

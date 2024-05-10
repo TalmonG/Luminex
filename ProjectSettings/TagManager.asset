@@ -7,6 +7,17 @@ TagManager:
   - isGround
   - TriFungusSentinel
   - MycoticJuggernaut
+  - ground
+  - keybind
+  - GameMusic
+  - Managers
+  - HUDCanvas
+  - Sporefiend
+  - PlayerBullet
+  - PistolBulletBuy
+  - RifleBulletBuy
+  - UpgradeTokenBuy
+  - JetpackFuelBuy
   layers:
   - Default
   - TransparentFX

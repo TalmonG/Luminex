@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -42,7 +41,7 @@ public class UIManager : MonoBehaviour
 
     public void onClickStartButton()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void onClickLoadButton()
