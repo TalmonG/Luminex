@@ -8,16 +8,17 @@ public class groundscript : MonoBehaviour
     EnemyPlatformscript juggernautscript;
     GameObject player;
     public float speed;
-    
-    
-    
+    bool seenplayer;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         juggernautscript = GameObject.FindGameObjectWithTag("Juggernaut").transform.GetComponent<EnemyPlatformscript>();
 
-
+        player = GameObject.FindGameObjectWithTag("Player");
       
 
     }
@@ -51,6 +52,24 @@ public class groundscript : MonoBehaviour
             }
             
         }
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if (distance < 4)
+        {
+            seenplayer = true;
+
+
+        }
+
+
+
+        if (seenplayer)
+        {
+            chaseplayer();
+
+        }
+        else { }
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
