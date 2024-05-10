@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -23,19 +24,16 @@ public class PlayerScript : MonoBehaviour
     int i = 1;
     int FacingDirection;
     bool Grotate = false;
-    float degrees = 0;
+    int degrees = 0;
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
-
-    int Money;
+    public GameObject PauseMenu;
 
     public int level;
 
-    bool isNewGame=true;
-
     //Restriction Variables
-    public bool canSwitchDimensions = true;
+    public bool canSwitchDimensions = false;
     public bool isNormalDimension = true;
 
     public bool canGRotate = false;
@@ -78,18 +76,16 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    bool CantBreathe;
-    public float Health;
-    float MaxHealth=100;
-    public float Oxygen;
-    float MaxOxygen=100;
+    bool Dimension;
+    public int Health;
+    int MaxHealth=100;
+    public int Oxygen;
+    int MaxOxygen=100;
     float oxygenTimer=0;
-    int BreathRate=1;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         DontDestroyOnLoad(this.gameObject);
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
@@ -101,8 +97,6 @@ public class PlayerScript : MonoBehaviour
 
         isNormalDimension = true;
 
-        SetPlayerStats();
-
         DontDestroyOnLoad(GameObject.Find("Canvas"));
     }
 
@@ -112,48 +106,34 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Health.value = Health;
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
-        DetectCrushed();
-        Debug.Log(canSwitchDimensions);
-        if (CantBreathe)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
+            Time.timeScale = 0;
+            PauseMenu.SetActive(true);
+        }
+
+        if (Dimension)
+        {
+
             oxygenTimer += Time.deltaTime;
 
-            // Oxygen = MaxOxygen - (int)oxygenTimer * 2;
-
-            Oxygen -=(Time.deltaTime*10);
+            Oxygen = MaxOxygen - (int)oxygenTimer * 2;
         }
-        else
-        {
-            Oxygen += (Time.deltaTime * 12);
-
-            Oxygen = Mathf.Clamp(Oxygen,0,100);
-        }
-
-        if (Oxygen <= 0)
-        {
-            Health -= Time.deltaTime*15;
-        }
-
         // Dimension Switch
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true && canSwitchDimensions == true)
         {
             isNormalDimension = false;
-
-            BreathRate = 1;
-
-            CantBreathe = true;
-            LevelChecker();
-
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false/* && canSwitchDimensions == true*/)
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false && canSwitchDimensions == true)
         {
             isNormalDimension = true;
-
-            BreathRate = -1;
-
-            CantBreathe = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == false)
+        {
+            oxygenTimer = 0;
+            Dimension = true;
             LevelChecker();
+            //Debug.Log("Checking");
         }
 
         if ((Input.GetAxis("Mouse ScrollWheel")) > 0)
@@ -206,12 +186,11 @@ public class PlayerScript : MonoBehaviour
             if (degrees < 180)
             {
                 transform.Rotate(Vector3.forward);
-                degrees+=1;
-                
+                degrees++;
             }
             else { Grotate = false; degrees = 0; }
         }
-       // Debug.Log(degrees);
+
         cam.transform.rotation = transform.rotation;
 
 
@@ -255,7 +234,6 @@ public class PlayerScript : MonoBehaviour
             }
         }
         */
-        // Debug.Log(PlayerPrefs.GetInt("PlayerHealth"));
 
         Head.transform.rotation = LookRotation;
 
@@ -314,110 +292,30 @@ public class PlayerScript : MonoBehaviour
         else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
-
-
-        if (Health <= 0)
-        {
-            Death();
-        }
-
-
-
-        SavePlayerStats();
+        
 
 
     }
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;
-
-        
     }
 
 
-    void DetectCrushed()
+    public void onClickResume()
     {
-        
-        RaycastHit2D lefthit = Physics2D.Raycast(transform.position, Vector2.left, 1,LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.right, 1, LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.down, 1, LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.up, 1, LayerMask.GetMask("FloorTilemapLayer"));
-
-       if(downhit.collider !=null && lefthit.collider != null)
-        {
-            CantBreathe = true;
-        }
-     
-        Debug.DrawRay(transform.position, Vector2.left);
-
+        Debug.Log("hello");
+        Time.timeScale = 1;
+        PauseMenu.SetActive(false);
     }
 
-
-
-    void SavePlayerStats() 
+    public void OnclickOptions()
     {
-        //SAVE HEALTH
-        PlayerPrefs.SetFloat("PlayerHealth",Health);
-        PlayerPrefs.SetFloat("PlayerMaxHealth", MaxHealth);
-
-        //SAVE OXYGEN
-        PlayerPrefs.SetFloat("Oxygen",Oxygen);
-        PlayerPrefs.SetFloat("MaxOxygen", MaxOxygen);
-
-        //SAVE DIMENSION
-        PlayerPrefs.SetInt("Dimension", (isNormalDimension ? 1 : 0));
-
-        //SAVE MONEY
-        PlayerPrefs.SetInt("Money", Money);
-
-        PlayerPrefs.Save();
-
-
+        SceneManager.LoadScene("Options_Controls");
     }
 
-    void SetPlayerStats()
+    public void onClickQuit()
     {
-
-        //CHECKS IF IS A NEW GAME
-        if (!isNewGame)
-        {
-            //SET HEALTH
-            Health = PlayerPrefs.GetInt("PlayerHealth");
-            MaxHealth = PlayerPrefs.GetInt("PlayerMaxHealth");
-
-            //SET OXYGEN
-            Oxygen = PlayerPrefs.GetInt("Oxygen");
-            MaxOxygen = PlayerPrefs.GetInt("MaxOxygen");
-
-            //SET Dimension
-            isNormalDimension = (PlayerPrefs.GetInt("Dimension") != 0);
-
-            //SET MONEY
-            Money = PlayerPrefs.GetInt("Money");
-
-        }
-        else
-        {
-            //SET HEALTH TO DEFAULT VALUE
-            Health = 100;
-            MaxHealth = 100;
-
-            //SET OXYGEN TO DEFALT VALUE
-            Oxygen = 100;
-            MaxOxygen = 100;
-
-            //SET DIMENSION TO DEFAULT VALUE
-            isNormalDimension = true;
-
-            //SET MONEY
-            Money = 0;
-        }
+        Application.Quit();
     }
-
-
-    void Death()
-    {
-
-    }
-
 }
