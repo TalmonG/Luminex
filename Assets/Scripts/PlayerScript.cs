@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     int i = 1;
     int FacingDirection;
     bool Grotate = false;
-    int degrees = 0;
+    float degrees = 0;
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
@@ -105,6 +105,8 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Health.value = Health;
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
+        DetectCrushed();
+
         if (Dimension)
         {
 
@@ -176,14 +178,15 @@ public class PlayerScript : MonoBehaviour
 
         if (Grotate)
         {
-            if (degrees < 180)
+            if (degrees < 180*Time.deltaTime*10)
             {
-                transform.Rotate(Vector3.forward);
-                degrees++;
+                transform.Rotate(Vector3.forward*Time.deltaTime*10);
+                degrees+=1*Time.deltaTime*Time.deltaTime*100;
+                
             }
             else { Grotate = false; degrees = 0; }
         }
-
+       // Debug.Log(degrees);
         cam.transform.rotation = transform.rotation;
 
 
@@ -293,4 +296,24 @@ public class PlayerScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
     }
+
+
+    void DetectCrushed()
+    {
+        
+        RaycastHit2D lefthit = Physics2D.Raycast(transform.position, Vector2.left, 1,LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.left, 1, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.left, 1, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.left, 1, LayerMask.GetMask("FloorTilemapLayer"));
+
+       if(downhit.collider !=null && lefthit.collider != null)
+        {
+            Debug.Log("sadas");
+        }
+     
+        Debug.DrawRay(transform.position, Vector2.left);
+
+    }
+
+
 }
