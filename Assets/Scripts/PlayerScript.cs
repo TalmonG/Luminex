@@ -84,6 +84,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        DontDestroyOnLoad(this.gameObject);
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         BulletSpawnPos = transform.GetChild(0).GetChild(1).gameObject;
@@ -93,6 +95,8 @@ public class PlayerScript : MonoBehaviour
         MousePosObj = GameObject.Find("CursorPosition");
 
         isNormalDimension = true;
+
+        DontDestroyOnLoad(GameObject.Find("Canvas"));
     }
 
     // Update is called once per frame
