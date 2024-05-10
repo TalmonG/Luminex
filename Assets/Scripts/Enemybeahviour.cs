@@ -1,87 +1,62 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Enemybeahviour : MonoBehaviour
 {
-    private GameObject Player;
+    private GameObject player;
     public float speed;
-    private float dist;
-    public Transform[] patrolPoints;
-    public int patrolDestination;
-    public Transform playerTransform;
     public bool isChasing;
     public float chaseDistance;
-    public bool onground; 
-    public object PlayerTransformation { get; private set; }
+    public Transform groundDetect;
+    private bool movingRight = true;
+
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
+        ChasePlayer();
+        CheckGround();
+    }
+
+    private void ChasePlayer()
+    {
         if (isChasing)
         {
-            if(transform.position.x > Player.transform.position.x) 
-            {
-                transform.localScale = new Vector3(-1, 1, 1); 
-                transform.position += Vector3.left * speed * Time.deltaTime;
-                
-            }
-            if (transform.position.x < Player.transform.position.x)
-            {
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            if (direction.x > 0)
                 transform.localScale = new Vector3(1, 1, 1);
-                transform.position += Vector3.right * speed * Time.deltaTime;
-            
-            }
+            else
+                transform.localScale = new Vector3(-1, 1, 1);
+
+            transform.position += direction * speed * Time.deltaTime;
         }
-        
-        
-            if (Vector3.Distance(transform.position, Player.transform.position) < chaseDistance) 
-            {
+
+        if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance)
             isChasing = true;
-            }
-
-        if (Vector3.Distance(transform.position, Player.transform.position) > chaseDistance)
-        {
+        else
             isChasing = false;
-        } 
+    }
 
+    private void CheckGround()
+    {
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetect.position, Vector2.down);
+        if (groundInfo.collider == null)
         {
-
-            /*if (patrolDestination == 0)
-             {
-                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
-                 if (Vector2.Distance(transform.position, patrolPoints[0].position) < .3f)
-                 {
-
-                     transform.localScale = new Vector3(1, 1, 1);
-                     patrolDestination = 1;
-                 }
-             }
-             if (patrolDestination == 1)
-             {
-                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
-                 if (Vector2.Distance(transform.position, patrolPoints[1].position) < .3f)
-                 {
-
-                     transform.localScale = new Vector3(-1, 1, 1);
-                     patrolDestination = 0;
-                 }
-             }
-
-            Mathf.PingPong(Time.deltaTime * speed, dist);
+            Flip();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Flip()
     {
-        if (collision.CompareTag("Player"))
-        {
-            isChasing = true;
-        }
+        movingRight = !movingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }
-/*
+
+
