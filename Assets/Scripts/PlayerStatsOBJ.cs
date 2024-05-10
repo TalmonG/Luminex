@@ -23,9 +23,11 @@ public class PlayerStatsOBJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Player.get
 
-
-
+        PlayerPrefs.SetInt("PlayerHealth",playerscript.Health);
+       
+        
     }
+
+    
 }
