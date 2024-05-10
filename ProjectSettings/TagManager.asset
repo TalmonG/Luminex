@@ -14,10 +14,6 @@ TagManager:
   - HUDCanvas
   - Sporefiend
   - PlayerBullet
-  - PistolBulletBuy
-  - RifleBulletBuy
-  - UpgradeTokenBuy
-  - JetpackFuelBuy
   layers:
   - Default
   - TransparentFX
@@ -25,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - FloorTilemapLayer
   - 
   - 
   - 
