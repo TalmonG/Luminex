@@ -37,7 +37,6 @@ public class Turret : MonoBehaviour
 
        // if (hit.transform.gameObject == Player.gameObject)
        // {
-            Debug.Log("asd");
             Quaternion lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
             lookrotation.eulerAngles += Vector3.forward * -90;
             transform.rotation = lookrotation;
@@ -53,12 +52,11 @@ public class Turret : MonoBehaviour
         Debug.DrawRay(transform.position, direction);
 
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > 1)
         {
             timer = 0;
             shoot();
         }
-        Debug.Log(health);   
 
         
     }
@@ -76,7 +74,6 @@ public class Turret : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("sadsad");
         if (collision.transform.CompareTag("PlayerBullet"))
         {
             health -= 10;
