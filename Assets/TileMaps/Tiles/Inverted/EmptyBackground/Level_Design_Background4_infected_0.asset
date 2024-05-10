@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Level_Design_Background4_0
+  m_Name: Level_Design_Background4_infected_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -2003261943489995300, guid: 81e1142192a820940b89d082058ffb72, type: 3}
+  m_Sprite: {fileID: -1316747628661283256, guid: c5b05769827fb1347a1966627cb15908, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
