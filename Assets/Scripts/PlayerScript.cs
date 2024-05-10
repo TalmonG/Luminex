@@ -79,12 +79,12 @@ public class PlayerScript : MonoBehaviour
     }
 
     bool CantBreathe;
-    public int Health;
-    int MaxHealth=100;
+    public float Health;
+    float MaxHealth=100;
     public float Oxygen;
     float MaxOxygen=100;
     float oxygenTimer=0;
-    int BreathRate;
+    int BreathRate=1;
 
     // Start is called before the first frame update
     void Start()
@@ -121,16 +121,26 @@ public class PlayerScript : MonoBehaviour
 
             // Oxygen = MaxOxygen - (int)oxygenTimer * 2;
 
-            Oxygen -= Time.deltaTime*3*BreathRate;
+            Oxygen -=(Time.deltaTime*10);
+        }
+        else
+        {
+            Oxygen += (Time.deltaTime * 12);
+
+            Oxygen = Mathf.Clamp(Oxygen,0,100);
         }
 
+        if (Oxygen <= 0)
+        {
+            Health -= Time.deltaTime*15;
+        }
 
         // Dimension Switch
         if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
         {
             isNormalDimension = false;
 
-            BreathRate = -1;
+            BreathRate = 1;
 
             CantBreathe = true;
             LevelChecker();
@@ -140,7 +150,7 @@ public class PlayerScript : MonoBehaviour
         {
             isNormalDimension = true;
 
-            BreathRate = 1;
+            BreathRate = -1;
 
             CantBreathe = false;
             LevelChecker();
@@ -305,6 +315,14 @@ public class PlayerScript : MonoBehaviour
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
 
+
+        if (Health <= 0)
+        {
+            Death();
+        }
+
+
+
         SavePlayerStats();
 
 
@@ -321,12 +339,13 @@ public class PlayerScript : MonoBehaviour
     {
         
         RaycastHit2D lefthit = Physics2D.Raycast(transform.position, Vector2.left, 1,LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.left, 1, LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.left, 1, LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.left, 1, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.right, 1, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.down, 1, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.up, 1, LayerMask.GetMask("FloorTilemapLayer"));
 
        if(downhit.collider !=null && lefthit.collider != null)
         {
+            CantBreathe = true;
         }
      
         Debug.DrawRay(transform.position, Vector2.left);
@@ -338,8 +357,8 @@ public class PlayerScript : MonoBehaviour
     void SavePlayerStats() 
     {
         //SAVE HEALTH
-        PlayerPrefs.SetInt("PlayerHealth",Health);
-        PlayerPrefs.SetInt("PlayerMaxHealth", MaxHealth);
+        PlayerPrefs.SetFloat("PlayerHealth",Health);
+        PlayerPrefs.SetFloat("PlayerMaxHealth", MaxHealth);
 
         //SAVE OXYGEN
         PlayerPrefs.SetFloat("Oxygen",Oxygen);
@@ -394,4 +413,11 @@ public class PlayerScript : MonoBehaviour
             Money = 0;
         }
     }
+
+
+    void Death()
+    {
+
+    }
+
 }
