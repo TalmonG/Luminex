@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - isGround
   - TriFungusSentinel
   - MycoticJuggernaut
   - ground
@@ -13,6 +12,9 @@ TagManager:
   - Managers
   - HUDCanvas
   - Shop
+  - PlayerBullet
+  - Platform Edge
+  - Juggernaut
   layers:
   - Default
   - TransparentFX
