@@ -12,7 +12,12 @@ TagManager:
   - GameMusic
   - Managers
   - HUDCanvas
-  - Shop
+  - Sporefiend
+  - PlayerBullet
+  - PistolBulletBuy
+  - RifleBulletBuy
+  - UpgradeTokenBuy
+  - JetpackFuelBuy
   layers:
   - Default
   - TransparentFX
