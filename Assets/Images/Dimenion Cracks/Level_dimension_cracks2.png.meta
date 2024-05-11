@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: ba9573aedb2b17b48ab801cec10bcb79
+guid: 57345b8ea34ef6947bdcbe703527416f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3817400917376798431
+    second: Level_dimension_cracks2_0
+  - first:
+      213: -7189947763164184678
+    second: Level_dimension_cracks2_1
+  - first:
+      213: 3156608604711423657
+    second: Level_dimension_cracks2_2
+  - first:
+      213: -6533485563061857865
+    second: Level_dimension_cracks2_3
+  - first:
+      213: -233810795310051037
+    second: Level_dimension_cracks2_4
+  - first:
+      213: 2868617685587737695
+    second: Level_dimension_cracks2_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -43,12 +61,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,18 +123,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Level_dimension_cracks2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fde8e7da8e12af430800000000000000
+      internalID: 3817400917376798431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: d04e962f4a97edb4bbf0ac4669dce264
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Level_dimension_cracks2_0: 3817400917376798431
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

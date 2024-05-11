@@ -114,6 +114,8 @@ public class Weapon : MonoBehaviour
 
         SetWeaponPrefs();
 
+       
+
     }
 
     IEnumerator Shoot()

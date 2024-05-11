@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: ba9573aedb2b17b48ab801cec10bcb79
+guid: 66d33118e66eb64459cac50129aef0e4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7531248014210877243
+    second: Death frame10_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -43,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -105,18 +108,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Death frame10_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 318
+        height: 319
+      alignment: 9
+      pivot: {x: 0.44025156, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b37c76aaa2e548860800000000000000
+      internalID: 7531248014210877243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 07cf210e1236c7e4d83c79b229dbe157
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death frame10_0: 7531248014210877243
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

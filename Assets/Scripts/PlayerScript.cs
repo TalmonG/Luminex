@@ -27,6 +27,9 @@ public class PlayerScript : MonoBehaviour
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
+    Animator animator;
+
+    GameObject HUD;
 
     int Money;
 
@@ -85,6 +88,9 @@ public class PlayerScript : MonoBehaviour
     float MaxOxygen=100;
     float oxygenTimer=0;
     int BreathRate=1;
+    public bool death;
+    public bool damaged;
+
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +105,10 @@ public class PlayerScript : MonoBehaviour
         Head = transform.GetChild(1).gameObject;
         MousePosObj = GameObject.Find("CursorPosition");
 
+        animator = GetComponent<Animator>();
+
+        HUD = GameObject.FindGameObjectWithTag("HUDCanvas");
+
         isNormalDimension = true;
 
         SetPlayerStats();
@@ -109,223 +119,233 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GlobalReferenceScript.instance.Health.value = Health;
-        GlobalReferenceScript.instance.Oxygen.value = Oxygen;
-
-        DetectCrushed();
-        Debug.Log(canSwitchDimensions);
-        if (CantBreathe)
+        if (!death)
         {
-            
-            oxygenTimer += Time.deltaTime;
+            GlobalReferenceScript.instance.Health.value = Health;
+            GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
-            // Oxygen = MaxOxygen - (int)oxygenTimer * 2;
-
-            Oxygen -=(Time.deltaTime*10);
-        }
-        else
-        {
-            Oxygen += (Time.deltaTime * 12);
-
-            Oxygen = Mathf.Clamp(Oxygen,0,100);
-        }
-
-        if (Oxygen <= 0)
-        {
-            Health -= Time.deltaTime*15;
-        }
-
-        // Dimension Switch
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
-        {
-            isNormalDimension = false;
-
-            BreathRate = 1;
-
-            CantBreathe = true;
-            LevelChecker();
-
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false/* && canSwitchDimensions == true*/)
-        {
-            isNormalDimension = true;
-
-            BreathRate = -1;
-
-            CantBreathe = false;
-            LevelChecker();
-        }
-
-        if ((Input.GetAxis("Mouse ScrollWheel")) > 0)
-        {
-            ActiveWeapon++;
-            ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
-
-        }
-        if ((Input.GetAxis("Mouse ScrollWheel")) < 0)
-        {
-            ActiveWeapon--;
-            ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
-        }
-
-
-
-        //S Debug.Log(transform.GetChild(0).transform.GetChild(ActiveWeapon).gameObject);
-
-        for (int i = 0; i < transform.GetChild(0).transform.childCount; i++)
-        {
-            if (i != ActiveWeapon)
+            DetectCrushed();
+            Debug.Log(canSwitchDimensions);
+            if (CantBreathe)
             {
-                transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(false);
-                GlobalReferenceScript.instance.CurrentWeaponSymbol[i].enabled = false;
 
+                oxygenTimer += Time.deltaTime;
+
+                // Oxygen = MaxOxygen - (int)oxygenTimer * 2;
+
+                Oxygen -= (Time.deltaTime * 10);
             }
             else
             {
-                transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(true);
-                GlobalReferenceScript.instance.CurrentWeaponSymbol[i].enabled = true;
+                Oxygen += (Time.deltaTime * 12);
 
+                Oxygen = Mathf.Clamp(Oxygen, 0, 100);
             }
-        }
 
-        ArmSprite = Arm.transform.GetChild(ActiveWeapon).gameObject;
-        CurrentWeaponScript = ArmSprite.GetComponent<Weapon>();
-
-        if (Input.GetKeyDown(KeyCode.C) && isgrounded && (degrees % 180 == 0))
-        {
-            rb.gravityScale *= -1;
-            degrees = 0;
-            Grotate = true;
-
-            i *= -1;
-
-        }
-
-        if (Grotate)
-        {
-            if (degrees < 180)
+            if (Oxygen <= 0)
             {
-                transform.Rotate(Vector3.forward);
-                degrees+=1;
-                
+                Health -= Time.deltaTime * 15;
             }
-            else { Grotate = false; degrees = 0; }
-        }
-       // Debug.Log(degrees);
-        cam.transform.rotation = transform.rotation;
+
+            // Dimension Switch
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
+            {
+                isNormalDimension = false;
+
+                BreathRate = 1;
+
+                CantBreathe = true;
+                LevelChecker();
+
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false/* && canSwitchDimensions == true*/)
+            {
+                isNormalDimension = true;
+
+                BreathRate = -1;
+
+                CantBreathe = false;
+                LevelChecker();
+            }
+
+            if ((Input.GetAxis("Mouse ScrollWheel")) > 0)
+            {
+                ActiveWeapon++;
+                ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
+
+            }
+            if ((Input.GetAxis("Mouse ScrollWheel")) < 0)
+            {
+                ActiveWeapon--;
+                ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
+            }
 
 
-        Vector3 MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        MousePos.z = 0;
+            //S Debug.Log(transform.GetChild(0).transform.GetChild(ActiveWeapon).gameObject);
 
-        Vector2 targetpos = MousePos - Arm.transform.position;
+            for (int i = 0; i < transform.GetChild(0).transform.childCount; i++)
+            {
+                if (i != ActiveWeapon)
+                {
+                    transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(false);
+                    GlobalReferenceScript.instance.CurrentWeaponSymbol[i].enabled = false;
 
-        LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
-        LookRotation.eulerAngles += Vector3.forward * 90;
+                }
+                else
+                {
+                    transform.GetChild(0).transform.GetChild(i).gameObject.SetActive(true);
+                    GlobalReferenceScript.instance.CurrentWeaponSymbol[i].enabled = true;
+
+                }
+            }
 
 
-        if (CurrentWeaponScript.isReloading == false)
-        {
+            ArmSprite = Arm.transform.GetChild(ActiveWeapon).gameObject;
+            CurrentWeaponScript = ArmSprite.GetComponent<Weapon>();
+
+            if (Input.GetKeyDown(KeyCode.C) && isgrounded && (degrees % 180 == 0))
+            {
+                rb.gravityScale *= -1;
+                degrees = 0;
+                Grotate = true;
+
+                i *= -1;
+
+            }
+
+            if (Grotate)
+            {
+                if (degrees < 180/2)
+                {
+                    transform.Rotate(Vector3.forward*2);
+                    degrees += 1;
+
+                }
+                else { Grotate = false; degrees = 0; }
+            }
+            // Debug.Log(degrees);
+            cam.transform.rotation = transform.rotation;
+
+
+            Vector3 MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+            MousePos.z = 0;
+
+            Vector2 targetpos = MousePos - Arm.transform.position;
+
             LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
             LookRotation.eulerAngles += Vector3.forward * 90;
-            Arm.transform.rotation = LookRotation;
 
-        }
-        else if (CurrentWeaponScript.isReloading == true)
-        {
-            Arm.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up * FacingDirection);
-        }
 
-        //Head Rotation Bounds
-
-        /*
-        if (FacingDirection == 1)
-        {
-            if ((LookRotation.eulerAngles.z >= 0 && LookRotation.eulerAngles.z < 50) || (LookRotation.eulerAngles.z < 360 && LookRotation.eulerAngles.z > 335))
+            if (CurrentWeaponScript.isReloading == false)
             {
-                Head.transform.rotation = LookRotation;
+                LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
+                LookRotation.eulerAngles += Vector3.forward * 90;
+                Arm.transform.rotation = LookRotation;
+
             }
-        }
-        else if (FacingDirection == -1)
-        {
-            if ((LookRotation.eulerAngles.z <= 180 && LookRotation.eulerAngles.z > 130) || (LookRotation.eulerAngles.z > 180 && LookRotation.eulerAngles.z < 205))
+            else if (CurrentWeaponScript.isReloading == true)
             {
-                Head.transform.rotation = LookRotation;
+                Arm.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up * FacingDirection);
             }
+
+            //Head Rotation Bounds
+
+            /*
+            if (FacingDirection == 1)
+            {
+                if ((LookRotation.eulerAngles.z >= 0 && LookRotation.eulerAngles.z < 50) || (LookRotation.eulerAngles.z < 360 && LookRotation.eulerAngles.z > 335))
+                {
+                    Head.transform.rotation = LookRotation;
+                }
+            }
+            else if (FacingDirection == -1)
+            {
+                if ((LookRotation.eulerAngles.z <= 180 && LookRotation.eulerAngles.z > 130) || (LookRotation.eulerAngles.z > 180 && LookRotation.eulerAngles.z < 205))
+                {
+                    Head.transform.rotation = LookRotation;
+                }
+            }
+            */
+            // Debug.Log(PlayerPrefs.GetInt("PlayerHealth"));
+
+            Head.transform.rotation = LookRotation;
+
+            if (Input.GetMouseButton(0))
+            {
+
+                CurrentWeaponScript.Fire();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                CurrentWeaponScript.Reload();
+            }
+
+            if (transform.position.x - MousePos.x < 0)
+            {
+
+                transform.localScale = (new Vector3(1 * i, 1, 1));
+                Arm.transform.localScale = (new Vector3(1 * i, 1 * i, 1));
+                Head.transform.localScale = (new Vector3(1 * i, 1 * i, 1));
+                FacingDirection = 1;
+            }
+            if (transform.position.x - MousePos.x > 0)
+            {
+                transform.localScale = (new Vector3(-1 * i, 1, 1));
+                Arm.transform.localScale = (new Vector3(-1 * i, -1 * i, 1));
+                Head.transform.localScale = (new Vector3(-1 * i, -1 * i, 1));
+                FacingDirection = -1;
+            }
+
+            animator.SetInteger("Direction", FacingDirection * animator.GetInteger("Velocity"));
+
+            isgrounded = FloorCollider.transform.GetComponent<FloorCollisionScript>().OnFloor;
+
+            if (Input.GetKeyDown(KeyCode.Space) && isgrounded)
+            {
+                rb.velocity = Vector2.up * speed * 3 * i; animator.SetTrigger("OnJump");
+            }
+
+            float Horizontal = Input.GetAxis("Horizontal") * speed;
+            float Vertical = Input.GetAxis("Vertical");
+
+            Vector3 HorizontalDirection = new Vector3(Horizontal * i, rb.velocity.y, 0);
+
+            rb.velocity = HorizontalDirection;
+
+            MousePosObj.transform.position = MousePos;
+
+            Vector3 TargetCamPos = (MousePosObj.transform.position - transform.position);
+            TargetCamPos.x *= FacingDirection;
+            TargetCamPos.y /= 2 * i;
+            TargetCamPos.x /= 3;
+            cam.transform.localPosition = TargetCamPos + (Vector3.forward * -10);
+
+            if (rb.velocity.x > 0) { animator.SetInteger("Velocity", 1); }
+            else if (rb.velocity.x < 0) { animator.SetInteger("Velocity", -1); }
+            else { animator.SetInteger("Velocity", 0); }
+
+
+
+            if (damaged)
+            {
+                damaged = false;
+                StartCoroutine(Damage());
+            }
+
+            if (Health <= 0)
+            {
+                death = true;
+                Death();
+            }
+
+
+
+            SavePlayerStats();
         }
-        */
-        // Debug.Log(PlayerPrefs.GetInt("PlayerHealth"));
-
-        Head.transform.rotation = LookRotation;
-
-        if (Input.GetMouseButton(0))
-        {
-
-            CurrentWeaponScript.Fire();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            CurrentWeaponScript.Reload();
-        }
-
-        if (transform.position.x - MousePos.x < 0)
-        {
-
-            transform.localScale = (new Vector3(1 * i, 1, 1));
-            Arm.transform.localScale = (new Vector3(1 * i, 1 * i, 1));
-            Head.transform.localScale = (new Vector3(1 * i, 1 * i, 1));
-            FacingDirection = 1;
-        }
-        if (transform.position.x - MousePos.x > 0)
-        {
-            transform.localScale = (new Vector3(-1 * i, 1, 1));
-            Arm.transform.localScale = (new Vector3(-1 * i, -1 * i, 1));
-            Head.transform.localScale = (new Vector3(-1 * i, -1 * i, 1));
-            FacingDirection = -1;
-        }
-
-        GetComponent<Animator>().SetInteger("Direction", FacingDirection * GetComponent<Animator>().GetInteger("Velocity"));
-
-        isgrounded = FloorCollider.transform.GetComponent<FloorCollisionScript>().OnFloor;
-
-        if (Input.GetKeyDown(KeyCode.Space) && isgrounded)
-        {
-            rb.velocity = Vector2.up * speed * 3 * i; GetComponent<Animator>().SetTrigger("OnJump");
-        }
-
-        float Horizontal = Input.GetAxis("Horizontal") * speed;
-        float Vertical = Input.GetAxis("Vertical");
-
-        Vector3 HorizontalDirection = new Vector3(Horizontal * i, rb.velocity.y, 0);
-
-        rb.velocity = HorizontalDirection;
-
-        MousePosObj.transform.position = MousePos;
-
-        Vector3 TargetCamPos = (MousePosObj.transform.position - transform.position);
-        TargetCamPos.x *= FacingDirection;
-        TargetCamPos.y /= 2 * i;
-        TargetCamPos.x /= 3;
-        cam.transform.localPosition = TargetCamPos + (Vector3.forward * -10);
-
-        if (rb.velocity.x > 0) { GetComponent<Animator>().SetInteger("Velocity", 1); }
-        else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
-        else { GetComponent<Animator>().SetInteger("Velocity", 0); }
-
-
-
-        if (Health <= 0)
-        {
-            Death();
-        }
-
-
-
-        SavePlayerStats();
-
-
+        else { cam.transform.position = transform.position+Vector3.forward*-10; cam.orthographicSize = 3; }
     }
     private void Awake()
     {
@@ -418,6 +438,31 @@ public class PlayerScript : MonoBehaviour
     void Death()
     {
 
+        animator.SetBool("Dead", true);
+        animator.SetTrigger("Died");
+
+
+        Destroy(transform.GetChild(0).gameObject);
+        Destroy(transform.GetChild(1).gameObject);
+        Destroy(transform.GetChild(5).gameObject);
+
+        Destroy(HUD);
+
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+
+
+    }
+
+
+    IEnumerator Damage()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.3f);
+
+        GetComponent<SpriteRenderer>().color = Color.white;
+
+        yield return null;
     }
 
 }

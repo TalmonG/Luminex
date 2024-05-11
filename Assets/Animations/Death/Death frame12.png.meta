@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: ba9573aedb2b17b48ab801cec10bcb79
+guid: df69b4ee11f77194a862b115fd15337c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8143313504535381800
+    second: Death frame12_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -43,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -105,18 +108,62 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Death frame12_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 309
+        height: 331
+      alignment: 9
+      pivot: {x: 0.45307443, y: 0.5287009}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 827097cbc7cd20170800000000000000
+      internalID: 8143313504535381800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death frame12_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 42
+        width: 245
+        height: 115
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e7c73c2c9494de4d8efdd51890a5dd8
+      internalID: -1020359201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 4fdae9221de791046b7fb25d1d83f418
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death frame12_0: 8143313504535381800
+      Death frame12_1: -1020359201
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
