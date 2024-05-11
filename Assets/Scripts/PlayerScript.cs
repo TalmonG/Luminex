@@ -28,7 +28,6 @@ public class PlayerScript : MonoBehaviour
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
-    public GameObject PauseMenu;
 
     public int level;
 
@@ -106,11 +105,6 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Health.value = Health;
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = 0;
-            PauseMenu.SetActive(true);
-        }
 
         if (Dimension)
         {
@@ -301,21 +295,4 @@ public class PlayerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-
-    public void onClickResume()
-    {
-        Debug.Log("hello");
-        Time.timeScale = 1;
-        PauseMenu.SetActive(false);
-    }
-
-    public void OnclickOptions()
-    {
-        SceneManager.LoadScene("Options_Controls");
-    }
-
-    public void onClickQuit()
-    {
-        Application.Quit();
-    }
 }
