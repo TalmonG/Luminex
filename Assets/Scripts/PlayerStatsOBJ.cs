@@ -17,14 +17,14 @@ public class PlayerStatsOBJ : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        playerscript = Player.GetComponent<PlayerScript>();
+        //playerscript = Player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        PlayerPrefs.SetInt("PlayerHealth",playerscript.Health);
+        //PlayerPrefs.SetInt("PlayerHealth",playerscript.Health);
        
         
     }

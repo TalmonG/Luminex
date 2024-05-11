@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject HUDCanvasPrefab;
-    public GameObject playerPrefab;
+    //public GameObject playerPrefab;
     public GameObject managerPrefab;
 
     private GameObject HUDCanvas;
-    private GameObject player;
+    //private GameObject player;
     private GameObject manager;
 
     private void Awake()
@@ -78,14 +78,14 @@ public class GameManager : MonoBehaviour
         // Instantiate player if not already present in "Tutorial" scene
         if (scene.name.Equals("HUB Level"))
         {
-            if (player == null)
+            /*if (player == null)
             {
                 player = GameObject.FindWithTag("Player");
                 if (player == null)
                 {
                     player = Instantiate(playerPrefab);
                 }
-            }
+            }*/
 
             // Instantiate HUDCanvas if not already present
             if (HUDCanvas == null)
@@ -103,14 +103,14 @@ public class GameManager : MonoBehaviour
         // Instantiate player if not already present in "Tutorial" scene
         if (scene.name.Equals("Tutorial"))
         {
-            if (player == null)
+            /*if (player == null)
             {
                 player = GameObject.FindWithTag("Player");
                 if (player == null)
                 {
                     player = Instantiate(playerPrefab);
                 }
-            }
+            }*/
 
             // Instantiate HUDCanvas if not already present
             if (HUDCanvas == null)

@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
 
     int Money;
 
-    public int level;
+    public int currentLevel;
 
     bool isNewGame=true;
 
@@ -43,38 +43,66 @@ public class PlayerScript : MonoBehaviour
     void LevelChecker()
     {
         // Level Restrictions
-        if (level == -1)
+        // StartMenu
+        if (currentLevel == -6)
         {
             canSwitchDimensions = false;
         }
-        else if (level == 0)
+        // Credits
+        else if (currentLevel == -5)
         {
             canSwitchDimensions = false;
         }
-        else if (level == 1)
+        // Options_Audio
+        else if (currentLevel == -4)
+        {
+            canSwitchDimensions = false;
+        }
+        // Options_Controls
+        else if (currentLevel == -3)
+        {
+            canSwitchDimensions = false;
+        }
+        // Options_Graphics
+        else if (currentLevel == -2)
+        {
+            canSwitchDimensions = false;
+        }
+        // HUB Level
+        else if (currentLevel == -1)
+        {
+            canSwitchDimensions = false;
+        }
+        // Tutorial
+        else if (currentLevel == 0)
+        {
+            canSwitchDimensions = false;
+        }
+        // Level 1
+        else if (currentLevel == 1)
         {
             canSwitchDimensions = true;
         }
-        else if (level == 2)
+        // Level 2
+        else if (currentLevel == 2)
         {
             canSwitchDimensions = true;
         }
-        else if (level == 3)
+        // Level 3
+        else if (currentLevel == 3)
         {
             canSwitchDimensions = true;
         }
-        else if (level == 4)
+        // Level 4
+        else if (currentLevel == 4)
         {
             canSwitchDimensions = true;
         }
-        else if (level == 5)
-        {
-            canSwitchDimensions = true;
-        }
+        // Errors
         else
         {
-            Debug.Log("Level Detectoin Error. Level: " + level + " is being detected.");
-            Debug.Log("Likely need to add an incremental system in SceneManagerscript to increment 'level' variable in player script. Hope that helps");
+            Debug.Log("Level Detectoin Error. Level: " + currentLevel + " is being detected.");
+            Debug.Log("Likely need to add an incremental system in SceneManagerscript to increment 'currentLevel' variable in player script. Hope that helps");
         }
     }
 
@@ -90,7 +118,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
+        Debug.Log("Check this error, its causeing player spawning issues, canvas and more");
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         BulletSpawnPos = transform.GetChild(0).GetChild(1).gameObject;
@@ -113,7 +142,7 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
         DetectCrushed();
-        Debug.Log(canSwitchDimensions);
+        //Debug.Log(canSwitchDimensions);
         if (CantBreathe)
         {
             
@@ -344,6 +373,9 @@ public class PlayerScript : MonoBehaviour
         //SAVE OXYGEN
         PlayerPrefs.SetFloat("Oxygen",Oxygen);
         PlayerPrefs.SetFloat("MaxOxygen", MaxOxygen);
+
+        // currentLevel
+        PlayerPrefs.SetInt("currentLevel", currentLevel);
 
         //SAVE DIMENSION
         PlayerPrefs.SetInt("Dimension", (isNormalDimension ? 1 : 0));

@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class ExitDoorScript : MonoBehaviour
 {
     GameObject Player;
-    bool PlayerinFront;
+    public bool PlayerinFront;
+
+    public string levelToLoad;
 
     Animator DoorAnimator;
 
@@ -25,29 +27,22 @@ public class ExitDoorScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && PlayerinFront)
         {
             DoorAnimator.SetTrigger("OnOpen");
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision.CompareTag("Player"))
         {
-            if (collision.gameObject == Player)
-            {
-                PlayerinFront=false;
-                
-            }
+            PlayerinFront = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision.CompareTag("Player"))
         {
-            if (collision.gameObject == Player)
-            {
-                PlayerinFront = true;
-
-            }
+            PlayerinFront = true;
         }
     }
 
