@@ -40681,6 +40681,14 @@ PrefabInstance:
       propertyPath: levelToLoad
       value: Level 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2228368369131045527, guid: 161f4ea51ee0f4d4987b1b2d362e93a8, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 9014322578058535939, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+    - target: {fileID: 2228368369131045527, guid: 161f4ea51ee0f4d4987b1b2d362e93a8, type: 3}
+      propertyPath: currentLevelToSet
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6012762202289621013, guid: 161f4ea51ee0f4d4987b1b2d362e93a8, type: 3}
       propertyPath: m_Name
       value: Exit Door

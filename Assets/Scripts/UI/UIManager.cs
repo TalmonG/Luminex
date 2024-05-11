@@ -47,7 +47,13 @@ public class UIManager : MonoBehaviour
     {
         playerScript.currentLevel = 0;
         PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
+        Debug.Log(playerScript.currentLevel);
+        playerScript.LevelChecker();
+        PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
         SceneManager.LoadScene("Tutorial");
+        GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
+        GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
+        Debug.Log("RAHHHHHH");
     }
 
     public void onClickLoadButton()

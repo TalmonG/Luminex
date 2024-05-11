@@ -125,9 +125,111 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
+        // Instantiate player if not already present in "Tutorial" scene
+        if (scene.name.Equals("Zone1_Level1"))
+        {
+            /*if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }*/
 
-        
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+
+        // Instantiate player if not already present in "Tutorial" scene
+        if (scene.name.Equals("Level 2"))
+        {
+            /*if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }*/
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+
+        // Instantiate player if not already present in "Tutorial" scene
+        if (scene.name.Equals("Level 3"))
+        {
+            /*if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }*/
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+
+        // Instantiate player if not already present in "Tutorial" scene
+        if (scene.name.Equals("Level 4"))
+        {
+            /*if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }*/
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+
+
+
+
+
+
     }
 
     // Additional methods to manage game state, etc.

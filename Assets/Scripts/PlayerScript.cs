@@ -28,6 +28,19 @@ public class PlayerScript : MonoBehaviour
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
 
+    // Dimensions
+    public GameObject normalDimensionTutorial;
+    public GameObject invertedDimensionTutorial;
+    public GameObject normalDimensionLevelOne;
+    public GameObject invertedDimensionLevelOne;
+    public GameObject normalDimensionLevelTwo;
+    public GameObject invertedDimensionLevelTwo;
+    public GameObject normalDimensionLevelThree;
+    public GameObject invertedDimensionLevelThree;
+    public GameObject normalDimensionLevelFour;
+    public GameObject invertedDimensionLevelFour;
+
+
     int Money;
 
     public int currentLevel;
@@ -40,63 +53,91 @@ public class PlayerScript : MonoBehaviour
 
     public bool canGRotate = false;
 
-    void LevelChecker()
+    public void LevelChecker()
     {
         // Level Restrictions
         // StartMenu
+        PlayerPrefs.GetInt("currentLevel", currentLevel);
+        Debug.Log("THREEE");
+
         if (currentLevel == -6)
         {
             canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Credits
         else if (currentLevel == -5)
         {
             canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Options_Audio
         else if (currentLevel == -4)
         {
             canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Options_Controls
         else if (currentLevel == -3)
         {
             canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Options_Graphics
         else if (currentLevel == -2)
         {
             canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // HUB Level
         else if (currentLevel == -1)
         {
             canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Tutorial
-        else if (currentLevel == 0)
+        else if (currentLevel == 0 && canSwitchDimensions == true)
         {
-            canSwitchDimensions = false;
+            //canSwitchDimensions = true;
+            if (normalDimensionTutorial == true)
+            {
+                GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
+                GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
+                Debug.Log("AAAAAAAAAA");
+            }
+            else if (invertedDimensionTutorial == true)
+            {
+                GameObject.FindWithTag("NormalDimensionTutorial").SetActive(false);
+                GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(true);
+                Debug.Log("BBBBBBBBBB");
+            }
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+            Debug.Log("isNormalDimension is set to " + isNormalDimension + " for this level");
+
         }
         // Level 1
         else if (currentLevel == 1)
         {
             canSwitchDimensions = true;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Level 2
         else if (currentLevel == 2)
         {
             canSwitchDimensions = true;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Level 3
         else if (currentLevel == 3)
         {
             canSwitchDimensions = true;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Level 4
         else if (currentLevel == 4)
         {
             canSwitchDimensions = true;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Errors
         else
@@ -118,7 +159,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         
-        DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
+        //DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
         Debug.Log("Check this error, its causeing player spawning issues, canvas and more");
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
@@ -132,7 +173,7 @@ public class PlayerScript : MonoBehaviour
 
         SetPlayerStats();
 
-        DontDestroyOnLoad(GameObject.Find("Canvas"));
+        //DontDestroyOnLoad(GameObject.Find("Canvas"));
     }
 
     // Update is called once per frame
@@ -154,23 +195,24 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        // Dimension Switch
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
+        // Dimension Switch to Inverted
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == true && isNormalDimension == true)
         {
             isNormalDimension = false;
 
             BreathRate = -1;
-
+            Debug.Log("Switched To Inverted Dimension");
             CantBreathe = true;
             LevelChecker();
 
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false/* && canSwitchDimensions == true*/)
+        // Switch to Normal Dimension
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == true && isNormalDimension == false)
         {
             isNormalDimension = true;
 
             BreathRate = 1;
-
+            Debug.Log("Switched to Normal Dimension");
             CantBreathe = false;
             LevelChecker();
         }
@@ -280,7 +322,6 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-
             CurrentWeaponScript.Fire();
         }
 
