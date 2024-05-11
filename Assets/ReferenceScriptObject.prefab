@@ -46,7 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AmmoCounter: {fileID: 0}
   CurrentWeaponText: {fileID: 0}
-  CurrentWeaponSymbol: []
+  CurrentWeaponSymbol:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  DimensionChargeAmount: {fileID: 0}
+  DimensionBubbles: []
   Health: {fileID: 0}
   Oxygen: {fileID: 0}
   Player: {fileID: 0}

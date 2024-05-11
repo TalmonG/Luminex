@@ -29,6 +29,8 @@ public class PlayerScript : MonoBehaviour
     GameObject MousePosObj;
     Animator animator;
 
+    bool AddCharge = true;
+
     GameObject HUD;
 
     int Money;
@@ -87,10 +89,11 @@ public class PlayerScript : MonoBehaviour
     public float Oxygen;
     float MaxOxygen=100;
     float oxygenTimer=0;
-    int BreathRate=1;
     public bool death;
     public bool damaged;
+    int DimensionCharge;
 
+    float DimensionDeviceChargeRate;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +112,8 @@ public class PlayerScript : MonoBehaviour
 
         HUD = GameObject.FindGameObjectWithTag("HUDCanvas");
 
+        death = false;
+
         isNormalDimension = true;
 
         SetPlayerStats();
@@ -123,17 +128,22 @@ public class PlayerScript : MonoBehaviour
         {
             GlobalReferenceScript.instance.Health.value = Health;
             GlobalReferenceScript.instance.Oxygen.value = Oxygen;
+            GlobalReferenceScript.instance.DimensionChargeAmount.sprite = GlobalReferenceScript.instance.DimensionBubbles[DimensionCharge];
+
+
 
             DetectCrushed();
-            Debug.Log(canSwitchDimensions);
+
+
+
             if (CantBreathe)
             {
 
-                oxygenTimer += Time.deltaTime;
-
-                // Oxygen = MaxOxygen - (int)oxygenTimer * 2;
-
                 Oxygen -= (Time.deltaTime * 10);
+
+                Oxygen = Mathf.Clamp(Oxygen, 0, 100);
+
+
             }
             else
             {
@@ -148,25 +158,45 @@ public class PlayerScript : MonoBehaviour
             }
 
             // Dimension Switch
-            if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
+            if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
             {
-                isNormalDimension = false;
-
-                BreathRate = 1;
-
-                CantBreathe = true;
-                LevelChecker();
-
+                if (DimensionCharge > 0)
+                {
+                    isNormalDimension = false;
+                  //  DimensionDeviceChargeRate = 0;
+                    DimensionCharge--;
+                    CantBreathe = true;
+                    LevelChecker();
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false/* && canSwitchDimensions == true*/)
+            else if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == false/* && canSwitchDimensions == true*/)
             {
                 isNormalDimension = true;
 
-                BreathRate = -1;
-
+                AddCharge=true;
                 CantBreathe = false;
                 LevelChecker();
             }
+
+            if (isNormalDimension)
+            {
+                //AddCharge = false;
+
+                DimensionDeviceChargeRate += Time.deltaTime/4;
+
+                DimensionCharge = (int)Mathf.Round(DimensionDeviceChargeRate);
+
+                Mathf.Clamp(DimensionDeviceChargeRate, 0, 6);
+
+               // StartCoroutine(ChargingDimensionDevice());
+            }
+            else
+            {
+                DimensionDeviceChargeRate = DimensionCharge;
+            }
+
+            DimensionCharge=Mathf.Clamp(DimensionCharge,0,6);
+
 
             if ((Input.GetAxis("Mouse ScrollWheel")) > 0)
             {
@@ -214,16 +244,7 @@ public class PlayerScript : MonoBehaviour
 
             }
 
-            if (Grotate)
-            {
-                if (degrees < 180/2)
-                {
-                    transform.Rotate(Vector3.forward*2);
-                    degrees += 1;
-
-                }
-                else { Grotate = false; degrees = 0; }
-            }
+            
             // Debug.Log(degrees);
             cam.transform.rotation = transform.rotation;
 
@@ -341,11 +362,26 @@ public class PlayerScript : MonoBehaviour
                 Death();
             }
 
-
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                Health = 0;
+            }
 
             SavePlayerStats();
         }
         else { cam.transform.position = transform.position+Vector3.forward*-10; cam.orthographicSize = 3; }
+
+        if (Grotate)
+        {
+            if (degrees < 180 / 2)
+            {
+                transform.Rotate(Vector3.forward * 2);
+                degrees += 1;
+
+            }
+            else { Grotate = false; degrees = 0; }
+        }
+
     }
     private void Awake()
     {
@@ -386,6 +422,7 @@ public class PlayerScript : MonoBehaviour
 
         //SAVE DIMENSION
         PlayerPrefs.SetInt("Dimension", (isNormalDimension ? 1 : 0));
+        PlayerPrefs.SetInt("DimensionCharge", DimensionCharge);
 
         //SAVE MONEY
         PlayerPrefs.SetInt("Money", Money);
@@ -411,6 +448,7 @@ public class PlayerScript : MonoBehaviour
 
             //SET Dimension
             isNormalDimension = (PlayerPrefs.GetInt("Dimension") != 0);
+            DimensionCharge = PlayerPrefs.GetInt("DimensionCharge");
 
             //SET MONEY
             Money = PlayerPrefs.GetInt("Money");
@@ -428,6 +466,7 @@ public class PlayerScript : MonoBehaviour
 
             //SET DIMENSION TO DEFAULT VALUE
             isNormalDimension = true;
+            DimensionCharge = 6;
 
             //SET MONEY
             Money = 0;
@@ -448,8 +487,10 @@ public class PlayerScript : MonoBehaviour
 
         Destroy(HUD);
 
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+       // GetComponent<Collider2D>().enabled = false;
+       // GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
 
 
     }
@@ -463,6 +504,14 @@ public class PlayerScript : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
 
         yield return null;
+    }
+
+    IEnumerator ChargingDimensionDevice()
+    {
+        yield return new WaitForSeconds(5);
+        AddCharge=true;
+        DimensionCharge++;
+        DimensionCharge= Mathf.Clamp(DimensionCharge, 0, 6);
     }
 
 }
