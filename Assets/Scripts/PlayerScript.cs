@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,6 +28,9 @@ public class PlayerScript : MonoBehaviour
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
+
+    // Referencing
+    public OnLaunchGame onLaunchGame;
 
     // Dimensions
     public GameObject normalDimensionTutorial;
@@ -57,10 +61,21 @@ public class PlayerScript : MonoBehaviour
     {
         // Level Restrictions
         // StartMenu
-        PlayerPrefs.GetInt("currentLevel", currentLevel);
+        // Retrieve the integer value from PlayerPrefs
+        Debug.Log("A" + currentLevel);
 
-        Debug.Log("WAAAAAM" + currentLevel);
+        int currentLevelValue = PlayerPrefs.GetInt("currentLevel");
+        currentLevel = PlayerPrefs.GetInt("currentLevel");
 
+        Debug.Log("B" + currentLevel);
+        Debug.Log("B an a half" + PlayerPrefs.GetInt("currentLevel"));
+        // Convert the integer value to a boolean
+        //currentLevel = currentLevelValue;
+        //PlayerPrefs.SetInt("currentLevel" ,currentLevel);
+        Debug.Log("C" + currentLevel);
+
+        Debug.Log("D" + currentLevel);
+        //PlayerPrefs.SetInt("currentLevel" ,currentLevel);
         if (currentLevel == -6)
         {
             canSwitchDimensions = true;
@@ -102,14 +117,14 @@ public class PlayerScript : MonoBehaviour
             //canSwitchDimensions = true;
             if (normalDimensionTutorial == true)
             {
-                GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
-                GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
+                //GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
+                //GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
                 Debug.Log("AAAAAAAAAA");
             }
             else if (invertedDimensionTutorial == true)
             {
-                GameObject.FindWithTag("NormalDimensionTutorial").SetActive(false);
-                GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(true);
+                //GameObject.FindWithTag("NormalDimensionTutorial").SetActive(false);
+                //GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(true);
                 Debug.Log("BBBBBBBBBB");
             }
             Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
@@ -173,6 +188,8 @@ public class PlayerScript : MonoBehaviour
         MousePosObj = GameObject.Find("CursorPosition");
 
         isNormalDimension = true;
+
+        //OnLaunchGame = GameObject.Find("OnLaunchGame");
 
         SetPlayerStats();
 
@@ -416,6 +433,9 @@ public class PlayerScript : MonoBehaviour
             canSwitchDimensions = false;
             Debug.Log("canSwitchDimensions set to false");
         }
+
+        //SceneManager.sceneLoaded += onLaunchGame.OnSceneLoadedTwo;
+
     }
 
 
@@ -510,4 +530,6 @@ public class PlayerScript : MonoBehaviour
             Money = 0;
         }
     }
+
+   
 }

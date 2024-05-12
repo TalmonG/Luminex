@@ -45,11 +45,9 @@ public class UIManager : MonoBehaviour
 
     public void onClickStartButton()
     {
-        playerScript.currentLevel = 0;
-        PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
-        Debug.Log(playerScript.currentLevel);
-        playerScript.LevelChecker();
-        PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
+        PlayerPrefs.SetInt("isNormalDimension", 1);
+        PlayerPrefs.SetInt("canSwitchDimensions", 1);
+        //PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
         SceneManager.LoadScene("Tutorial");
     }
 

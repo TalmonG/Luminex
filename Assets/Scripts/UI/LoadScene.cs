@@ -18,8 +18,8 @@ public class LoadScene : MonoBehaviour
     }
     public void loadNewScene()
     {
-        playerScript.currentLevel = -6;
-        Debug.Log(playerScript.currentLevel);
+        //playerScript.currentLevel = -6;
+        //Debug.Log(playerScript.currentLevel);
         SceneManager.LoadScene("StartMenu");
         audioSource.Play();
     }
