@@ -8,15 +8,16 @@ using UnityEngine;
 //[RequireComponent(typeof(BoxCollider2D))]
 public class EnemyAiScript : MonoBehaviour
 {
-     GameObject player;
+    GameObject player;
     public List<Transform> points;
     public int nextID;
     int idchangeValue = 1;
     public float speed = 2;
     public int left_right = 1;
-    public bool isChasingPlayer=false;
-    public bool ReachedEdge=false;
+    public bool isChasingPlayer = false;
+    public bool ReachedEdge = false;
     public bool playerinrange;
+    public int health;
     public GameObject TargetCollider;
     public GameObject HitCollider;
     public GameObject[] Colliders;
@@ -25,10 +26,10 @@ public class EnemyAiScript : MonoBehaviour
     bool seenplayer;
 
     // Start is called before the first frame update
-    
+
     private void Reset()
     {
-       Init();
+        Init();
 
     }
     private void Init()
@@ -40,17 +41,39 @@ public class EnemyAiScript : MonoBehaviour
         GameObject waypoints = new GameObject("Waypoints");
         waypoints.transform.SetParent(root.transform);
         waypoints.transform.position = root.transform.position;
-        GameObject p1 = new GameObject("Point1");p1.transform.SetParent(waypoints.transform);p1.transform.position = Vector3.zero;
-        GameObject p2 = new GameObject("Point2");p2.transform.SetParent(waypoints.transform);p2.transform.position = Vector3.zero;  
+        GameObject p1 = new GameObject("Point1"); p1.transform.SetParent(waypoints.transform); p1.transform.position = Vector3.zero;
+        GameObject p2 = new GameObject("Point2"); p2.transform.SetParent(waypoints.transform); p2.transform.position = Vector3.zero;
         points = new List<Transform>();
         points.Add(p1.transform);
         points.Add(p2.transform);
 
 
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("sadsad");
+        if (collision.transform.CompareTag("PlayerBullet"))
+        {
+            health -= 10;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("PlayerBullet"))
+        {
+            health -= 10;
+        }
+        if (health == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
+
     private void Start()
+
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
