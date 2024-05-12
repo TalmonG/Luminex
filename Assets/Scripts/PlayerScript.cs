@@ -23,11 +23,14 @@ public class PlayerScript : MonoBehaviour
     int i = 1;
     int FacingDirection;
     bool Grotate = false;
+    bool RotatingClockwise;
     float degrees = 0;
     public int ActiveWeapon=0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
     Animator animator;
+    AudioSource audioSource;
+    public AudioClip BreathingSound;
 
 
     GameObject HUD;
@@ -107,6 +110,7 @@ public class PlayerScript : MonoBehaviour
         Head = transform.GetChild(1).gameObject;
         MousePosObj = GameObject.Find("CursorPosition");
 
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
 
         HUD = GameObject.FindGameObjectWithTag("HUDCanvas");
@@ -142,6 +146,10 @@ public class PlayerScript : MonoBehaviour
 
                 Oxygen = Mathf.Clamp(Oxygen, 0, 100);
 
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
 
             }
             else
@@ -149,6 +157,7 @@ public class PlayerScript : MonoBehaviour
                 Oxygen += (Time.deltaTime * 12);
 
                 Oxygen = Mathf.Clamp(Oxygen, 0, 100);
+                audioSource.Stop();
             }
 
             if (Oxygen <= 0)
@@ -235,6 +244,7 @@ public class PlayerScript : MonoBehaviour
                 rb.gravityScale *= -1;
                 degrees = 0;
                 Grotate = true;
+                RotatingClockwise = !RotatingClockwise;
 
                 i *= -1;
 
@@ -350,12 +360,34 @@ public class PlayerScript : MonoBehaviour
 
         if (Grotate)
         {
-            if (degrees < 180 / 2)
+            int RotationSpeed = 300;
+
+            if (RotatingClockwise && degrees < 180 )
             {
-                transform.Rotate(Vector3.forward * 2);
-                degrees += 1;
+                transform.Rotate(Vector3.forward * RotationSpeed *Time.deltaTime);
+                degrees += RotationSpeed *Time.deltaTime;
+
+               if(degrees >= 180)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                    Grotate = false;
+                    degrees = 0;
+                }
 
             }
+            else if(degrees > -180)
+                {
+                    transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
+                    degrees -= RotationSpeed * Time.deltaTime;
+
+                    if (!RotatingClockwise && degrees <= -180)
+                    {
+                        transform.rotation = Quaternion.identity;
+                        Grotate = false;
+                        degrees = 0;
+                    }
+
+                }
             else { Grotate = false; degrees = 0; }
         }
 
