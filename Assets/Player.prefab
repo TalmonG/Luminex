@@ -127,9 +127,9 @@ GameObject:
   m_Component:
   - component: {fileID: 374585063100291947}
   - component: {fileID: 374585063100291948}
+  - component: {fileID: 9014322578058535939}
   - component: {fileID: 6132431353369768761}
   - component: {fileID: 1624493582}
-  - component: {fileID: 9014322578058535939}
   - component: {fileID: 213095140}
   m_Layer: 0
   m_Name: Player
@@ -211,6 +211,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9014322578058535939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374585063100291949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7b4a082bc387742a336507ec10066e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  Bullet: {fileID: 8120019279595754243, guid: b6c675175e82aaa4db1757be1cd7bfb3, type: 3}
+  LookRotation: {x: 0, y: 0, z: 0, w: 0}
+  ActiveWeapon: 0
+  normalDimensionTutorial: {fileID: 2353277169632428378, guid: 11617fbec0534f04d882e86e69838be1, type: 3}
+  invertedDimensionTutorial: {fileID: 1165796618909196141, guid: bafeef777ba579146a7e4f73a1843948, type: 3}
+  normalDimensionLevelOne: {fileID: 0}
+  invertedDimensionLevelOne: {fileID: 0}
+  normalDimensionLevelTwo: {fileID: 0}
+  invertedDimensionLevelTwo: {fileID: 0}
+  normalDimensionLevelThree: {fileID: 0}
+  invertedDimensionLevelThree: {fileID: 0}
+  normalDimensionLevelFour: {fileID: 0}
+  invertedDimensionLevelFour: {fileID: 0}
+  currentLevel: 0
+  canSwitchDimensions: 1
+  isNormalDimension: 1
+  canGRotate: 0
+  Health: 100
+  Oxygen: 100
 --- !u!70 &6132431353369768761
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -275,28 +307,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &9014322578058535939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 374585063100291949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7b4a082bc387742a336507ec10066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  Bullet: {fileID: 8120019279595754243, guid: b6c675175e82aaa4db1757be1cd7bfb3, type: 3}
-  LookRotation: {x: 0, y: 0, z: 0, w: 0}
-  ActiveWeapon: 0
-  level: 0
-  canSwitchDimensions: 0
-  isNormalDimension: 1
-  canGRotate: 0
-  Health: 100
-  Oxygen: 100
 --- !u!95 &213095140
 Animator:
   serializedVersion: 7
@@ -682,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 8120019279595754243, guid: b6c675175e82aaa4db1757be1cd7bfb3, type: 3}
+  CanFire: 1
   isReloading: 0
   ReserveAmmo: 0
   MagAmmo: 0

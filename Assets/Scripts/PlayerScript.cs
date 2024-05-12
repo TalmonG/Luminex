@@ -58,11 +58,12 @@ public class PlayerScript : MonoBehaviour
         // Level Restrictions
         // StartMenu
         PlayerPrefs.GetInt("currentLevel", currentLevel);
-        Debug.Log("THREEE");
+
+        Debug.Log("WAAAAAM" + currentLevel);
 
         if (currentLevel == -6)
         {
-            canSwitchDimensions = false;
+            canSwitchDimensions = true;
             Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Credits
@@ -92,7 +93,7 @@ public class PlayerScript : MonoBehaviour
         // HUB Level
         else if (currentLevel == -1)
         {
-            canSwitchDimensions = false;
+            canSwitchDimensions = true;
             Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
         // Tutorial
@@ -155,6 +156,8 @@ public class PlayerScript : MonoBehaviour
     float oxygenTimer=0;
     int BreathRate;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -195,25 +198,26 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        // Dimension Switch to Inverted
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == true && isNormalDimension == true)
-        {
-            isNormalDimension = false;
-
-            BreathRate = -1;
-            Debug.Log("Switched To Inverted Dimension");
-            CantBreathe = true;
-            LevelChecker();
-
-        }
-        // Switch to Normal Dimension
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == true && isNormalDimension == false)
+        // Dimension Switches to Normal
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == true && isNormalDimension == false)
         {
             isNormalDimension = true;
 
             BreathRate = 1;
             Debug.Log("Switched to Normal Dimension");
             CantBreathe = false;
+            LevelChecker();
+            Debug.Log("VAMOSSSS");
+
+        }
+        // Dimension Switches to Inverted
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == true && isNormalDimension == true)
+        {
+            isNormalDimension = false;
+
+            BreathRate = -1;
+            Debug.Log("Switched To Inverted Dimension");
+            CantBreathe = true;
             LevelChecker();
         }
 
@@ -379,12 +383,41 @@ public class PlayerScript : MonoBehaviour
 
 
     }
-    private void Awake()
+    void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;
 
-        
+        // Retrieve the integer value from PlayerPrefs
+        int isNormalDimensionValue = PlayerPrefs.GetInt("isNormalDimension");
+
+        // Convert the integer value to a boolean
+        if (isNormalDimensionValue == 1)
+        {
+            isNormalDimension = true;
+        }
+        else
+        {
+            isNormalDimension = false;
+        }
+
+        // Retrieve the integer value from PlayerPrefs
+        int canSwitchDimensionsValue = PlayerPrefs.GetInt("canSwitchDimensions");
+
+        Debug.Log("canSwitchDimensionsValue retrieved from PlayerPrefs: " + canSwitchDimensionsValue);
+
+        // Convert the integer value to a boolean
+        if (canSwitchDimensionsValue == 1)
+        {
+            canSwitchDimensions = true;
+            Debug.Log("canSwitchDimensions set to true");
+        }
+        else
+        {
+            canSwitchDimensions = false;
+            Debug.Log("canSwitchDimensions set to false");
+        }
     }
+
 
 
     void DetectCrushed()
@@ -419,7 +452,10 @@ public class PlayerScript : MonoBehaviour
         PlayerPrefs.SetInt("currentLevel", currentLevel);
 
         //SAVE DIMENSION
-        PlayerPrefs.SetInt("Dimension", (isNormalDimension ? 1 : 0));
+        PlayerPrefs.SetInt("isNormalDimension", (isNormalDimension ? 1 : 0));
+
+        //SAVE canSwitchDimensions
+        PlayerPrefs.SetInt("canSwitchDimensions", (canSwitchDimensions ? 1 : 0));
 
         //SAVE MONEY
         PlayerPrefs.SetInt("Money", Money);
@@ -444,7 +480,12 @@ public class PlayerScript : MonoBehaviour
             MaxOxygen = PlayerPrefs.GetInt("MaxOxygen");
 
             //SET Dimension
-            isNormalDimension = (PlayerPrefs.GetInt("Dimension") != 0);
+            isNormalDimension = (PlayerPrefs.GetInt("isNormalDimension") != 0);
+
+            //SET canSwitchDimensions
+            canSwitchDimensions = (PlayerPrefs.GetInt("canSwitchDimensions") != 0);
+
+
 
             //SET MONEY
             Money = PlayerPrefs.GetInt("Money");
@@ -462,6 +503,8 @@ public class PlayerScript : MonoBehaviour
 
             //SET DIMENSION TO DEFAULT VALUE
             isNormalDimension = true;
+
+            //canSwitchDimensions = false;
 
             //SET MONEY
             Money = 0;
