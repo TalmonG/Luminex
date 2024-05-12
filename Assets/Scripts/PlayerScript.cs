@@ -340,7 +340,7 @@ public class PlayerScript : MonoBehaviour
             if (damaged)
             {
                 damaged = false;
-                StartCoroutine(Damage());
+                StartCoroutine(Damage(10));
             }
 
             if (Health <= 0)
@@ -360,7 +360,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Grotate)
         {
-            int RotationSpeed = 300;
+            int RotationSpeed = 500;
 
             if (RotatingClockwise && degrees < 180 )
             {
@@ -403,10 +403,10 @@ public class PlayerScript : MonoBehaviour
     void DetectCrushed()
     {
         
-        RaycastHit2D lefthit = Physics2D.Raycast(transform.position, Vector2.left, 1,LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.right, 1, LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.down, 1, LayerMask.GetMask("FloorTilemapLayer"));
-        RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.up, 1, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D lefthit = Physics2D.Raycast(transform.position, Vector2.left, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.right, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
+        RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
 
        if(downhit.collider !=null && lefthit.collider != null&&uphit.collider!=null&&righthit.collider!=null)
         {
@@ -504,10 +504,20 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    IEnumerator Damage()
+    public IEnumerator Damage(int damage)
     {
+        Health -= damage;
+
+
+        ArmSprite.GetComponent<SpriteRenderer>().color=Color.red;
+        Head.GetComponent<SpriteRenderer>().color = Color.red;
+
         GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.2f);
+
+        yield return new WaitForSeconds(0.3f);
+
+        ArmSprite.GetComponent<SpriteRenderer>().color = Color.white;
+        Head.GetComponent<SpriteRenderer>().color = Color.white;
 
         GetComponent<SpriteRenderer>().color = Color.white;
 
