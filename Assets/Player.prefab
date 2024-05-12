@@ -227,8 +227,9 @@ MonoBehaviour:
   Bullet: {fileID: 8120019279595754243, guid: b6c675175e82aaa4db1757be1cd7bfb3, type: 3}
   LookRotation: {x: 0, y: 0, z: 0, w: 0}
   ActiveWeapon: 0
-  normalDimensionTutorial: {fileID: 2353277169632428378, guid: 11617fbec0534f04d882e86e69838be1, type: 3}
-  invertedDimensionTutorial: {fileID: 1165796618909196141, guid: bafeef777ba579146a7e4f73a1843948, type: 3}
+  onLaunchGame: {fileID: 0}
+  normalDimensionTutorial: {fileID: 0}
+  invertedDimensionTutorial: {fileID: 0}
   normalDimensionLevelOne: {fileID: 0}
   invertedDimensionLevelOne: {fileID: 0}
   normalDimensionLevelTwo: {fileID: 0}

@@ -30,19 +30,9 @@ public class PlayerScript : MonoBehaviour
     GameObject MousePosObj;
 
     // Referencing
-    public OnLaunchGame onLaunchGame;
+    public DimensionManager dimensionManager;
 
-    // Dimensions
-    public GameObject normalDimensionTutorial;
-    public GameObject invertedDimensionTutorial;
-    public GameObject normalDimensionLevelOne;
-    public GameObject invertedDimensionLevelOne;
-    public GameObject normalDimensionLevelTwo;
-    public GameObject invertedDimensionLevelTwo;
-    public GameObject normalDimensionLevelThree;
-    public GameObject invertedDimensionLevelThree;
-    public GameObject normalDimensionLevelFour;
-    public GameObject invertedDimensionLevelFour;
+
 
 
     int Money;
@@ -66,13 +56,6 @@ public class PlayerScript : MonoBehaviour
 
         int currentLevelValue = PlayerPrefs.GetInt("currentLevel");
         currentLevel = PlayerPrefs.GetInt("currentLevel");
-
-        Debug.Log("B" + currentLevel);
-        Debug.Log("B an a half" + PlayerPrefs.GetInt("currentLevel"));
-        // Convert the integer value to a boolean
-        //currentLevel = currentLevelValue;
-        //PlayerPrefs.SetInt("currentLevel" ,currentLevel);
-        Debug.Log("C" + currentLevel);
 
         Debug.Log("D" + currentLevel);
         //PlayerPrefs.SetInt("currentLevel" ,currentLevel);
@@ -115,20 +98,21 @@ public class PlayerScript : MonoBehaviour
         else if (currentLevel == 0 && canSwitchDimensions == true)
         {
             //canSwitchDimensions = true;
-            if (normalDimensionTutorial == true)
+            if (isNormalDimension == true) // if we want normal dimension
             {
-                //GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
-                //GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
-                Debug.Log("AAAAAAAAAA");
+                dimensionManager.EnableNormalDimensionTutorial();// Enable Normal
+                dimensionManager.DisableInvertedDimensionTutorial();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normal");
             }
-            else if (invertedDimensionTutorial == true)
+            if (isNormalDimension == false)
             {
-                //GameObject.FindWithTag("NormalDimensionTutorial").SetActive(false);
-                //GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(true);
-                Debug.Log("BBBBBBBBBB");
+                dimensionManager.DisableNormalDimensionTutorial();// Enable Normal
+                dimensionManager.EnableInvertedDimensionTutorial();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted");
             }
-            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
-            Debug.Log("isNormalDimension is set to " + isNormalDimension + " for this level");
+            
 
         }
         // Level 1
@@ -176,7 +160,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        dimensionManager = GameObject.FindWithTag("DimensionManager").GetComponent<DimensionManager>();
+
         //DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
         Debug.Log("Check this error, its causeing player spawning issues, canvas and more");
         rb = GetComponent<Rigidbody2D>();
@@ -187,9 +172,11 @@ public class PlayerScript : MonoBehaviour
         Head = transform.GetChild(1).gameObject;
         MousePosObj = GameObject.Find("CursorPosition");
 
+        dimensionManager.EnableNormalDimensionTutorial();// Enable Normal
+        dimensionManager.DisableInvertedDimensionTutorial();// Disable Inverted
         isNormalDimension = true;
 
-        //OnLaunchGame = GameObject.Find("OnLaunchGame");
+
 
         SetPlayerStats();
 
@@ -202,6 +189,7 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Health.value = Health;
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
+
         DetectCrushed();
         //Debug.Log(canSwitchDimensions);
         if (CantBreathe)
@@ -213,6 +201,8 @@ public class PlayerScript : MonoBehaviour
 
             Oxygen -= Time.deltaTime*3*BreathRate;
         }
+
+        
 
 
         // Dimension Switches to Normal
@@ -434,7 +424,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("canSwitchDimensions set to false");
         }
 
-        //SceneManager.sceneLoaded += onLaunchGame.OnSceneLoadedTwo;
+
 
     }
 
@@ -522,7 +512,7 @@ public class PlayerScript : MonoBehaviour
             MaxOxygen = 100;
 
             //SET DIMENSION TO DEFAULT VALUE
-            isNormalDimension = true;
+            //isNormalDimension = true;
 
             //canSwitchDimensions = false;
 

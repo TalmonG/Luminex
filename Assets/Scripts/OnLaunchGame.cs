@@ -16,11 +16,7 @@ public class OnLaunchGame : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoadedTwo;
     }
-    // Start is called before the first frame update
-    /*void Start()
-    {
-        
-    }*/
+   
 
     public void OnSceneLoadedTwo(Scene scene, LoadSceneMode mode)
     {
@@ -33,8 +29,9 @@ public class OnLaunchGame : MonoBehaviour
         }
         else if (scene.name.Equals("Tutorial"))
         {
-            GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
-            GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
+
+            //GameObject.FindWithTag("NormalDimensionTutorial").SetActive(true);
+            //GameObject.FindWithTag("InvertedDimensionTutorial").SetActive(false);
             playerScript.isNormalDimension = true;
             playerScript.canSwitchDimensions = true;
             playerScript.currentLevel = 0;
