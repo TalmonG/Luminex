@@ -13,6 +13,7 @@ public class GlobalReferenceScript : MonoBehaviour
     public RawImage[] CurrentWeaponSymbol;
     public Image DimensionChargeAmount;
     public Sprite[] DimensionBubbles;
+    public GameObject GravityArrow;
     public Slider Health;
     public Slider Oxygen;
     public GameObject Player;

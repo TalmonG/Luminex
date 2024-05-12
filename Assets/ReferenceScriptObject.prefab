@@ -52,7 +52,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   DimensionChargeAmount: {fileID: 0}
-  DimensionBubbles: []
+  DimensionBubbles:
+  - {fileID: 2418059170069094639, guid: 26ed262ae3951604ca6cba28dcb36a3a, type: 3}
+  - {fileID: 8290454336287161974, guid: 1ca99431ef6820940a1a88e55321487f, type: 3}
+  - {fileID: 6432664781376003672, guid: 044f26c1b3666624fbdffcb9f8373e9d, type: 3}
+  - {fileID: -3047751423364484896, guid: 03e39150fc1107b429464a4abb7527a3, type: 3}
+  - {fileID: -8099307311016208518, guid: 21dcb1611d7dde14b896c0132a358f62, type: 3}
+  - {fileID: 8514834819720073251, guid: ef94b84c45d15fe4191951241174a7b0, type: 3}
+  - {fileID: -7533921503802315188, guid: 9c667744f1765ed44b8739014f280963, type: 3}
+  GravityArrow: {fileID: 0}
   Health: {fileID: 0}
   Oxygen: {fileID: 0}
   Player: {fileID: 0}

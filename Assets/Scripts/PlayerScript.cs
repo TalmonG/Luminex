@@ -29,7 +29,6 @@ public class PlayerScript : MonoBehaviour
     GameObject MousePosObj;
     Animator animator;
 
-    bool AddCharge = true;
 
     GameObject HUD;
 
@@ -129,7 +128,7 @@ public class PlayerScript : MonoBehaviour
             GlobalReferenceScript.instance.Health.value = Health;
             GlobalReferenceScript.instance.Oxygen.value = Oxygen;
             GlobalReferenceScript.instance.DimensionChargeAmount.sprite = GlobalReferenceScript.instance.DimensionBubbles[DimensionCharge];
-
+            GlobalReferenceScript.instance.GravityArrow.transform.rotation = transform.rotation;
 
 
             DetectCrushed();
@@ -173,14 +172,12 @@ public class PlayerScript : MonoBehaviour
             {
                 isNormalDimension = true;
 
-                AddCharge=true;
                 CantBreathe = false;
                 LevelChecker();
             }
 
             if (isNormalDimension)
             {
-                //AddCharge = false;
 
                 DimensionDeviceChargeRate += Time.deltaTime/4;
 
@@ -188,7 +185,6 @@ public class PlayerScript : MonoBehaviour
 
                 Mathf.Clamp(DimensionDeviceChargeRate, 0, 6);
 
-               // StartCoroutine(ChargingDimensionDevice());
             }
             else
             {
@@ -245,7 +241,6 @@ public class PlayerScript : MonoBehaviour
             }
 
             
-            // Debug.Log(degrees);
             cam.transform.rotation = transform.rotation;
 
 
@@ -271,25 +266,7 @@ public class PlayerScript : MonoBehaviour
                 Arm.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up * FacingDirection);
             }
 
-            //Head Rotation Bounds
 
-            /*
-            if (FacingDirection == 1)
-            {
-                if ((LookRotation.eulerAngles.z >= 0 && LookRotation.eulerAngles.z < 50) || (LookRotation.eulerAngles.z < 360 && LookRotation.eulerAngles.z > 335))
-                {
-                    Head.transform.rotation = LookRotation;
-                }
-            }
-            else if (FacingDirection == -1)
-            {
-                if ((LookRotation.eulerAngles.z <= 180 && LookRotation.eulerAngles.z > 130) || (LookRotation.eulerAngles.z > 180 && LookRotation.eulerAngles.z < 205))
-                {
-                    Head.transform.rotation = LookRotation;
-                }
-            }
-            */
-            // Debug.Log(PlayerPrefs.GetInt("PlayerHealth"));
 
             Head.transform.rotation = LookRotation;
 
@@ -367,7 +344,7 @@ public class PlayerScript : MonoBehaviour
                 Health = 0;
             }
 
-            SavePlayerStats();
+           
         }
         else { cam.transform.position = transform.position+Vector3.forward*-10; cam.orthographicSize = 3; }
 
@@ -399,18 +376,17 @@ public class PlayerScript : MonoBehaviour
         RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.down, 1, LayerMask.GetMask("FloorTilemapLayer"));
         RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.up, 1, LayerMask.GetMask("FloorTilemapLayer"));
 
-       if(downhit.collider !=null && lefthit.collider != null)
+       if(downhit.collider !=null && lefthit.collider != null&&uphit.collider!=null&&righthit.collider!=null)
         {
             CantBreathe = true;
         }
      
-        Debug.DrawRay(transform.position, Vector2.left);
 
     }
 
 
 
-    void SavePlayerStats() 
+    public void SavePlayerStats() 
     {
         //SAVE HEALTH
         PlayerPrefs.SetFloat("PlayerHealth",Health);
@@ -499,19 +475,11 @@ public class PlayerScript : MonoBehaviour
     IEnumerator Damage()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         GetComponent<SpriteRenderer>().color = Color.white;
 
         yield return null;
-    }
-
-    IEnumerator ChargingDimensionDevice()
-    {
-        yield return new WaitForSeconds(5);
-        AddCharge=true;
-        DimensionCharge++;
-        DimensionCharge= Mathf.Clamp(DimensionCharge, 0, 6);
     }
 
 }
