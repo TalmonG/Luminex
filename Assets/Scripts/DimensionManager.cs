@@ -19,17 +19,26 @@ public class DimensionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerScript.isNormalDimension == true)
+        if (normalDimension != null && invertedDimension != null)
         {
-            normalDimension.SetActive(true);
-            invertedDimension.SetActive(false);
-        }
-        else if (playerScript.isNormalDimension == false)
-        {
-            normalDimension.SetActive(false);
-            invertedDimension.SetActive(true);
-        }
+            if (playerScript.isNormalDimension == true)
+            {
 
+                normalDimension.SetActive(true);
+                invertedDimension.SetActive(false);
+
+            }
+
+
+            else if (playerScript.isNormalDimension == false)
+            {
+
+                {
+                    normalDimension.SetActive(false);
+                    invertedDimension.SetActive(true);
+                }
+            }
+        }
 
     }
 }
