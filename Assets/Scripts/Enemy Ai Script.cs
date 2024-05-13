@@ -104,10 +104,12 @@ public class EnemyAiScript : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 4 && playerinrange)
+        if (distance < 10 && playerinrange)
         {
             seenplayer = true;
             isChasingPlayer = true;
+          
+           
 
         }
 
@@ -129,6 +131,7 @@ public class EnemyAiScript : MonoBehaviour
         }
 
         if (!isChasingPlayer) { patrol(); }
+       
 
 
 
@@ -170,8 +173,17 @@ public class EnemyAiScript : MonoBehaviour
         
         
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        
-        
+        if (transform.position.x>player.transform.position.x)
+        {
+            transform.localScale=new Vector3(-2,2,2);
+        }
+
+        else if (transform.position.x < player.transform.position.x)
+        {
+            transform.localScale = new Vector3(2, 2, 2);
+        }
+
+
     }
    
 
