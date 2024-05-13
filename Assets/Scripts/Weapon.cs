@@ -27,7 +27,11 @@ public class Weapon : MonoBehaviour
     int[] AmmoPerBullet = {1,3,6 , 1};
     PlayerScript playerScript;
     bool isNewGame;
-    
+    public AudioClip Gunshot;
+    AudioSource audioSource;
+    public AudioClip ReloadSound;
+
+
 
     public void Fire()
     {
@@ -79,6 +83,10 @@ public class Weapon : MonoBehaviour
             {
                 animator.SetTrigger("OnReload");
 
+                audioSource.clip = ReloadSound;
+
+                audioSource.Play();
+
                 isReloading=true;
             }
         }
@@ -103,6 +111,7 @@ public class Weapon : MonoBehaviour
 
         CurrentWeapon = playerScript.ActiveWeapon;
 
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -142,6 +151,10 @@ public class Weapon : MonoBehaviour
             Ammo[CurrentWeapon,0]--;
 
             animator.SetTrigger("Fire");
+
+            audioSource.clip = Gunshot;
+
+            audioSource.Play();
 
             yield return new WaitForSeconds(RateOfFire[CurrentWeapon,1]);
 

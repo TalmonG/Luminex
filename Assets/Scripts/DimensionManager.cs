@@ -12,8 +12,12 @@ public class DimensionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        normalDimension.SetActive(true);
-        invertedDimension.SetActive(false);
+
+        if (normalDimension != null)
+        {
+            normalDimension.SetActive(true);
+            invertedDimension.SetActive(false);
+        }
     }
 
     // Update is called once per frame

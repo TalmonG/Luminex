@@ -32,9 +32,11 @@ public class PlayerScript : MonoBehaviour
     bool RotatingClockwise;
 
     Animator animator;
-    AudioSource audioSource;
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
     public AudioClip BreathingSound;
-
+    public AudioClip GravityShiftSound;
+    public AudioClip DimensionShiftSound;
 
     GameObject HUD;
 
@@ -114,7 +116,6 @@ public class PlayerScript : MonoBehaviour
         Head = transform.GetChild(1).gameObject;
         MousePosObj = GameObject.Find("CursorPosition");
 
-        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
 
         HUD = GameObject.FindGameObjectWithTag("HUDCanvas");
@@ -138,41 +139,9 @@ public class PlayerScript : MonoBehaviour
             PauseMenu.SetActive(true);
         }
 
-        if (Dimension)
-        {
-
-            oxygenTimer += Time.deltaTime;
-
-            Oxygen = MaxOxygen - (int)oxygenTimer * 2;
-        }
-        // Dimension Switch
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true && canSwitchDimensions == true)
-        {
-            isNormalDimension = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false && canSwitchDimensions == true)
-        {
-            isNormalDimension = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && canSwitchDimensions == false)
-        {
-            oxygenTimer = 0;
-            Dimension = true;
-            LevelChecker();
-            //Debug.Log("Checking");
-        }
-
-        if ((Input.GetAxis("Mouse ScrollWheel")) > 0)
-        {
-            ActiveWeapon++;
-            ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
-
-        }
-        if ((Input.GetAxis("Mouse ScrollWheel")) < 0)
-        {
-            ActiveWeapon--;
-            ActiveWeapon = Mathf.Clamp(ActiveWeapon, 0, 3);
-        }
+       
+        
+       
         if (!death)
         {
             GlobalReferenceScript.instance.Health.value = Health;
@@ -192,9 +161,9 @@ public class PlayerScript : MonoBehaviour
 
                 Oxygen = Mathf.Clamp(Oxygen, 0, 100);
 
-                if (!audioSource.isPlaying)
+                if (!audioSource1.isPlaying)
                 {
-                    audioSource.Play();
+                    audioSource1.Play();
                 }
 
             }
@@ -203,7 +172,7 @@ public class PlayerScript : MonoBehaviour
                 Oxygen += (Time.deltaTime * 12);
 
                 Oxygen = Mathf.Clamp(Oxygen, 0, 100);
-                audioSource.Stop();
+                audioSource1.Stop();
             }
 
             if (Oxygen <= 0)
@@ -221,6 +190,11 @@ public class PlayerScript : MonoBehaviour
                     DimensionCharge--;
                     CantBreathe = true;
                     LevelChecker();
+
+
+                    audioSource2.clip = DimensionShiftSound;
+
+                    audioSource2.Play();
                 }
             }
             else if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == false/* && canSwitchDimensions == true*/)
@@ -229,6 +203,10 @@ public class PlayerScript : MonoBehaviour
 
                 CantBreathe = false;
                 LevelChecker();
+
+                audioSource2.clip = DimensionShiftSound;
+                audioSource2.Play();
+
             }
 
             if (isNormalDimension)
@@ -291,6 +269,10 @@ public class PlayerScript : MonoBehaviour
                 degrees = 0;
                 Grotate = true;
                 RotatingClockwise = !RotatingClockwise;
+
+                audioSource2.clip = GravityShiftSound;
+
+                audioSource2.Play();
 
                 i *= -1;
 
@@ -497,7 +479,7 @@ public class PlayerScript : MonoBehaviour
         else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
-
+        Debug.Log(Oxygen);
 
 
     }

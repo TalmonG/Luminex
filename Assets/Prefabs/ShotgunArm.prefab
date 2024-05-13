@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: Bullet
       value: 
       objectReference: {fileID: 3902721774407607749, guid: f08843e3d6a3fd44a8be7d934e1738f5, type: 3}
+    - target: {fileID: 1926891866300089981, guid: cdd1e640ed15afb45bf8f29f27a737d0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2273278964d435f4482a871f8c280ed6, type: 3}
+    - target: {fileID: 1926891866300089981, guid: cdd1e640ed15afb45bf8f29f27a737d0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9197199072941002241, guid: cdd1e640ed15afb45bf8f29f27a737d0, type: 3}
       propertyPath: m_Name
       value: ShotgunArm
