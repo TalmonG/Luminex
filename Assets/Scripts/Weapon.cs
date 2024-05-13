@@ -112,7 +112,9 @@ public class Weapon : MonoBehaviour
         CurrentWeaponText.text =  WeaponNames[CurrentWeapon];
         AmmoText.text = (Ammo[CurrentWeapon, 1 ] / AmmoPerBullet[CurrentWeapon]).ToString()+" / " + (Ammo[CurrentWeapon, 0] / AmmoPerBullet[CurrentWeapon]).ToString();
 
-        SetWeaponPrefs();
+        SaveWeaponPrefs();
+
+       
 
     }
 
