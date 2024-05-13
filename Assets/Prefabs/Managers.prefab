@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3590272216461980819}
-  - component: {fileID: 5689741217591786752}
   - component: {fileID: 5227035850076262117}
   m_Layer: 0
   m_Name: Managers
@@ -32,22 +31,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7809043535240247246}
-  - {fileID: 8067945224953055468}
   - {fileID: 8169453161616959337}
+  - {fileID: 4941152807759598645}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5689741217591786752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147178746799028084}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65f9f761a937af4297a35c72519272b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5227035850076262117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +57,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7809043535240247246}
   - component: {fileID: 9071840372478660443}
-  - component: {fileID: 1925227254264607523}
   m_Layer: 0
   m_Name: BG_Music
   m_TagString: GameMusic
@@ -189,19 +175,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1925227254264607523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4801913126754482535}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65f9f761a937af4297a35c72519272b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &7798665279270029368
+--- !u!1 &6599932602117012186
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,42 +183,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8067945224953055468}
-  - component: {fileID: 1099421828902647372}
+  - component: {fileID: 4941152807759598645}
+  - component: {fileID: 8738107046875003144}
   m_Layer: 0
-  m_Name: UImanager
+  m_Name: PauseManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8067945224953055468
+--- !u!4 &4941152807759598645
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7798665279270029368}
+  m_GameObject: {fileID: 6599932602117012186}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -841.9806, y: -609.26666, z: -7.126834}
+  m_LocalPosition: {x: 86.69098, y: -53.285095, z: 7.112791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3590272216461980819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1099421828902647372
+--- !u!114 &8738107046875003144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7798665279270029368}
+  m_GameObject: {fileID: 6599932602117012186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cd5222db98944448b991a4449bfa28, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fab3082149e4dd43b9a958efa4bb786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  optionsControls: {fileID: 0}
+  optionsAudio: {fileID: 0}
+  optionsGraphics: {fileID: 0}
+  options: {fileID: 0}
 --- !u!1 &8485521706421045530
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +236,7 @@ GameObject:
   - component: {fileID: 8466716051948069703}
   m_Layer: 0
   m_Name: DimensionManager
-  m_TagString: Untagged
+  m_TagString: DimensionManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,6 +268,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332e77e639e351341a7ff1dd7c05863e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScript: {fileID: 0}
-  normalDimension: {fileID: 0}
-  invertedDimension: {fileID: 0}
