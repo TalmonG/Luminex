@@ -8,10 +8,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    // Referencing
-    public PlayerScript playerScript;
-
-    // -------------------------------
     private static UIManager instance;
 
     public static UIManager MyInstance
@@ -45,9 +41,6 @@ public class UIManager : MonoBehaviour
 
     public void onClickStartButton()
     {
-        PlayerPrefs.SetInt("isNormalDimension", 1);
-        PlayerPrefs.SetInt("canSwitchDimensions", 1);
-        //PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
         SceneManager.LoadScene("Tutorial");
     }
 
@@ -58,22 +51,16 @@ public class UIManager : MonoBehaviour
 
     public void onClickOptionsButton()
     {
-        playerScript.currentLevel = -3;
-        PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
         SceneManager.LoadScene("Options_Controls");
     }
 
     public void onClickAudioButton()
     {
-        playerScript.currentLevel = -4;
-        PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
         SceneManager.LoadScene("Options_Audio");
     }
 
     public void onClickGraphicsButton()
     {
-        playerScript.currentLevel = -2;
-        PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
         SceneManager.LoadScene("Options_Graphics");
     }
 

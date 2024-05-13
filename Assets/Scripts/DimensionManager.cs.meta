@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 9ae14885eb7e61349aa90ed9a96e7cf5
+<<<<<<<< HEAD:Assets/Scripts/DimensionManager.cs.meta
+guid: 332e77e639e351341a7ff1dd7c05863e
+========
+guid: 1eaa6a8a9f087b540b0ba49cf2c61437
+>>>>>>>> origin/Milo:Assets/Scripts/ExitDoorScript.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    // Referencing
-    public PlayerScript playerScript;
-
     public GameObject Music;
     private AudioSource audioSource;
 
@@ -18,8 +15,6 @@ public class LoadScene : MonoBehaviour
     }
     public void loadNewScene()
     {
-        //playerScript.currentLevel = -6;
-        //Debug.Log(playerScript.currentLevel);
         SceneManager.LoadScene("StartMenu");
         audioSource.Play();
     }

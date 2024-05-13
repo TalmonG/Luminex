@@ -14,9 +14,6 @@ TagManager:
   - HUDCanvas
   - Sporefiend
   - PlayerBullet
-  - NormalDimensionTutorial
-  - InvertedDimensionTutorial
-  - DimensionManager
   layers:
   - Default
   - TransparentFX
