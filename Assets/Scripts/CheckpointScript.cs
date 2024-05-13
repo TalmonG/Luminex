@@ -21,6 +21,8 @@ public class CheckpointScript : MonoBehaviour
     void Update()
     {
         Debug.Log(PlayerPrefs.GetInt("PistolAmmo"));
+
+       // Debug.Log( BR.GetComponent<Weapon>().Ammo[1,0]);
     }
 
 
@@ -44,10 +46,18 @@ public class CheckpointScript : MonoBehaviour
                 Shotgun.GetComponent<Weapon>().SaveWeaponPrefs();
                 GL.GetComponent<Weapon>().SaveWeaponPrefs();
 
+
+              
+
             }
 
            
 
         }
     }
+
+
+
+
+
 }

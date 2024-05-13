@@ -14,6 +14,18 @@ TagManager:
   - HUDCanvas
   - Sporefiend
   - PlayerBullet
+  - Platform Edge
+  - LeftCollider
+  - RightCollider
+  - Juggernaut
+  - RifleBulletBuy
+  - UpgradeTokenBuy
+  - PistolBulletBuy
+  - JetpackFuelBuy
+  - PistolArm
+  - RifleArm
+  - ShotgunArm
+  - GL Arm
   layers:
   - Default
   - TransparentFX

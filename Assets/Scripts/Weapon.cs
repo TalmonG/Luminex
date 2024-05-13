@@ -201,21 +201,27 @@ public class Weapon : MonoBehaviour
     public void SaveWeaponPrefs()
     {
         //SET PISTOL AMMO
-        PlayerPrefs.SetInt("PistolAmmo", Ammo[0,0]);
-        PlayerPrefs.SetInt("ReservePistolAmmo",Ammo[0,1]);
 
-        //SET PISTOL AMMO
-        PlayerPrefs.SetInt("RifleAmmo", Ammo[1,0]);
-        PlayerPrefs.SetInt("ReserveRifleAmmo", Ammo[1,1]);
+        if (this.gameObject.CompareTag("PistolArm")){
+            PlayerPrefs.SetInt("PistolAmmo", Ammo[0, 0]);
+            PlayerPrefs.SetInt("ReservePistolAmmo", Ammo[0, 1]);
+        }
+        if (this.gameObject.CompareTag("RifleArm")){
+            //SET PISTOL AMMO
+            PlayerPrefs.SetInt("RifleAmmo", Ammo[1, 0]);
+            PlayerPrefs.SetInt("ReserveRifleAmmo", Ammo[1, 1]);
+        }
 
-        //SET PISTOL AMMO
-        PlayerPrefs.SetInt("ShotgunAmmo", Ammo[2,0]);
-        PlayerPrefs.SetInt("ReserveShotgunAmmo", Ammo[2,1]);
-
-        //SET PISTOL AMMO
-        PlayerPrefs.SetInt("GLAmmo", Ammo[3,0]);
-        PlayerPrefs.SetInt("ReserveGLAmmo", Ammo[3,1]);
-
+        if (this.gameObject.CompareTag("ShotgunArm")){
+            //SET PISTOL AMMO
+            PlayerPrefs.SetInt("ShotgunAmmo", Ammo[2, 0]);
+            PlayerPrefs.SetInt("ReserveShotgunAmmo", Ammo[2, 1]);
+        }
+        if (this.gameObject.CompareTag("GL Arm")){
+            //SET PISTOL AMMO
+            PlayerPrefs.SetInt("GLAmmo", Ammo[3, 0]);
+            PlayerPrefs.SetInt("ReserveGLAmmo", Ammo[3, 1]);
+        }
 
 
 
@@ -261,6 +267,11 @@ public class Weapon : MonoBehaviour
             Ammo[3, 1] = 5;
         }
 
+    }
+
+    public void sd()
+    {
+        Debug.Log("sds");
     }
 
 }
