@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     Vector3 MousePos;
     Vector3 TargetPos;
     Camera camera;
-    bool CanFire = true;
+    public bool CanFire = true;
     public bool isReloading=false;
     GameObject canvas, CurrentWeaponTxtObj, AmmoTxtObj;
     GameObject Player;

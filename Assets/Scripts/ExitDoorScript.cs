@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class ExitDoorScript : MonoBehaviour
 {
+    public PlayerScript playerScript;
     GameObject Player;
-    bool PlayerinFront;
+    public bool PlayerinFront;
+
+    public int currentLevelToSet;
+    public string levelToLoad;
 
     Animator DoorAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player = GlobalReferenceScript.instance.Player;
+        Player = GameObject.FindWithTag("Player");
         DoorAnimator = GetComponent<Animator>();
 
     }
@@ -24,37 +28,33 @@ public class ExitDoorScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && PlayerinFront)
         {
+            playerScript.currentLevel = currentLevelToSet;
+            Debug.Log(playerScript.currentLevel);
             DoorAnimator.SetTrigger("OnOpen");
+            // PLEASE ADD A WAIT FOR ANIMATION TO END HERE
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision.CompareTag("Player"))
         {
-            if (collision.gameObject == Player)
-            {
-                PlayerinFront=false;
-                
-            }
+            PlayerinFront = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision.CompareTag("Player"))
         {
-            if (collision.gameObject == Player)
-            {
-                PlayerinFront = true;
-
-            }
+            PlayerinFront = true;
         }
     }
 
-     void TriggerLevelTransition(string LevelName)
+     /*void TriggerLevelTransition(string LevelName)
     {
         SceneManager.LoadScene(LevelName);
-    }
+    }*/
 
 
 }
