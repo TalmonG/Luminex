@@ -113,12 +113,12 @@ TextureImporter:
       name: Slash frame15_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 20
-        width: 108
-        height: 253
+        x: 0
+        y: 0
+        width: 420
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,14 +133,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4f97fe3e7012b2246975d92864d96a8a
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Slash frame15_0: 2370117512034476887
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

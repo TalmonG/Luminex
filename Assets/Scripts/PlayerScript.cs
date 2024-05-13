@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip DimensionShiftSound;
     public AudioClip DeathSound;
 
+
     GameObject HUD;
 
     int Money;
@@ -126,6 +127,8 @@ public class PlayerScript : MonoBehaviour
         isNormalDimension = true;
 
         DontDestroyOnLoad(GameObject.Find("Canvas"));
+
+        
     }
 
     // Update is called once per frame

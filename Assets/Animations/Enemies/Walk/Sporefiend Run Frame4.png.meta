@@ -113,12 +113,12 @@ TextureImporter:
       name: Sporefiend Run Frame4_0
       rect:
         serializedVersion: 2
-        x: 87
-        y: 34
-        width: 136
-        height: 240
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 320
+        height: 320
+      alignment: 9
+      pivot: {x: 0.65625, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,14 +133,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c48309380e9f8a84ebcfc6d2b131d6bd
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sporefiend Run Frame4_0: -4416634438254714822
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

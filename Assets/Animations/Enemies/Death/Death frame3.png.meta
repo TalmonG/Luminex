@@ -119,61 +119,19 @@ TextureImporter:
       name: Death frame3_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 20
-        width: 100
-        height: 257
+        x: 0
+        y: 0
+        width: 420
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1dc2d910b83047cc0800000000000000
-      internalID: -3714339897111401263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame3_1
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 255
-        width: 25
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a84307c743a3d1b0800000000000000
-      internalID: -5632979180233471840
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame3_2
-      rect:
-        serializedVersion: 2
-        x: 171
-        y: 269
-        width: 25
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: effd3051fb317bbc0800000000000000
-      internalID: -3767520851859873794
+      spriteID: 54e2f765c1f049e4c9ae9b5f71145293
+      internalID: -1391917642
       vertices: []
       indices: 
       edges: []
@@ -181,14 +139,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3464ea222fda0af4cb177aa904b6bdd2
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death frame3_0: -1391917642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

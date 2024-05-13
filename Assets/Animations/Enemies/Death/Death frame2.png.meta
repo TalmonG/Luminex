@@ -113,12 +113,12 @@ TextureImporter:
       name: Death frame2_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 20
-        width: 105
-        height: 263
+        x: 0
+        y: 0
+        width: 420
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,14 +133,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 52677552efa0eb248ad66356cecebc2c
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death frame2_0: -7837105836652555461
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

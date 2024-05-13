@@ -119,12 +119,12 @@ TextureImporter:
       name: Death frame18_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 33
-        width: 218
-        height: 74
+        x: 0
+        y: 0
+        width: 420
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,7 +145,7 @@ TextureImporter:
         width: 8
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,7 +166,7 @@ TextureImporter:
         width: 8
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,14 +181,17 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1462828b186361141bae3a908048eb79
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death frame18_0: -8309641969201659812
+      Death frame18_1: -485810709941707157
+      Death frame18_2: -7637989409342082110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

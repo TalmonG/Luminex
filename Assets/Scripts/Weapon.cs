@@ -20,8 +20,7 @@ public class Weapon : MonoBehaviour
     public int ReserveAmmo, MagAmmo, CurrentWeapon;
     int[] BurstAmmount= new int[4] {1,3,6,1};
     string[] WeaponNames= new string[4] {"Pistol","Battle Rifle","Shotgun","Grenade-Launcher"};
-    public int[,] Ammo = { {10,10 },{12,24 },{36,360 },{5,10 } };
-    int[,] MaxAmmoValue = { { 10, 100 }, { 12, 120 },{36,360 }, { 5, 20 } };
+
     float[,] RateOfFire = { {0.3f,0 },{0.5f,0.1f },{1.3f,0 }, { 1.3f, 0 } };
     float[] AccuracyValue = {1 , 0.1f , 15 , 1};
     int[] AmmoPerBullet = {1,3,6 , 1};
@@ -31,6 +30,10 @@ public class Weapon : MonoBehaviour
     AudioSource audioSource;
     public AudioClip ReloadSound;
     public AudioClip equipSound;
+
+    public int[,] Ammo = { { 10, 10 }, { 12, 24 }, { 36, 360 }, { 5, 10 } };
+    public int[,] MaxAmmoValue = { { 10, 100 }, { 12, 120 }, { 36, 360 }, { 5, 20 } };
+
 
 
     public void Fire()
@@ -106,24 +109,31 @@ public class Weapon : MonoBehaviour
         AmmoText = GlobalReferenceScript.instance.AmmoCounter;
 
         Player = transform.parent.transform.parent.gameObject;
+
         
+
         playerScript = Player.GetComponent<PlayerScript>();
 
         CurrentWeapon = playerScript.ActiveWeapon;
 
         audioSource = GetComponent<AudioSource>();
+
+      
+
+        SetWeaponPrefs();
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         CurrentWeaponText.text =  WeaponNames[CurrentWeapon];
         AmmoText.text = (Ammo[CurrentWeapon, 1 ] / AmmoPerBullet[CurrentWeapon]).ToString()+" / " + (Ammo[CurrentWeapon, 0] / AmmoPerBullet[CurrentWeapon]).ToString();
 
-        SaveWeaponPrefs();
 
-       
+        
 
     }
 
@@ -171,24 +181,24 @@ public class Weapon : MonoBehaviour
     {
         yield return null;
     }
-
-    private void OnEnable()
-    {
-        CanFire = true;
-        isReloading = false;
-
-
-        audioSource.clip = equipSound;
-        audioSource.Play();
-
-        if (playerScript != null)
+    
+        private void OnEnable()
         {
-            CurrentWeapon = playerScript.ActiveWeapon;
+            CanFire = true;
+            isReloading = false;
+
+
+            audioSource.clip = equipSound;
+            audioSource.Play();
+
+            if (playerScript != null)
+            {
+                CurrentWeapon = playerScript.ActiveWeapon;
+            }
         }
-    }
 
 
-  void SaveWeaponPrefs()
+    public void SaveWeaponPrefs()
     {
         //SET PISTOL AMMO
         PlayerPrefs.SetInt("PistolAmmo", Ammo[0,0]);
@@ -211,7 +221,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    void SetWeaponPrefs()
+    public void SetWeaponPrefs()
     {
         // PlayerPrefs.
 
@@ -233,7 +243,23 @@ public class Weapon : MonoBehaviour
             Ammo[3, 1] = PlayerPrefs.GetInt("ReserveGLAmmo");
 
         }
+        else
+        {
+            Ammo[0, 0] = 10;
+            Ammo[0, 1] = 20;
 
+            //SET PISTOL AMMO
+            Ammo[1, 0] = 12;
+            Ammo[1, 1] = 24;
+
+            //SET PISTOL AMMO
+            Ammo[2, 0] = 6;
+            Ammo[2, 1] =12;
+
+            //SET PISTOL AMMO
+            Ammo[3, 0] = 5;
+            Ammo[3, 1] = 5;
+        }
 
     }
 

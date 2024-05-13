@@ -137,187 +137,19 @@ TextureImporter:
       name: Death frame5_0
       rect:
         serializedVersion: 2
-        x: 166
-        y: 275
-        width: 12
-        height: 11
+        x: 0
+        y: 0
+        width: 420
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2c04f7d5ac3a30e80800000000000000
-      internalID: -8213541205846310718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_1
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 279
-        width: 21
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 061954ba3c9e6cff0800000000000000
-      internalID: -16068522047860384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_2
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 241
-        width: 19
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3bafb8be9a51d1710800000000000000
-      internalID: 1665511256742427315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_3
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 234
-        width: 23
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a584bc16d42d9e250800000000000000
-      internalID: 5974537610478700634
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_4
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 252
-        width: 37
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5bf7a64665fd5ca0800000000000000
-      internalID: -6026390906730972325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_5
-      rect:
-        serializedVersion: 2
-        x: 198
-        y: 235
-        width: 17
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b88817ade5bb242f0800000000000000
-      internalID: -990022952001894261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_6
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 20
-        width: 89
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b32fc75ce38fc8740800000000000000
-      internalID: 5155768621917336123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_7
-      rect:
-        serializedVersion: 2
-        x: 157
-        y: 233
-        width: 18
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 12161ca8c9fa3a950800000000000000
-      internalID: 6459199377457111329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death frame5_8
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 203
-        width: 19
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 918e073a00e319770800000000000000
-      internalID: 8615735734599477273
+      spriteID: 1fccf0804db67414dba7315c6355b4f1
+      internalID: 876962430
       vertices: []
       indices: 
       edges: []
@@ -325,14 +157,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a87bf993e243ffb41bb1d4377344b604
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death frame5_0: 876962430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
