@@ -4902,8 +4902,8 @@ Transform:
   m_GameObject: {fileID: 364585758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -928.6716, y: -555.98157, z: -14.239625}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2028250181}
@@ -7985,7 +7985,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 612382492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20400b49ade4aa249b35db43e90041f7, type: 3}
+  m_Script: {fileID: 11500000, guid: b4f62f6123a525b45b65187bd7deafa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &612382495
@@ -64230,7 +64230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1322025608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20400b49ade4aa249b35db43e90041f7, type: 3}
+  m_Script: {fileID: 11500000, guid: b4f62f6123a525b45b65187bd7deafa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1322025611
@@ -68765,6 +68765,7 @@ RectTransform:
   - {fileID: 1190498866}
   - {fileID: 748863931}
   - {fileID: 1820473788}
+  - {fileID: 1946129323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -69258,7 +69259,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1524000146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20400b49ade4aa249b35db43e90041f7, type: 3}
+  m_Script: {fileID: 11500000, guid: b4f62f6123a525b45b65187bd7deafa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1524000149
@@ -75179,7 +75180,7 @@ RectTransform:
   - {fileID: 1575563901}
   - {fileID: 1687586579}
   - {fileID: 1395189478}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1503545117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -77063,5 +77064,4 @@ SceneRoots:
   - {fileID: 315989668}
   - {fileID: 1088259685}
   - {fileID: 1503545117}
-  - {fileID: 1946129323}
   - {fileID: 2028250181}
