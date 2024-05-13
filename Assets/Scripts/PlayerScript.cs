@@ -17,23 +17,20 @@ public class PlayerScript : MonoBehaviour
     GameObject FloorCollider;
     GameObject Head;
     GameObject ArmSprite;
-    bool CanFire=true;
+    bool CanFire = true;
     bool Rotating = true;
     Quaternion StartRotation;
     Quaternion EndRotation;
     int i = 1;
     int FacingDirection;
     bool Grotate = false;
-    int degrees = 0;
-    public int ActiveWeapon=0;
+    float degrees = 0;
+    public int ActiveWeapon = 0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
     public GameObject PauseMenu;
     bool RotatingClockwise;
-    float degrees = 0;
-    public int ActiveWeapon=0;
-    Weapon CurrentWeaponScript;
-    GameObject MousePosObj;
+
     Animator animator;
     AudioSource audioSource;
     public AudioClip BreathingSound;
@@ -90,14 +87,18 @@ public class PlayerScript : MonoBehaviour
     }
 
     bool Dimension;
-    public int Health;
-    int MaxHealth=100;
-    public int Oxygen;
-    int MaxOxygen=100;
-    float oxygenTimer=0;
+    public float Health;
+    float MaxHealth = 100;
+    public float Oxygen;
+    float MaxOxygen = 100;
+    float oxygenTimer = 0;
     public bool death;
     public bool damaged;
     int DimensionCharge;
+
+    bool isNewGame;
+
+    bool CantBreathe;
 
     float DimensionDeviceChargeRate;
 
@@ -216,7 +217,7 @@ public class PlayerScript : MonoBehaviour
                 if (DimensionCharge > 0)
                 {
                     isNormalDimension = false;
-                  //  DimensionDeviceChargeRate = 0;
+                    //  DimensionDeviceChargeRate = 0;
                     DimensionCharge--;
                     CantBreathe = true;
                     LevelChecker();
@@ -233,7 +234,7 @@ public class PlayerScript : MonoBehaviour
             if (isNormalDimension)
             {
 
-                DimensionDeviceChargeRate += Time.deltaTime/4;
+                DimensionDeviceChargeRate += Time.deltaTime / 4;
 
                 DimensionCharge = (int)Mathf.Round(DimensionDeviceChargeRate);
 
@@ -245,7 +246,7 @@ public class PlayerScript : MonoBehaviour
                 DimensionDeviceChargeRate = DimensionCharge;
             }
 
-            DimensionCharge=Mathf.Clamp(DimensionCharge,0,6);
+            DimensionCharge = Mathf.Clamp(DimensionCharge, 0, 6);
 
 
             if ((Input.GetAxis("Mouse ScrollWheel")) > 0)
@@ -295,31 +296,13 @@ public class PlayerScript : MonoBehaviour
 
             }
 
-            
+
             cam.transform.rotation = transform.rotation;
 
 
-            Vector3 MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-            MousePos.z = 0;
-
-            Vector2 targetpos = MousePos - Arm.transform.position;
-
-            LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
-            LookRotation.eulerAngles += Vector3.forward * 90;
 
 
-            if (CurrentWeaponScript.isReloading == false)
-            {
-                LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
-                LookRotation.eulerAngles += Vector3.forward * 90;
-                Arm.transform.rotation = LookRotation;
 
-            }
-            else if (CurrentWeaponScript.isReloading == true)
-            {
-                Arm.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up * FacingDirection);
-            }
 
 
 
@@ -336,21 +319,7 @@ public class PlayerScript : MonoBehaviour
                 CurrentWeaponScript.Reload();
             }
 
-            if (transform.position.x - MousePos.x < 0)
-            {
 
-                transform.localScale = (new Vector3(1 * i, 1, 1));
-                Arm.transform.localScale = (new Vector3(1 * i, 1 * i, 1));
-                Head.transform.localScale = (new Vector3(1 * i, 1 * i, 1));
-                FacingDirection = 1;
-            }
-            if (transform.position.x - MousePos.x > 0)
-            {
-                transform.localScale = (new Vector3(-1 * i, 1, 1));
-                Arm.transform.localScale = (new Vector3(-1 * i, -1 * i, 1));
-                Head.transform.localScale = (new Vector3(-1 * i, -1 * i, 1));
-                FacingDirection = -1;
-            }
 
             animator.SetInteger("Direction", FacingDirection * animator.GetInteger("Velocity"));
 
@@ -361,20 +330,11 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = Vector2.up * speed * 3 * i; animator.SetTrigger("OnJump");
             }
 
-            float Horizontal = Input.GetAxis("Horizontal") * speed;
-            float Vertical = Input.GetAxis("Vertical");
 
-            Vector3 HorizontalDirection = new Vector3(Horizontal * i, rb.velocity.y, 0);
 
-            rb.velocity = HorizontalDirection;
 
-            MousePosObj.transform.position = MousePos;
 
-            Vector3 TargetCamPos = (MousePosObj.transform.position - transform.position);
-            TargetCamPos.x *= FacingDirection;
-            TargetCamPos.y /= 2 * i;
-            TargetCamPos.x /= 3;
-            cam.transform.localPosition = TargetCamPos + (Vector3.forward * -10);
+
 
             if (rb.velocity.x > 0) { animator.SetInteger("Velocity", 1); }
             else if (rb.velocity.x < 0) { animator.SetInteger("Velocity", -1); }
@@ -399,20 +359,20 @@ public class PlayerScript : MonoBehaviour
                 Health = 0;
             }
 
-           
+
         }
-        else { cam.transform.position = transform.position+Vector3.forward*-10; cam.orthographicSize = 3; }
+        else { cam.transform.position = transform.position + Vector3.forward * -10; cam.orthographicSize = 3; }
 
         if (Grotate)
         {
             int RotationSpeed = 500;
 
-            if (RotatingClockwise && degrees < 180 )
+            if (RotatingClockwise && degrees < 180)
             {
-                transform.Rotate(Vector3.forward * RotationSpeed *Time.deltaTime);
-                degrees += RotationSpeed *Time.deltaTime;
+                transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
+                degrees += RotationSpeed * Time.deltaTime;
 
-               if(degrees >= 180)
+                if (degrees >= 180)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 180);
                     Grotate = false;
@@ -420,19 +380,19 @@ public class PlayerScript : MonoBehaviour
                 }
 
             }
-            else if(degrees > -180)
+            else if (degrees > -180)
+            {
+                transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
+                degrees -= RotationSpeed * Time.deltaTime;
+
+                if (!RotatingClockwise && degrees <= -180)
                 {
-                    transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
-                    degrees -= RotationSpeed * Time.deltaTime;
-
-                    if (!RotatingClockwise && degrees <= -180)
-                    {
-                        transform.rotation = Quaternion.identity;
-                        Grotate = false;
-                        degrees = 0;
-                    }
-
+                    transform.rotation = Quaternion.identity;
+                    Grotate = false;
+                    degrees = 0;
                 }
+
+            }
             else { Grotate = false; degrees = 0; }
         }
 
@@ -537,7 +497,7 @@ public class PlayerScript : MonoBehaviour
         else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
-        
+
 
 
     }
@@ -554,33 +514,32 @@ public class PlayerScript : MonoBehaviour
         PauseMenu.SetActive(false);
     }
 
-    public void OnclickOptions()
+    public void DetectCrushed()
     {
-        SceneManager.LoadScene("Options_Controls");
-        
+
         RaycastHit2D lefthit = Physics2D.Raycast(transform.position, Vector2.left, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
         RaycastHit2D righthit = Physics2D.Raycast(transform.position, Vector2.right, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
         RaycastHit2D downhit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
         RaycastHit2D uphit = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, LayerMask.GetMask("FloorTilemapLayer"));
 
-       if(downhit.collider !=null && lefthit.collider != null&&uphit.collider!=null&&righthit.collider!=null)
+        if (downhit.collider != null && lefthit.collider != null && uphit.collider != null && righthit.collider != null)
         {
             CantBreathe = true;
         }
-     
+
 
     }
 
 
 
-    public void SavePlayerStats() 
+    public void SavePlayerStats()
     {
         //SAVE HEALTH
-        PlayerPrefs.SetFloat("PlayerHealth",Health);
+        PlayerPrefs.SetFloat("PlayerHealth", Health);
         PlayerPrefs.SetFloat("PlayerMaxHealth", MaxHealth);
 
         //SAVE OXYGEN
-        PlayerPrefs.SetFloat("Oxygen",Oxygen);
+        PlayerPrefs.SetFloat("Oxygen", Oxygen);
         PlayerPrefs.SetFloat("MaxOxygen", MaxOxygen);
 
         //SAVE DIMENSION
@@ -599,6 +558,9 @@ public class PlayerScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void SetPlayerPrefs()
+    {
 
         //CHECKS IF IS A NEW GAME
         if (!isNewGame)
@@ -652,8 +614,8 @@ public class PlayerScript : MonoBehaviour
 
         Destroy(HUD);
 
-       // GetComponent<Collider2D>().enabled = false;
-       // GetComponent<Rigidbody2D>().isKinematic = true;
+        // GetComponent<Collider2D>().enabled = false;
+        // GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 
 
@@ -666,7 +628,7 @@ public class PlayerScript : MonoBehaviour
         Health -= damage;
 
 
-        ArmSprite.GetComponent<SpriteRenderer>().color=Color.red;
+        ArmSprite.GetComponent<SpriteRenderer>().color = Color.red;
         Head.GetComponent<SpriteRenderer>().color = Color.red;
 
         GetComponent<SpriteRenderer>().color = Color.red;
