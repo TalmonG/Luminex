@@ -200,7 +200,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mildew-and-fungi-1024x614 (1)_0: 8614957944060322486
+      mildew-and-fungi-1024x614 (1)_1: 6422349952573210590
+      mildew-and-fungi-1024x614 (1)_2: -4808553392042336710
+      mildew-and-fungi-1024x614 (1)_3: -6921552053323972672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Red_X.svg_0: 2520032515339518352
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
