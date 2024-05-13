@@ -21,7 +21,9 @@ public class EnemyAiScript : MonoBehaviour
     public GameObject TargetCollider;
     public GameObject HitCollider;
     public GameObject[] Colliders;
-
+    public float ShootingRange;
+    public GameObject bullet;
+    public GameObject bulletParent;
     private float distance;
     bool seenplayer;
 
@@ -84,7 +86,7 @@ public class EnemyAiScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HitCollider != null)
+        if (HitCollider != null)
         {
             if (HitCollider.CompareTag("LeftCollider"))
             {
@@ -97,39 +99,48 @@ public class EnemyAiScript : MonoBehaviour
         }
 
         //Debug.Log(HitCollider.gameObject.name);
-        
+
         Debug.Log(playerinrange);
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 4&&playerinrange)
+        if (distance < 4 && playerinrange)
         {
             seenplayer = true;
-           isChasingPlayer = true;
-            
+            isChasingPlayer = true;
+
         }
 
         if (!playerinrange)
         {
-            isChasingPlayer= false;
+            isChasingPlayer = false;
         }
 
         Debug.Log(TargetCollider.name);
 
-        if (isChasingPlayer){
+        if (isChasingPlayer) {
             chaseplayer();
 
         }
         if (ReachedEdge)
         {
             patrol();
-           ReachedEdge = false;
+            ReachedEdge = false;
         }
-    
+
         if (!isChasingPlayer) { patrol(); }
 
-       // else { MoveToNextPoint(); }
+
+
+        // else { MoveToNextPoint(); }
     }
+    
+    
+        
+    
+
+
+
     void MoveToNextPoint()
     {/*
         Transform goalPoint = points[nextID];

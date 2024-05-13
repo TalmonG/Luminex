@@ -5727,6 +5727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 88090620514225561, guid: 60bea84bdf42bf9478850f671d770f0d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 858082572705422054, guid: 60bea84bdf42bf9478850f671d770f0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.274597
@@ -73277,10 +73281,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1270966213315435069, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
-      propertyPath: Colliders.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270966213315435069, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
       propertyPath: 'Colliders.Array.data[0]'
       value: 
       objectReference: {fileID: 1958375598}
@@ -73291,6 +73291,18 @@ PrefabInstance:
     - target: {fileID: 3036468170307411190, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
       propertyPath: m_Name
       value: Juggernaut_Root
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810776096635216994, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
+      propertyPath: m_Size.x
+      value: 12.66443
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810776096635216994, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.44808912
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810776096635216994, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8130550074768111053, guid: e7691530abe0d044b83e823cb5e1462e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -73355,11 +73367,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 374585063100291947, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.7
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: 374585063100291947, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.59
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 374585063100291947, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
       propertyPath: m_LocalPosition.z
