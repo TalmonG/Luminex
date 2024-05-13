@@ -37,7 +37,7 @@ public class PlayerScript : MonoBehaviour
 
     // Referencing
     public DimensionManager dimensionManager;
-    public GameObject HUD;
+    //public GameObject HUD;
 
     int Money;
 
@@ -118,10 +118,23 @@ public class PlayerScript : MonoBehaviour
 
         }
         // Level 1
-        else if (currentLevel == 1)
+        else if (currentLevel == 1 && canSwitchDimensions == true)
         {
-            canSwitchDimensions = true;
-            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelOne();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelOne();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL ONE");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelOne();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelOne();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level ONE");
+            }
         }
         // Level 2
         else if (currentLevel == 2)
@@ -166,8 +179,8 @@ public class PlayerScript : MonoBehaviour
     {
         dimensionManager = GameObject.FindWithTag("DimensionManager").GetComponent<DimensionManager>();
 
-        DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
-        Debug.Log("Check this error, its causeing player spawning issues, canvas and more");
+        //DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
+        //Debug.Log("Check this error, its causeing player spawning issues, canvas and more");
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         BulletSpawnPos = transform.GetChild(0).GetChild(1).gameObject;
@@ -176,18 +189,20 @@ public class PlayerScript : MonoBehaviour
         Head = transform.GetChild(1).gameObject;
         MousePosObj = GameObject.Find("CursorPosition");
 
-        dimensionManager.EnableNormalDimensionTutorial();// Enable Normal
-        dimensionManager.DisableInvertedDimensionTutorial();// Disable Inverted
+        //dimensionManager.EnableNormalDimensionTutorial();// Enable Normal
+        //dimensionManager.DisableInvertedDimensionTutorial();// Disable Inverted
+        //dimensionManager.EnableNormalDimensionLevelOne();// Enable Normal
+        //dimensionManager.DisableInvertedDimensionLevelOne();// Disable Inverted
+
         isNormalDimension = true;
 
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
 
-        HUD = GameObject.FindGameObjectWithTag("HUDCanvas");
 
         death = false;
 
-        DontDestroyOnLoad(GameObject.Find("Canvas"));
+        //DontDestroyOnLoad(GameObject.Find("HUDCanvas"));
 
         SetPlayerPrefs();
     }
@@ -216,6 +231,10 @@ public class PlayerScript : MonoBehaviour
                 DimensionCharge--;
                 CantBreathe = true;
                 LevelChecker();
+            }
+            else
+            {
+                Debug.Log("NOT ENOUGH POWER");
             }
         }
 
@@ -541,12 +560,10 @@ public class PlayerScript : MonoBehaviour
         if (canSwitchDimensionsValue == 1)
         {
             canSwitchDimensions = true;
-            Debug.Log("canSwitchDimensions set to true");
         }
         else
         {
             canSwitchDimensions = false;
-            Debug.Log("canSwitchDimensions set to false");
         }
     }
 
@@ -663,7 +680,7 @@ public class PlayerScript : MonoBehaviour
         Destroy(transform.GetChild(1).gameObject);
         Destroy(transform.GetChild(5).gameObject);
 
-        Destroy(HUD);
+        //Destroy(HUD);
 
         // GetComponent<Collider2D>().enabled = false;
         // GetComponent<Rigidbody2D>().isKinematic = true;

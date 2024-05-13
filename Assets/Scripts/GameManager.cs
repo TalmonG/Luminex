@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(HUDCanvasPrefab);
 
         // Subscribe to the scene loaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
             if (HUDCanvas == null)
             {
                 HUDCanvas = Instantiate(HUDCanvasPrefab);
+                Debug.Log("PPoooopy dookie");
             }
 
             // Instantiate HUDCanvas if not already present
@@ -124,10 +126,35 @@ public class GameManager : MonoBehaviour
                 manager = Instantiate(managerPrefab);
             }
         }
+        // Instantiate player if not already present in "Tutorial" scene
+        else if (scene.name.Equals("Zone1_Level1"))
+        {
+            if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }
 
-        
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+                Debug.Log("JOOOOOOOOOOOOOOOOOOOOOO");
+            }
 
-        
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+
+
+
+
     }
 
     // Additional methods to manage game state, etc.

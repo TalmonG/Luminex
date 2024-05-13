@@ -12,7 +12,7 @@ public class DimensionManager : MonoBehaviour
         if (normalDimensionTutorialTransform != null)
         {
             normalDimensionTutorialTransform.gameObject.SetActive(true);
-            Debug.Log("AMAZNG");
+            Debug.Log("EnableNormalDimensionTutorial");
         }
         else
         {
@@ -28,7 +28,7 @@ public class DimensionManager : MonoBehaviour
         if (normalDimensionTutorialTransform != null)
         {
             normalDimensionTutorialTransform.gameObject.SetActive(false);
-            Debug.Log("gooof");
+            Debug.Log("DisableNormalDimensionTutorial");
         }
         else
         {
@@ -44,6 +44,7 @@ public class DimensionManager : MonoBehaviour
         if (normalDimensionLevelOneTransform != null)
         {
             normalDimensionLevelOneTransform.gameObject.SetActive(true);
+            Debug.Log("EnableNormalDimensionLevelOne");
         }
         else
         {
@@ -59,6 +60,7 @@ public class DimensionManager : MonoBehaviour
         if (normalDimensionLevelOneTransform != null)
         {
             normalDimensionLevelOneTransform.gameObject.SetActive(false);
+            Debug.Log("DisableNormalDimensionLevelOne");
         }
         else
         {
@@ -183,7 +185,7 @@ public class DimensionManager : MonoBehaviour
         if (invertedDimensionTutorialTransform != null)
         {
             invertedDimensionTutorialTransform.gameObject.SetActive(false);
-            Debug.Log("MATTTTT");
+            Debug.Log("DisableInvertedDimensionTutorial");
         }
         else
         {
