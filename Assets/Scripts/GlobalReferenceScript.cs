@@ -11,6 +11,9 @@ public class GlobalReferenceScript : MonoBehaviour
     public TextMeshProUGUI AmmoCounter;
     public TextMeshProUGUI CurrentWeaponText;
     public RawImage[] CurrentWeaponSymbol;
+    public Image DimensionChargeAmount;
+    public Sprite[] DimensionBubbles;
+    public GameObject GravityArrow;
     public Slider Health;
     public Slider Oxygen;
     public GameObject Player;

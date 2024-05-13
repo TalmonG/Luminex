@@ -112,7 +112,9 @@ public class Weapon : MonoBehaviour
         CurrentWeaponText.text =  WeaponNames[CurrentWeapon];
         AmmoText.text = (Ammo[CurrentWeapon, 1 ] / AmmoPerBullet[CurrentWeapon]).ToString()+" / " + (Ammo[CurrentWeapon, 0] / AmmoPerBullet[CurrentWeapon]).ToString();
 
-        SetWeaponPrefs();
+        SaveWeaponPrefs();
+
+       
 
     }
 
@@ -198,19 +200,19 @@ public class Weapon : MonoBehaviour
         if (!isNewGame)
         {
             Ammo[0, 0]= PlayerPrefs.GetInt("PistolAmmo");
-            PlayerPrefs.SetInt("ReservePistolAmmo", Ammo[0, 1]);
+            Ammo[0, 1]=PlayerPrefs.GetInt("ReservePistolAmmo" );
 
             //SET PISTOL AMMO
-            PlayerPrefs.SetInt("RifleAmmo", Ammo[1, 0]);
-            PlayerPrefs.SetInt("ReserveRifleAmmo", Ammo[1, 1]);
+            Ammo[1, 0] = PlayerPrefs.GetInt("RifleAmmo" );
+            Ammo[1, 1] = PlayerPrefs.GetInt("ReserveRifleAmmo");
 
             //SET PISTOL AMMO
-            PlayerPrefs.SetInt("ShotgunAmmo", Ammo[2, 0]);
-            PlayerPrefs.SetInt("ReserveShotgunAmmo", Ammo[2, 1]);
+            Ammo[2, 0] = PlayerPrefs.GetInt("ShotgunAmmo");
+            Ammo[2, 1] = PlayerPrefs.GetInt("ReserveShotgunAmmo");
 
             //SET PISTOL AMMO
-            PlayerPrefs.SetInt("GLAmmo", Ammo[3, 0]);
-            PlayerPrefs.SetInt("ReserveGLAmmo", Ammo[3, 1]);
+            Ammo[3, 0] = PlayerPrefs.GetInt("GLAmmo");
+            Ammo[3, 1] = PlayerPrefs.GetInt("ReserveGLAmmo");
 
         }
 

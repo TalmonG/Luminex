@@ -34,11 +34,11 @@ public class EnemyBulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("asdasd");
         
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerScript>().Health -= 20;
+            collision.gameObject.GetComponent<PlayerScript>().damaged=true;
             Destroy(this.gameObject);
         }
      
