@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour
     public int ActiveWeapon = 0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
-    public GameObject PauseMenu;
+    //public GameObject PauseMenu;
     bool RotatingClockwise;
 
     Animator animator;
@@ -37,7 +37,7 @@ public class PlayerScript : MonoBehaviour
 
     // Referencing
     public DimensionManager dimensionManager;
-    GameObject HUD;
+    public GameObject HUD;
 
     int Money;
 
@@ -198,11 +198,11 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Health.value = Health;
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+/*        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
-            PauseMenu.SetActive(true);
-        }
+            //PauseMenu.SetActive(true);
+        }*/
 
         
 
@@ -555,7 +555,7 @@ public class PlayerScript : MonoBehaviour
     {
         Debug.Log("hello");
         Time.timeScale = 1;
-        PauseMenu.SetActive(false);
+        //PauseMenu.SetActive(false);
     }
 
     public void DetectCrushed()
