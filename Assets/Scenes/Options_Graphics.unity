@@ -628,57 +628,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448752295}
   m_CullTransparentMesh: 1
---- !u!1 &457777738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 457777739}
-  - component: {fileID: 457777740}
-  m_Layer: 0
-  m_Name: KeyBindManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &457777739
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457777738}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 598070227}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &457777740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457777738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2dbe8980e1ea44ba9836439c7fb65d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  right: {fileID: 0}
-  left: {fileID: 0}
-  interact: {fileID: 0}
-  jump: {fileID: 0}
-  shoot: {fileID: 0}
-  gravityInvert: {fileID: 0}
-  DimensionShift: {fileID: 0}
 --- !u!1 &458152052
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +711,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5227035850076262117, guid: a07b33d3ec861224183680a808eaaa8a, type: 3}
+      - m_Target: {fileID: 2026394889}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: onClickAudioButton
         m_Mode: 1
@@ -1055,7 +1004,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2026394888}
-  - {fileID: 457777739}
   - {fileID: 1017345664}
   - {fileID: 31043265}
   - {fileID: 214790487}
@@ -2348,7 +2296,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1017345662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9bbf2bb5d267d940931fea8c1a7e397, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fbda707235518d47936eca5a820b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeSlider: {fileID: 0}
@@ -2637,7 +2585,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5227035850076262117, guid: a07b33d3ec861224183680a808eaaa8a, type: 3}
+      - m_Target: {fileID: 2026394889}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: onClickHomeButton
         m_Mode: 1
@@ -3132,7 +3080,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5227035850076262117, guid: a07b33d3ec861224183680a808eaaa8a, type: 3}
+      - m_Target: {fileID: 2026394889}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: onClickOptionsButton
         m_Mode: 1
@@ -3354,7 +3302,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902118237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2026394889}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: onClickGraphicsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1902118237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3646,7 +3606,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2026394887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f93891d82a058b4fad9eca95c8c7c1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 96147c35dc0035a42abce81425bf0012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2101320187

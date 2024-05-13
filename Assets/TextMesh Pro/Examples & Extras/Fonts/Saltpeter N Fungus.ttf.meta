@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e3130906bae0dfd41a87aedc93a85b54
+guid: 35f11ca21e884a443868d3878106edb8
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Cyborg Punk
+  - Saltpeter N Fungus
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
