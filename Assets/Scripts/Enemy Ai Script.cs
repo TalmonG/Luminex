@@ -136,8 +136,18 @@ public class EnemyAiScript : MonoBehaviour
         
         
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        
-        
+
+        if (transform.position.x > player.transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
+        if (transform.position.x < player.transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+
     }
    
 
@@ -145,16 +155,16 @@ public class EnemyAiScript : MonoBehaviour
     {
         if (TargetCollider.CompareTag("RightCollider"))
         {
-
-            
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            transform.localScale = new Vector3(1, 1, 1);
+            transform.position += Vector3.right * speed * Time.deltaTime;
         }
 
         if (TargetCollider.CompareTag("LeftCollider"))
         {
-
-            
             transform.Translate(Vector2.left * speed * Time.deltaTime);
+            transform.localScale = new Vector3(-1, 1, 1);
+            transform.position += Vector3.left * speed * Time.deltaTime;
         }
     }
 

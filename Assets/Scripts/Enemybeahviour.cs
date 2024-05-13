@@ -14,13 +14,13 @@ public class Enemybeahviour : MonoBehaviour
     public bool isChasing;
     public float chaseDistance;
     public bool onground;
-    public float min = 2f;
-    public float max = 3f;
+    public GameObject TargetCollider;
+    public GameObject HitCollider;
+    public GameObject[] Colliders;
     public object PlayerTransformation { get; private set; }
     private void Start()
     {
-        min = transform.position.x;
-        max = transform.position.x + 3;
+       
 
         Player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -28,7 +28,8 @@ public class Enemybeahviour : MonoBehaviour
     private void Update()
     {
 
-        transform.position = new Vector3(Mathf.PingPong(Time.time * 2, max - min) + min, transform.position.y, transform.position.z);
+     
+      
 
         if (isChasing)
         {
@@ -36,13 +37,11 @@ public class Enemybeahviour : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1); 
                 transform.position += Vector3.left * speed * Time.deltaTime;
-                
             }
             if (transform.position.x < Player.transform.position.x)
             {
                 transform.localScale = new Vector3(1, 1, 1);
-                transform.position += Vector3.right * speed * Time.deltaTime;
-            
+                transform.position += Vector3.right * speed * Time.deltaTime;         
             }
         }
 

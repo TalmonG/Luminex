@@ -7,7 +7,8 @@ public class PlayerinRange : MonoBehaviour
 
     bool Playerinrange;
     EnemyAiScript juggernautscript;
-
+   
+    
     // Start is called before the first frame update
     void Start()
     {
