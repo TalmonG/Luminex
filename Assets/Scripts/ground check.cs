@@ -9,7 +9,7 @@ public class groundcheck : MonoBehaviour
     bool floor;
     bool onground;
     public Rigidbody2D rb;
-    Enemybeahviour enemybeahviour;
+  
     public LayerMask groundlayer;
 
     void Start()
@@ -21,9 +21,8 @@ public class groundcheck : MonoBehaviour
     
     void Update()
     {
-        enemybeahviour = transform.parent.transform.GetComponent<Enemybeahviour>();
-
-        enemybeahviour.onground = onground;
+        
+       
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

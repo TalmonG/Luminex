@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - isGround
   - TriFungusSentinel
   - MycoticJuggernaut
   - ground
@@ -12,12 +11,12 @@ TagManager:
   - GameMusic
   - Managers
   - HUDCanvas
-  - Sporefiend
+  - Shop
   - PlayerBullet
-  - PistolBulletBuy
-  - RifleBulletBuy
-  - UpgradeTokenBuy
-  - JetpackFuelBuy
+  - Platform Edge
+  - Juggernaut
+  - LeftCollider
+  - RightCollider
   layers:
   - Default
   - TransparentFX
