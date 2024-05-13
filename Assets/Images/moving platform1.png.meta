@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c1087da83a2c8434c858cd9d6e6a0515
+guid: e0b16422b4db6bd409e4325d16ff36ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4156150784180291441
-    second: Infected Wall1_0
+      213: 8955720759992273078
+    second: moving platform1_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,26 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Infected Wall1_0
+      name: moving platform1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 0
-        width: 44
-        height: 44
+        width: 58
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -13, y: -22}
-        - {x: 22, y: -22}
-        - {x: 22, y: 22}
-        - {x: -13, y: 22}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: f88f8fbc1e26256c0800000000000000
-      internalID: -4156150784180291441
+      spriteID: 6b84eeee49c194c70800000000000000
+      internalID: 8955720759992273078
       vertices: []
       indices: 
       edges: []
@@ -137,7 +133,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 522cc5781ef08e7498940303f773d999
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Infected Wall1_0: -4156150784180291441
+      moving platform1_0: 8955720759992273078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
