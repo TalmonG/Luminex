@@ -836,8 +836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866c981e22219d04494add8d4900145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VolumeSlider: {fileID: 0}
-  objectMusic: {fileID: 0}
 --- !u!4 &575559647
 Transform:
   m_ObjectHideFlags: 0
@@ -1535,8 +1533,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Luminex
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bb76fa2156ab41546b1a2ec9e61a1df3, type: 2}
-  m_sharedMaterial: {fileID: -4883043639693193643, guid: bb76fa2156ab41546b1a2ec9e61a1df3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9083d53f53de2447b6acd8c344f05df, type: 2}
+  m_sharedMaterial: {fileID: -5403530763273672200, guid: f9083d53f53de2447b6acd8c344f05df, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
