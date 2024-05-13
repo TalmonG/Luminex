@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -13,15 +13,23 @@ public class Enemybeahviour : MonoBehaviour
     public Transform playerTransform;
     public bool isChasing;
     public float chaseDistance;
-    public bool onground; 
+    public bool onground;
+    public float min = 2f;
+    public float max = 3f;
     public object PlayerTransformation { get; private set; }
     private void Start()
     {
+        min = transform.position.x;
+        max = transform.position.x + 3;
+
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
+
+        transform.position = new Vector3(Mathf.PingPong(Time.time * 2, max - min) + min, transform.position.y, transform.position.z);
+
         if (isChasing)
         {
             if(transform.position.x > Player.transform.position.x) 
@@ -37,9 +45,8 @@ public class Enemybeahviour : MonoBehaviour
             
             }
         }
-        
-        
-            if (Vector3.Distance(transform.position, Player.transform.position) < chaseDistance) 
+
+        if (Vector3.Distance(transform.position, Player.transform.position) < chaseDistance) 
             {
             isChasing = true;
             }
@@ -47,8 +54,8 @@ public class Enemybeahviour : MonoBehaviour
         if (Vector3.Distance(transform.position, Player.transform.position) > chaseDistance)
         {
             isChasing = false;
-        } 
-
+        }
+        
         {
 
             /*if (patrolDestination == 0)
@@ -70,18 +77,18 @@ public class Enemybeahviour : MonoBehaviour
                      transform.localScale = new Vector3(-1, 1, 1);
                      patrolDestination = 0;
                  }
-             }
+             }*/
 
-            Mathf.PingPong(Time.deltaTime * speed, dist);
+            
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             isChasing = true;
         }
-    }
+    }*/
 }
-/*

@@ -88206,37 +88206,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &991853659
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 991853660}
-  m_Layer: 0
-  m_Name: GroundDetection
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &991853660
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991853659}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.26, y: -0.92, z: 0}
-  m_LocalScale: {x: 1.9016, y: 1.9016, z: 1.9016}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1921978356}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995049903
 GameObject:
   m_ObjectHideFlags: 0
@@ -92119,6 +92088,8 @@ MonoBehaviour:
   isChasing: 0
   chaseDistance: 4
   onground: 0
+  min: 2
+  max: 3
 --- !u!58 &1921978363
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -93566,9 +93537,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 633203529155022677, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 522222992}
-    - targetCorrespondingSourceObject: {fileID: 633203529155022677, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 991853660}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9179233807844269015, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
       insertIndex: -1
