@@ -3708,10 +3708,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 694065153, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 374585063100291947, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.8947124
@@ -3756,38 +3752,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1011336397385813915, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_audioClip
+    - target: {fileID: 442545616264976017, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: equipSound
       value: 
-      objectReference: {fileID: 8300000, guid: d8d09d02a8973494d8a468dae00eabc2, type: 3}
-    - target: {fileID: 1415637496548121083, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 5f86a521d9888c84a874aeae972ea8cb, type: 3}
     - target: {fileID: 1670451085910996289, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: ReloadSound
+      propertyPath: equipSound
       value: 
-      objectReference: {fileID: 8300000, guid: 92a653e841ec0484c9f72f3915a1a86e, type: 3}
-    - target: {fileID: 7286457108999295101, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_audioClip
+      objectReference: {fileID: 8300000, guid: 5f86a521d9888c84a874aeae972ea8cb, type: 3}
+    - target: {fileID: 1827940375148861918, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: equipSound
       value: 
-      objectReference: {fileID: 8300000, guid: ccdbc4b6d4b8f354ea510188d4ab302b, type: 3}
-    - target: {fileID: 7286457108999295101, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8389174525043361960, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8555688030518776199, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_audioClip
+      objectReference: {fileID: 8300000, guid: 5f86a521d9888c84a874aeae972ea8cb, type: 3}
+    - target: {fileID: 7056353233927620546, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: equipSound
       value: 
-      objectReference: {fileID: 8300000, guid: ccdbc4b6d4b8f354ea510188d4ab302b, type: 3}
-    - target: {fileID: 8555688030518776199, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 5f86a521d9888c84a874aeae972ea8cb, type: 3}
+    - target: {fileID: 9014322578058535939, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: DeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c8d780f1d4fa6b42941d98f6c93fad4, type: 3}
+    - target: {fileID: 9014322578058535939, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: GravityShiftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eecddd9dd22c08f49ad80dce94ef14a2, type: 3}
+    - target: {fileID: 9014322578058535939, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: DimensionShiftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4dad5f30999a28c48957bd281a2005ca, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

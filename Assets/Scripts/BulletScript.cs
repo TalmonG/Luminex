@@ -64,7 +64,10 @@ public class BulletScript : MonoBehaviour
         yield return new WaitForSeconds(lifetime);
         GameObject Explosion=Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 
-        Destroy(Explosion, 0.45f);
+        Explosion.GetComponent<AudioSource>().Play();
+
+        
+        Destroy(Explosion, 0.8f);
         Destroy(this.gameObject);
     }
 }

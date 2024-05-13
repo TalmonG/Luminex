@@ -37,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip BreathingSound;
     public AudioClip GravityShiftSound;
     public AudioClip DimensionShiftSound;
+    public AudioClip DeathSound;
 
     GameObject HUD;
 
@@ -589,6 +590,8 @@ public class PlayerScript : MonoBehaviour
         animator.SetBool("Dead", true);
         animator.SetTrigger("Died");
 
+        audioSource2.clip = DeathSound;
+        audioSource2.Play();
 
         Destroy(transform.GetChild(0).gameObject);
         Destroy(transform.GetChild(1).gameObject);

@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
     public AudioClip Gunshot;
     AudioSource audioSource;
     public AudioClip ReloadSound;
-
+    public AudioClip equipSound;
 
 
     public void Fire()
@@ -176,6 +176,11 @@ public class Weapon : MonoBehaviour
     {
         CanFire = true;
         isReloading = false;
+
+
+        audioSource.clip = equipSound;
+        audioSource.Play();
+
         if (playerScript != null)
         {
             CurrentWeapon = playerScript.ActiveWeapon;
