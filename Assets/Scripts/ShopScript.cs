@@ -39,16 +39,8 @@ public class ShopScript : MonoBehaviour
     {
         if(infront&& Input.GetKeyDown(KeyCode.E)) {
             Time.timeScale = 0;
-            Debug.Log("sss");
             ShopCanvas.SetActive(true);
             itemShop.SetActive(true);
-            HealthShop.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        { 
-            Time.timeScale = 1;
-            ShopCanvas.SetActive(false);
-            itemShop.SetActive(false);
             HealthShop.SetActive(false);
         }
     }
@@ -67,6 +59,11 @@ public class ShopScript : MonoBehaviour
 
             infront = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        infront = false;
     }
 
     public void onClickPistolBullet()
@@ -154,4 +151,11 @@ public class ShopScript : MonoBehaviour
         HealthShop.SetActive(false);
     }
 
+    public void onClickExit()
+    {
+        Time.timeScale = 1;
+        ShopCanvas.SetActive(false);
+        itemShop.SetActive(false);
+        HealthShop.SetActive(false);
+    }
 }
