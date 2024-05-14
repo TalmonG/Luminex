@@ -20,7 +20,7 @@ public class CheckpointScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerPrefs.GetInt("PistolAmmo"));
+       // Debug.Log(PlayerPrefs.GetInt("PistolAmmo"));
 
        // Debug.Log( BR.GetComponent<Weapon>().Ammo[1,0]);
     }

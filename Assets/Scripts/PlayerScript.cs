@@ -483,7 +483,7 @@ public class PlayerScript : MonoBehaviour
         else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
-        Debug.Log(Oxygen);
+        //Debug.Log(Oxygen);
 
 
     }

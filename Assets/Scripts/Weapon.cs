@@ -187,10 +187,11 @@ public class Weapon : MonoBehaviour
             CanFire = true;
             isReloading = false;
 
-
+        if (audioSource != null)
+        {
             audioSource.clip = equipSound;
             audioSource.Play();
-
+        }
             if (playerScript != null)
             {
                 CurrentWeapon = playerScript.ActiveWeapon;

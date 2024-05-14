@@ -16,7 +16,6 @@ public class groundscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        juggernautscript = GameObject.FindGameObjectWithTag("Juggernaut").transform.GetComponent<EnemyAiScript>();
  
     }
     
@@ -49,6 +48,14 @@ public class groundscript : MonoBehaviour
                 juggernautscript.ReachedEdge = true;
                 juggernautscript.left_right *= -1;
 
+            }
+
+            if (collision.CompareTag("Sporefiend"))
+            {
+                collision.gameObject.GetComponent<sporefiend>().HitCollider = this.gameObject;
+                collision.gameObject.GetComponent<sporefiend>().isChasingPlayer = false;
+                collision.gameObject.GetComponent<sporefiend>().ReachedEdge = true;
+                collision.gameObject.GetComponent<sporefiend>().left_right *= -1;
             }
             
         }

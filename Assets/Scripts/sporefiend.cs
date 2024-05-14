@@ -7,9 +7,9 @@ public class sporefiend : MonoBehaviour
 {
 
     GameObject player;
-    public List<Transform> points;
+    SpriteRenderer sprite;
     public int nextID;
-    int idchangeValue = 1;
+    Animator animator;
     public float speed = 2;
     public int left_right = 1;
     public bool isChasingPlayer = false;
@@ -25,33 +25,30 @@ public class sporefiend : MonoBehaviour
     private float distance;
     bool seenplayer;
     Rigidbody2D rb;
+    bool dead;
+
+    public AudioClip DeathGrowl;
+    public AudioClip AletGrowl;
 
     // Start is called before the first frame update
 
-    private void Reset()
-    {
-    
 
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("sadsad");
         if (collision.transform.CompareTag("PlayerBullet"))
         {
-            health -= 10;
+            StartCoroutine(Damage(10));
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("PlayerBullet"))
         {
-            health -= 10;
+            StartCoroutine(Damage(10));
         }
-        if (health == 0)
-        {
-            Destroy(this.gameObject);
-        }
+       
     }
 
 
@@ -63,61 +60,88 @@ public class sporefiend : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+        animator = GetComponent<Animator>();
+
+        sprite = GetComponent<SpriteRenderer>();
+
         TargetCollider = Colliders[1];
+
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HitCollider != null)
+        if (!dead)
         {
-            if (HitCollider.CompareTag("LeftCollider"))
+
+            if (HitCollider != null)
             {
-                TargetCollider = Colliders[1];
+                if (HitCollider.CompareTag("LeftCollider"))
+                {
+                    TargetCollider = Colliders[1];
+                }
+                if (HitCollider.CompareTag("RightCollider"))
+                {
+                    TargetCollider = Colliders[0];
+                }
             }
-            if (HitCollider.CompareTag("RightCollider"))
+
+            if (rb.velocity.x != 0)
+                animator.SetInteger("Velocity", 1);
+
+            if (rb.velocity.x > 0)
             {
-                TargetCollider = Colliders[0];
+                sprite.flipX = false;
+            }
+            else if (rb.velocity.x < 0)
+            {
+                sprite.flipX = true;
+
+            }
+
+
+            Debug.Log(playerinrange);
+
+            Debug.Log(playerinrange);
+
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+
+            if (distance < 4 && playerinrange)
+            {
+                seenplayer = true;
+                isChasingPlayer = true;
+
+            }
+
+            if (!playerinrange)
+            {
+                isChasingPlayer = false;
+            }
+
+            //Debug.Log(TargetCollider.name);
+
+            if (isChasingPlayer)
+            {
+                chaseplayer();
+
+            }
+            if (ReachedEdge)
+            {
+                patrol();
+                ReachedEdge = false;
+            }
+
+            if (!isChasingPlayer) { patrol(); }
+
+
+            if (health <= 0)
+            {
+                Death();
             }
         }
 
-        //Debug.Log(HitCollider.gameObject.name);
-
-        Debug.Log(playerinrange);
-
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-
-        if (distance < 4 && playerinrange)
-        {
-            seenplayer = true;
-            isChasingPlayer = true;
-
-        }
-
-        if (!playerinrange)
-        {
-            isChasingPlayer = false;
-        }
-
-        Debug.Log(TargetCollider.name);
-
-        if (isChasingPlayer)
-        {
-            chaseplayer();
-
-        }
-        if (ReachedEdge)
-        {
-            patrol();
-            ReachedEdge = false;
-        }
-
-        if (!isChasingPlayer) { patrol(); }
-
-
-
-    
     }
 
 
@@ -126,11 +150,14 @@ public class sporefiend : MonoBehaviour
     void chaseplayer()
     {
 
-        Vector2 direction = player.transform.position - transform.position;
+        speed *= 1.5f;
+        //Vector2 direction = player.transform.position - transform.position;
+
+        float Xdirection = player.transform.position.x - transform.position.x;
         //transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
 
-        rb.velocity=direction.normalized;
+        rb.velocity=new Vector3(Xdirection,rb.velocity.y,0);
 
 
     }
@@ -152,5 +179,28 @@ public class sporefiend : MonoBehaviour
 
             // transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
+    }
+
+
+    void Death()
+    {
+
+        animator.SetBool("Dead", true);
+
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
+    }
+
+    public IEnumerator Damage(int damage)
+    {
+        health -= damage;
+
+        sprite.color = Color.red;
+
+        yield return new WaitForSeconds(0.3f);
+
+        sprite.color = Color.white;
+
+        yield return null;
     }
 }
