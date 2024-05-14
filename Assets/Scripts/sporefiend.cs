@@ -81,7 +81,6 @@ public class sporefiend : MonoBehaviour
   
         if (!dead)
         {
-
             if (HitCollider != null)
             {
                 if (HitCollider.CompareTag("LeftCollider"))

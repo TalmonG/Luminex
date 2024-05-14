@@ -49,16 +49,29 @@ public class BulletScript : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
-            else if ((collision.CompareTag("Sporefiend") || collision.CompareTag("Juggernaut") || collision.CompareTag("Turret")))
+            else if (collision.CompareTag("Sporefiend"))
             {
-                if (collision.GetComponent<sporefiend>().dead == false || collision.GetComponent<EnemyAiScript>().dead == false || collision.GetComponent<Turret>().dead == false)
+                if (collision.GetComponent<sporefiend>().dead == false)
                 {
-                   
-
                     Destroy(this.gameObject);
                 }
-
             }
+            else if (collision.CompareTag("Juggernaut"))
+            {
+                if (collision.GetComponent<EnemyAiScript>().dead == false)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else if (collision.CompareTag("Turret"))
+            {
+                if (collision.GetComponent<Turret>().dead == false)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+           
+            
 
 
         }
@@ -66,11 +79,11 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.CompareTag("Sporefiend") || collision.gameObject.CompareTag("Juggernaut") || collision.gameObject.CompareTag("Turret")))
-        {
-            if (collision.gameObject.GetComponent<sporefiend>().dead == false || collision.gameObject.GetComponent<EnemyAiScript>().dead == false || collision.gameObject.GetComponent<Turret>().dead == false)
-            {
 
+        if (collision.gameObject.CompareTag("Sporefiend"))
+        {
+            if (collision.gameObject.GetComponent<sporefiend>().dead == false)
+            {
                 GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 
                 Explosion.GetComponent<AudioSource>().Play();
@@ -81,6 +94,37 @@ public class BulletScript : MonoBehaviour
             }
 
         }
+
+       else if (collision.gameObject.CompareTag("Juggernaut"))
+        {
+            if (collision.gameObject.GetComponent<EnemyAiScript>().dead == false)
+            {
+                GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+
+                Explosion.GetComponent<AudioSource>().Play();
+
+
+                Destroy(Explosion, 0.8f);
+                Destroy(this.gameObject);
+            }
+
+        }
+       else if (collision.gameObject.CompareTag("Turret"))
+        {
+            if (collision.gameObject.GetComponent<Turret>().dead == false)
+            {
+                GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+
+                Explosion.GetComponent<AudioSource>().Play();
+
+
+                Destroy(Explosion, 0.8f);
+                Destroy(this.gameObject);
+            }
+
+        }
+
+      
         else
         {
             StartCoroutine(Life());

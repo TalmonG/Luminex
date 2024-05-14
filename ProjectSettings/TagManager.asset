@@ -59,7 +59,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Enemies
   - NoPlayerCollision
   m_SortingLayers:
   - name: Default

@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
     public bool damaged;
     int DimensionCharge;
 
-    bool isNewGame;
+    bool isNewGame=false;
 
     bool CantBreathe;
 
@@ -109,7 +109,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         BulletSpawnPos = transform.GetChild(0).GetChild(1).gameObject;
@@ -126,10 +126,14 @@ public class PlayerScript : MonoBehaviour
 
         isNormalDimension = true;
 
-        DontDestroyOnLoad(GameObject.Find("Canvas"));
+        //DontDestroyOnLoad(GameObject.Find("Canvas"));
+
+        SetPlayerPrefs();
 
         
     }
+    
+
 
     // Update is called once per frame
     void Update()
@@ -212,7 +216,7 @@ public class PlayerScript : MonoBehaviour
                 audioSource2.Play();
 
             }
-
+            Debug.Log(DimensionCharge);
             if (isNormalDimension)
             {
 
@@ -528,6 +532,8 @@ public class PlayerScript : MonoBehaviour
 
     public void SavePlayerStats()
     {
+        //float dimensionchargeamount = DimensionCharge;
+
         //SAVE HEALTH
         PlayerPrefs.SetFloat("PlayerHealth", Health);
         PlayerPrefs.SetFloat("PlayerMaxHealth", MaxHealth);
@@ -539,6 +545,7 @@ public class PlayerScript : MonoBehaviour
         //SAVE DIMENSION
         PlayerPrefs.SetInt("Dimension", (isNormalDimension ? 1 : 0));
         PlayerPrefs.SetInt("DimensionCharge", DimensionCharge);
+        PlayerPrefs.SetFloat("DimensionDeviceChargeRate", DimensionDeviceChargeRate);
 
         //SAVE MONEY
         PlayerPrefs.SetInt("Money", Money);
@@ -572,6 +579,7 @@ public class PlayerScript : MonoBehaviour
 
             //SET Dimension
             isNormalDimension = (PlayerPrefs.GetInt("Dimension") != 0);
+            DimensionDeviceChargeRate = PlayerPrefs.GetFloat("DimensionDeviceChargeRate");
             DimensionCharge = PlayerPrefs.GetInt("DimensionCharge");
 
             //SET MONEY

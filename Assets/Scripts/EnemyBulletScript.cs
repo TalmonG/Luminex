@@ -25,6 +25,9 @@ public class EnemyBulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,13 +44,27 @@ public class EnemyBulletScript : MonoBehaviour
             collision.gameObject.GetComponent<PlayerScript>().damaged=true;
             Destroy(this.gameObject);
         }
-     
+
+        if (collision.gameObject.CompareTag("ground"))
         {
+            //collision.gameObject.GetComponent<PlayerScript>().Health -= 10;
+            Destroy(this.gameObject);
+        }
+     
+        {/*
             if (collision != null)
             {
                 
-                if (collision != turret) { } 
-            }
+                if (collision != turret) {
+
+                    Destroy(this.gameObject);
+                }
+                if (collision != this.gameObject)
+                {
+
+                    Destroy(this.gameObject);
+                }
+            }*/
         }
         
     }

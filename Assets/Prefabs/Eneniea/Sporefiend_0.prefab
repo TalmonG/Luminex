@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5053025049744636022}
   - component: {fileID: 6590925955390397078}
   - component: {fileID: 5106261969916983829}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: MeleeRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7193934638623262185}
   - component: {fileID: 5783399452771477560}
   - component: {fileID: 8233996387476837627}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: Sporefiend_0
   m_TagString: Sporefiend
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0561246c643239a49ad6fbcdc6cc7fa4, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -279,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4acb931f02931c4d8cdfd389310358b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextID: 0
   speed: 2
   left_right: 1
   isChasingPlayer: 0
@@ -291,9 +290,6 @@ MonoBehaviour:
   Colliders:
   - {fileID: 0}
   - {fileID: 0}
-  ShootingRange: 0
-  bullet: {fileID: 0}
-  bulletParent: {fileID: 0}
   dead: 0
   InRangeOfMelee: 0
   DeathGrowl: {fileID: 8300000, guid: 8ea51d478dc602643bc79e6470a76020, type: 3}

@@ -22,12 +22,17 @@ public class Turret : MonoBehaviour
 
     Vector3 direction;
     Quaternion lookrotation;
+
+    LayerMask ground;
+
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         sprite = transform.GetChild(0).transform.GetComponent<SpriteRenderer>();
-       //LayerMask = GameObject.Find("Platform").layer;
+
+
+        ground = GameObject.FindGameObjectWithTag("ground").gameObject.layer;
     }
 
     // Update is called once per frame
@@ -35,42 +40,48 @@ public class Turret : MonoBehaviour
     {
         if (health <= 0)
         {
+
             dead = true;
             StartCoroutine(Death());
+
         }
-
-         direction = Player.transform.position - transform.position;
-
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 30);
-
-        Debug.Log(hit.transform.gameObject.name);
-
-        if (hit.transform.gameObject.CompareTag("Player"))
+        if (Vector3.Distance(transform.position, Player.transform.position) < 20)
         {
-            Debug.Log("rayhit");
 
-            lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
-            lookrotation.eulerAngles += Vector3.forward * -90;
-            transform.rotation = lookrotation;
+            direction = Player.transform.position - transform.position;
 
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 30);
+
+
+
+          //  Debug.Log(hit.transform.position);
+
+           // if (hit.transform.gameObject.CompareTag("Player"))
+          //  {
+                Debug.Log("rayhit");
+
+                lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
+                lookrotation.eulerAngles += Vector3.forward * -90;
+                transform.rotation = lookrotation;
+
+           // }
+
+
+            if (Player.transform.position.x < transform.position.x)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else { transform.localScale = new Vector3(1, -1, 1); }
+            Debug.DrawRay(transform.position, direction);
+
+            timer += Time.deltaTime;
+            if (timer > 0.5f)
+            {
+                timer = 0;
+                shoot();
+            }
         }
-
-
-        if (Player.transform.position.x < transform.position.x)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else { transform.localScale = new Vector3(1, -1, 1); }
-        Debug.DrawRay(transform.position, direction);
-
-        timer += Time.deltaTime;
-        if (timer > 0.5f)
-        {
-            timer = 0;
-            shoot();
-        }
-
         
     }
     void shoot() {
@@ -85,14 +96,14 @@ public class Turret : MonoBehaviour
     {
         if (collision.transform.CompareTag("PlayerBullet"))
         {
-           StartCoroutine(Damage(5));
+           StartCoroutine(Damage(10));
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("PlayerBullet"))
         {
-            StartCoroutine(Damage(5));
+            StartCoroutine(Damage(10));
         }
 
     }
@@ -100,8 +111,8 @@ public class Turret : MonoBehaviour
 
     IEnumerator Death()
     {
-        audioSource.clip = deathSound;
-        audioSource.Play();
+       // audioSource.clip = deathSound;
+        //audioSource.Play();
         
         Destroy(this.gameObject);
 
