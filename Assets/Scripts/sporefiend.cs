@@ -34,7 +34,8 @@ public class sporefiend : MonoBehaviour
     AudioSource audioSource;
     public AudioClip DeathGrowl;
     public AudioClip AlertGrowl;
-
+    public AudioClip SlashSound;
+    int i = 0;
     // Start is called before the first frame update
 
 
@@ -47,15 +48,17 @@ public class sporefiend : MonoBehaviour
             StartCoroutine(Damage(10));
         }
     }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("PlayerBullet") && !dead)
         {
-            StartCoroutine(Damage(10));
+            StartCoroutine(Damage(5));
+            i += 5;
         }
        
     }
-
+    
 
 
     private void Start()
@@ -80,6 +83,7 @@ public class sporefiend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(i);
         if (!dead)
         {
 
@@ -123,8 +127,8 @@ public class sporefiend : MonoBehaviour
 
             if (alerted)
             {
-                audioSource.clip = AlertGrowl;
-                audioSource.Play();
+                //audioSource.clip = AlertGrowl;
+              //  audioSource.Play();
                // alerted=false;
             }
 
@@ -158,17 +162,14 @@ public class sporefiend : MonoBehaviour
                 HasAttacked = true;
                 StartCoroutine(MeleeAttack());
             }
+
+           
         }
 
-        if (dead && rb.velocity.y < 0.3 && rb.velocity.y > -0.3)
-        {
 
-
-
-        }
         if (dead)
         {
-            Debug.Log("sds");
+           
             Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
             Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>(), true);
      
@@ -188,14 +189,12 @@ public class sporefiend : MonoBehaviour
     void chaseplayer()
     {
 
-        speed *= 2f;
-        //Vector2 direction = player.transform.position - transform.position;
+        speed = 2.3f;
 
         float Xdirection = player.transform.position.x - transform.position.x;
-        //transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
 
-        rb.velocity=new Vector3(Xdirection,rb.velocity.y,0);
+        rb.velocity=new Vector3(Xdirection*speed,rb.velocity.y,0);
 
 
     }
@@ -225,8 +224,11 @@ public class sporefiend : MonoBehaviour
     {
         animator.SetTrigger("Slash");
 
+        audioSource.clip = SlashSound;
+        if (audioSource.isPlaying == false)
+            audioSource.Play();
 
-       StartCoroutine( player.GetComponent<PlayerScript>().Damage(10));
+        StartCoroutine( player.GetComponent<PlayerScript>().Damage(10));
 
 
         yield return new WaitForSeconds(1.5f);

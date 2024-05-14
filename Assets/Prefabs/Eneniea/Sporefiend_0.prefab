@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 532059305717816756}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 0, z: 0}
+  m_LocalPosition: {x: 0.73, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.99, y: 2.77}
+  m_Size: {x: 1.12, y: 2.77}
   m_EdgeRadius: 0
 --- !u!114 &5106261969916983829
 MonoBehaviour:
@@ -294,9 +294,11 @@ MonoBehaviour:
   ShootingRange: 0
   bullet: {fileID: 0}
   bulletParent: {fileID: 0}
+  dead: 0
   InRangeOfMelee: 0
   DeathGrowl: {fileID: 8300000, guid: 8ea51d478dc602643bc79e6470a76020, type: 3}
-  AlertGrowl: {fileID: 0}
+  AlertGrowl: {fileID: 8300000, guid: fa9c12c57eb3cc742a35871a7e53dd68, type: 3}
+  SlashSound: {fileID: 8300000, guid: 0a7b0f88f25ee864fa98693d83dc3a71, type: 3}
 --- !u!82 &8233996387476837627
 AudioSource:
   m_ObjectHideFlags: 0
@@ -308,7 +310,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -7,11 +7,13 @@ public class AcidScript : MonoBehaviour
     bool alreadyDamaged;
     bool CollidingWithAcid=false;
     GameObject Collision;
+     AudioSource audioSource;
+    public AudioClip Radiationsound;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,13 +28,26 @@ public class AcidScript : MonoBehaviour
                 Invoke("EnableDamage", 0.5f);
             }
         }
+
+        if (CollidingWithAcid)
+        {
+            if (audioSource.isPlaying == false)
+            {
+                audioSource.Play();
+            }
+        }
+
+        else
+        {
+            audioSource.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            
             Collision = collision.gameObject;
             CollidingWithAcid=true;
             

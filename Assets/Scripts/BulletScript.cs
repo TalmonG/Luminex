@@ -53,9 +53,10 @@ public class BulletScript : MonoBehaviour
             {
                 if (collision.GetComponent<sporefiend>().dead == false)
                 {
+                   
+
                     Destroy(this.gameObject);
                 }
-
 
             }
 

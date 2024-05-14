@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 5437008356736043486}
   m_Layer: 0
   m_Name: FrictionCollider
-  m_TagString: Untagged
+  m_TagString: FrictionCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
