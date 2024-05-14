@@ -120677,6 +120677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 682707908809179171, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
+      propertyPath: m_TagString
+      value: FrictionCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -121145,10 +121149,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 633203529155022677, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 633203529155022677, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.14
       objectReference: {fileID: 0}
@@ -121186,10 +121186,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 633203529155022677, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2868450772389474570, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}
-      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5783399452771477560, guid: 484596a9e9457da41b84e91d7475c42e, type: 3}

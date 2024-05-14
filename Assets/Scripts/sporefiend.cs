@@ -25,10 +25,15 @@ public class sporefiend : MonoBehaviour
     private float distance;
     bool seenplayer;
     Rigidbody2D rb;
-    bool dead;
+    public bool dead;
 
+    public bool InRangeOfMelee;
+    bool alerted;
+    bool HasAttacked;
+
+    AudioSource audioSource;
     public AudioClip DeathGrowl;
-    public AudioClip AletGrowl;
+    public AudioClip AlertGrowl;
 
     // Start is called before the first frame update
 
@@ -37,14 +42,14 @@ public class sporefiend : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("sadsad");
-        if (collision.transform.CompareTag("PlayerBullet"))
+        if (collision.transform.CompareTag("PlayerBullet")&&!dead)
         {
             StartCoroutine(Damage(10));
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("PlayerBullet"))
+        if (collision.transform.CompareTag("PlayerBullet") && !dead)
         {
             StartCoroutine(Damage(10));
         }
@@ -63,6 +68,8 @@ public class sporefiend : MonoBehaviour
         animator = GetComponent<Animator>();
 
         sprite = GetComponent<SpriteRenderer>();
+
+        audioSource = GetComponent<AudioSource>();
 
         TargetCollider = Colliders[1];
 
@@ -93,18 +100,15 @@ public class sporefiend : MonoBehaviour
 
             if (rb.velocity.x > 0)
             {
-                sprite.flipX = false;
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else if (rb.velocity.x < 0)
             {
-                sprite.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
 
             }
 
 
-            Debug.Log(playerinrange);
-
-            Debug.Log(playerinrange);
 
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
@@ -113,6 +117,15 @@ public class sporefiend : MonoBehaviour
                 seenplayer = true;
                 isChasingPlayer = true;
 
+                alerted = true;
+
+            }
+
+            if (alerted)
+            {
+                audioSource.clip = AlertGrowl;
+                audioSource.Play();
+               // alerted=false;
             }
 
             if (!playerinrange)
@@ -140,7 +153,32 @@ public class sporefiend : MonoBehaviour
             {
                 Death();
             }
+            if (InRangeOfMelee && !HasAttacked)
+            {
+                HasAttacked = true;
+                StartCoroutine(MeleeAttack());
+            }
         }
+
+        if (dead && rb.velocity.y < 0.3 && rb.velocity.y > -0.3)
+        {
+
+
+
+        }
+        if (dead)
+        {
+            Debug.Log("sds");
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>(), true);
+     
+
+            if (Vector3.Distance(transform.position, player.transform.position) > 20)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+ 
 
     }
 
@@ -150,7 +188,7 @@ public class sporefiend : MonoBehaviour
     void chaseplayer()
     {
 
-        speed *= 1.5f;
+        speed *= 2f;
         //Vector2 direction = player.transform.position - transform.position;
 
         float Xdirection = player.transform.position.x - transform.position.x;
@@ -182,12 +220,29 @@ public class sporefiend : MonoBehaviour
     }
 
 
+
+    IEnumerator MeleeAttack()
+    {
+        animator.SetTrigger("Slash");
+
+
+       StartCoroutine( player.GetComponent<PlayerScript>().Damage(10));
+
+
+        yield return new WaitForSeconds(1.5f);
+        HasAttacked = false;
+
+    }
+
     void Death()
     {
+        dead = true;
 
         animator.SetBool("Dead", true);
 
         rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
+        
 
     }
 

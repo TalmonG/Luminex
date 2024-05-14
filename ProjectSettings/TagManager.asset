@@ -26,6 +26,7 @@ TagManager:
   - RifleArm
   - ShotgunArm
   - GL Arm
+  - FrictionCollider
   layers:
   - Default
   - TransparentFX
@@ -58,7 +59,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - NoPlayerCollision
   m_SortingLayers:
   - name: Default
     uniqueID: 0

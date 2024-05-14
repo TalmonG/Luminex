@@ -49,6 +49,17 @@ public class BulletScript : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
+            else if ((collision.CompareTag("Sporefiend") || collision.CompareTag("Juggernaut")))
+            {
+                if (collision.GetComponent<sporefiend>().dead == false)
+                {
+                    Destroy(this.gameObject);
+                }
+
+
+            }
+
+
         }
     }
 
