@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 4.unity
     guid: 6d4233a3cb95d6848a5772c712197645
   - enabled: 1
+    path: Assets/Scenes/Zone1_Level5.unity
+    guid: de1451a173637a1439ee75c5e25ec325
+  - enabled: 1
     path: Assets/Scenes/Options_Audio.unity
     guid: d4e5c6ddbf3222d4a94f7b03cf20de68
   - enabled: 1

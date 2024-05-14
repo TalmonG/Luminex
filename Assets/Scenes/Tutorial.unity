@@ -230,10 +230,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3703610363498172472, guid: c5a547642ef44fc4694f054f6a1f37a0, type: 3}
-      propertyPath: playerScript
-      value: 
-      objectReference: {fileID: 1393838850}
     - target: {fileID: 7337101690396680626, guid: c5a547642ef44fc4694f054f6a1f37a0, type: 3}
       propertyPath: m_Name
       value: OnLaunchGame
