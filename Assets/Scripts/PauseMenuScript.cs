@@ -1,80 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PauseMenuScript : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
+    public GameObject pauseMenu;
 
-    public GameObject pauseMenu , optionsControls , optionsAudio , optionsGraphics , options;
+    public bool isPaused;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        pauseMenu.SetActive(false);
-        optionsControls.SetActive(false);
-        optionsAudio.SetActive(false);
-        optionsGraphics.SetActive(false);
-        options.SetActive(false);
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
+            if (isPaused == false)
+            {
+                Pause();
+                isPaused = true;
+                Debug.Log("You paused the game");
+            }
+            else
+            {
+                Resume();
+                isPaused = false;
+                Debug.Log("You resumed the game");
+            }
         }
     }
 
-    public void onClickResume()
+    void Start()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        isPaused = false;
     }
 
-    public void onClickOptions()
+    public void Pause()
     {
-        pauseMenu.SetActive(false);
-        optionsControls.SetActive(true);
-        optionsAudio.SetActive(false);
-        optionsGraphics.SetActive(false);
-        options.SetActive(true);
-    }
-
-
-    public void onClickControls()
-    {
-        optionsControls.SetActive(true);
-        optionsAudio.SetActive(false);
-        optionsGraphics.SetActive(false);
-    }
-    public void onClickAudio()
-    {
-        optionsControls.SetActive(false);
-        optionsAudio.SetActive(true);
-        optionsGraphics.SetActive(false);
-    }
-
-    public void onClickGraphics()
-    {
-        optionsControls.SetActive(false);
-        optionsAudio.SetActive(false);
-        optionsGraphics.SetActive(true);
-    }
-
-    public void onClickHome()
-    {
+        isPaused = true;
         pauseMenu.SetActive(true);
-        optionsControls.SetActive(false);
-        optionsAudio.SetActive(false);
-        optionsGraphics.SetActive(false);
-        options.SetActive(false);
+        Time.timeScale = 0f;
     }
 
-    public void onClickQuit()
+    public void Resume()
     {
-        Application.Quit();
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
+
+    public void MainMenu()
+    {
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene("StartMenu");
+    }
+
 }

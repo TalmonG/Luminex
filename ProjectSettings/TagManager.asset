@@ -25,6 +25,9 @@ TagManager:
   - ShotgunArm
   - GL Arm
   - Turret
+  - AetheriumCoin
+  - AetheriumText
+  - PauseMenuGameobject
   layers:
   - Default
   - TransparentFX

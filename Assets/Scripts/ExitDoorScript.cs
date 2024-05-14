@@ -45,6 +45,7 @@ public class ExitDoorScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        playerScript.SavePlayerStats();
         if (collision.CompareTag("Player"))
         {
             PlayerinFront = true;

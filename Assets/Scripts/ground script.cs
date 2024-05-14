@@ -41,7 +41,7 @@ public class groundscript : MonoBehaviour
             {
 
 
-                Debug.Log("hitedge");
+                //Debug.Log("hitedge");
 
                 collision.gameObject.GetComponent<EnemyAiScript>().HitCollider = this.gameObject;
                 collision.gameObject.GetComponent<EnemyAiScript>().isChasingPlayer = false;

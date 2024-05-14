@@ -28,7 +28,6 @@ public class PlayerScript : MonoBehaviour
     public int ActiveWeapon = 0;
     Weapon CurrentWeaponScript;
     GameObject MousePosObj;
-    public GameObject PauseMenu;
     bool RotatingClockwise;
     Vector2 RespawnPosition;
     Animator animator;
@@ -39,11 +38,9 @@ public class PlayerScript : MonoBehaviour
     public AudioClip DimensionShiftSound;
     public AudioClip DeathSound;
 
-
+    public DimensionManager dimensionManager;
 
     GameObject HUD;
-
-    int Money;
 
     public int currentLevel;
 
@@ -53,41 +50,174 @@ public class PlayerScript : MonoBehaviour
 
     public bool canGRotate = false;
 
-    void LevelChecker()
+    public int aetheriumCoinCount = 0;
+
+    public void LevelChecker()
     {
-        // Level Restrictions
-        if (currentLevel == -1)
-        {
-            canSwitchDimensions = false;
-        }
-        else if (currentLevel == 0)
-        {
-            canSwitchDimensions = false;
-        }
-        else if (currentLevel == 1)
+        // Retrieve the integer value from PlayerPrefs
+        Debug.Log("A" + currentLevel);
+
+        int currentLevelValue = PlayerPrefs.GetInt("currentLevel");
+        currentLevel = PlayerPrefs.GetInt("currentLevel");
+
+        Debug.Log("D" + currentLevel);
+        //PlayerPrefs.SetInt("currentLevel" ,currentLevel);
+        if (currentLevel == -6)
         {
             canSwitchDimensions = true;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
         }
+        // Credits
+        else if (currentLevel == -5)
+        {
+            canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+        }
+        // Options_Audio
+        else if (currentLevel == -4)
+        {
+            canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+        }
+        // Options_Controls
+        else if (currentLevel == -3)
+        {
+            canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+        }
+        // Options_Graphics
+        else if (currentLevel == -2)
+        {
+            canSwitchDimensions = false;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+        }
+        // HUB Level
+        else if (currentLevel == -1)
+        {
+            canSwitchDimensions = true;
+            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+        }
+        // Tutorial
+        else if (currentLevel == 0 && canSwitchDimensions == true)
+        {
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionTutorial();// Enable Normal
+                dimensionManager.DisableInvertedDimensionTutorial();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normal");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionTutorial();// Enable Normal
+                dimensionManager.EnableInvertedDimensionTutorial();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted");
+            }
+
+
+        }
+        // Level 1
+        else if (currentLevel == 1 && canSwitchDimensions == true)
+        {
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelOne();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelOne();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL TWO");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelOne();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelOne();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level TWO");
+            }
+        }
+        // Level 2
         else if (currentLevel == 2)
         {
-            canSwitchDimensions = true;
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelTwo();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelTwo();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL TWO");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelTwo();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelTwo();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level TWO");
+            }
         }
+        // Level 3
         else if (currentLevel == 3)
         {
-            canSwitchDimensions = true;
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelThree();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelThree();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL Three");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelThree();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelThree();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level Three");
+            }
         }
+        // Level 4
         else if (currentLevel == 4)
         {
-            canSwitchDimensions = true;
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelFour();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelFour();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL FOUR");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelFour();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelFour();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level FOUR");
+            }
         }
+        // Level 5
         else if (currentLevel == 5)
         {
-            canSwitchDimensions = true;
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelFive();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelFive();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL FIVE");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelFive();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelFive();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level FIVE");
+            }
         }
+        // Errors
         else
         {
             Debug.Log("Level Detectoin Error. Level: " + currentLevel + " is being detected.");
-            Debug.Log("Likely need to add an incremental system in SceneManagerscript to increment 'level' variable in player script. Hope that helps");
+            Debug.Log("Likely need to add an incremental system in SceneManagerscript to increment 'currentLevel' variable in player script. Hope that helps");
         }
     }
 
@@ -110,6 +240,9 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        dimensionManager = GameObject.FindWithTag("DimensionManager").GetComponent<DimensionManager>();
+
         // DontDestroyOnLoad(this.gameObject);
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
@@ -142,11 +275,6 @@ public class PlayerScript : MonoBehaviour
         GlobalReferenceScript.instance.Health.value = Health;
         GlobalReferenceScript.instance.Oxygen.value = Oxygen;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = 0;
-            PauseMenu.SetActive(true);
-        }
 
 
 
@@ -190,7 +318,7 @@ public class PlayerScript : MonoBehaviour
             }
 
             // Dimension Switch
-            if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == true && canSwitchDimensions == true)
             {
                 if (DimensionCharge > 0)
                 {
@@ -205,8 +333,12 @@ public class PlayerScript : MonoBehaviour
 
                     audioSource2.Play();
                 }
+                else
+                {
+                    Debug.Log("NOT ENOUGH POWER");
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == false/* && canSwitchDimensions == true*/)
+            else if (Input.GetKeyDown(KeyCode.LeftShift) && isNormalDimension == false && canSwitchDimensions == true)
             {
                 isNormalDimension = true;
 
@@ -217,7 +349,8 @@ public class PlayerScript : MonoBehaviour
                 audioSource2.Play();
 
             }
-            Debug.Log(DimensionCharge);
+
+            //Debug.Log(DimensionCharge);
             if (isNormalDimension)
             {
 
@@ -506,12 +639,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    public void onClickResume()
-    {
-        Debug.Log("hello");
-        Time.timeScale = 1;
-        PauseMenu.SetActive(false);
-    }
+ 
 
     public void DetectCrushed()
     {
@@ -548,8 +676,8 @@ public class PlayerScript : MonoBehaviour
         PlayerPrefs.SetInt("DimensionCharge", DimensionCharge);
         PlayerPrefs.SetFloat("DimensionDeviceChargeRate", DimensionDeviceChargeRate);
 
-        //SAVE MONEY
-        PlayerPrefs.SetInt("Money", Money);
+        //SAVE aetheriumCoinCount
+        PlayerPrefs.SetInt("aetheriumCoinCount", aetheriumCoinCount);
 
         PlayerPrefs.SetFloat("XPosition", transform.position.x);
         PlayerPrefs.SetFloat("YPosition", transform.position.y);
@@ -583,8 +711,8 @@ public class PlayerScript : MonoBehaviour
             DimensionDeviceChargeRate = PlayerPrefs.GetFloat("DimensionDeviceChargeRate");
             DimensionCharge = PlayerPrefs.GetInt("DimensionCharge");
 
-            //SET MONEY
-            Money = PlayerPrefs.GetInt("Money");
+            //SET aetheriumCoinCount
+            aetheriumCoinCount = PlayerPrefs.GetInt("aetheriumCoinCount");
 
             RespawnPosition = new Vector2(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"));
 
@@ -603,8 +731,8 @@ public class PlayerScript : MonoBehaviour
             isNormalDimension = true;
             DimensionCharge = 6;
 
-            //SET MONEY
-            Money = 0;
+            //SET aetheriumCoinCount
+            aetheriumCoinCount = 0;
         }
     }
 

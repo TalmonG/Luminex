@@ -59,7 +59,7 @@ public class Turret : MonoBehaviour
 
             // if (hit.transform.gameObject.CompareTag("Player"))
             //  {
-            Debug.Log("rayhit");
+            //Debug.Log("rayhit");
 
             lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
             lookrotation.eulerAngles += Vector3.forward * -90;

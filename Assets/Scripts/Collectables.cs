@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum CollectableType
 {
-    Ammo,
-    BlueCoin,
+    //Ammo,
+    AetheriumCoin,
     DoubleDamage,
     Fuel,
     JetPack,
@@ -16,11 +17,17 @@ public enum CollectableType
 public class Collectables : MonoBehaviour
 {
     // Referencing
-    public Weapon weapon;
+    //public Weapon weapon;
+    public PlayerScript playerScript;
+
+    public GameObject Player;
+    GameObject canvas;
+
+    public TextMeshProUGUI aetheriumText;
 
     public CollectableType collectableType;
 
-    public void AddAmmoToCurrentWeapon()
+    /*public void AddAmmoToCurrentWeapon()
     {
         if (weapon != null)
         {
@@ -31,13 +38,50 @@ public class Collectables : MonoBehaviour
             Destroy(gameObject);
 
         }
+    }*/
+
+    public void AddAetheriumCoin()
+    {
+        // Increment the count of aetherium coins
+        playerScript.aetheriumCoinCount++;
+
+        // Update the text to display "Aetherium: <count>"
+        aetheriumText.text = "Aetherium: " + playerScript.aetheriumCoinCount.ToString();
+
+        Debug.Log("Aetherium count updated: " + playerScript.aetheriumCoinCount);
+        playerScript.SavePlayerStats();
+        Destroy(this.gameObject);
     }
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //canvas = GameObject.Find("Canvas");
+
+        Player = GameObject.FindWithTag("Player");
+
+        //aetheriumText = GameObject.FindWithTag("AetheriumText").GetComponent<TextMeshProUGUI>();
+        Player = GameObject.FindWithTag("Player");
+        GameObject aetheriumTextObject = GameObject.FindWithTag("AetheriumText");
+
+        aetheriumText = aetheriumTextObject.GetComponent<TextMeshProUGUI>();
+
+        /*if (aetheriumTextObject != null)
+        {
+            aetheriumText = aetheriumTextObject.GetComponent<TextMeshProUGUI>();
+            Debug.Log("AetheriumText found: " + aetheriumTextObject.name);
+        }
+        else
+        {
+            Debug.LogError("AetheriumText not found!");
+        }*/
+
+
+
+        // aetheriumText = canvas.transform.GetChild(0).gameObject;
+
     }
 
     // Update is called once per frame
@@ -46,9 +90,12 @@ public class Collectables : MonoBehaviour
         
     }
 
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        AddAmmoToCurrentWeapon();
+        if (collision.CompareTag("Player"))
+        {
+            AddAetheriumCoin();
+        }
     }
 }

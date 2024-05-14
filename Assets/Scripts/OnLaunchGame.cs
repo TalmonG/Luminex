@@ -6,10 +6,18 @@ using UnityEngine;
 public class OnLaunchGame : MonoBehaviour
 {
     public PlayerScript playerScript;
+    public PauseMenu pauseMenuScript;
 
     void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoadedTwo;
+    }
+
+    void Start()
+    {
+        playerScript.SetPlayerPrefs();
+        pauseMenuScript.isPaused = false;
+        pauseMenuScript.pauseMenu.SetActive(false);
     }
 
     void OnDestroy()
@@ -24,6 +32,30 @@ public class OnLaunchGame : MonoBehaviour
         {
             // playerScript.currentLevel = -15;
             PlayerPrefs.SetInt("currentLevel", -25);
+        }
+        else if (scene.name.Equals("HUB Level"))
+        {
+            playerScript.isNormalDimension = true;
+            playerScript.canSwitchDimensions = false;
+            playerScript.currentLevel = -1;
+            PlayerPrefs.SetInt("currentLevel", -1);
+            PlayerPrefs.SetInt("currentLevel", -1);
+
+            // Check if playerScript is assigned
+            if (playerScript != null)
+            {
+                // Set currentLevel
+                playerScript.currentLevel = -1;
+                PlayerPrefs.SetInt("currentLevel", playerScript.currentLevel);
+
+                // Verify the value has been set
+                Debug.Log("Current Level Now Set To " + PlayerPrefs.GetInt("currentLevel"));
+            }
+            else
+            {
+                Debug.LogError("PlayerScript not assigned to OnLaunchGame!");
+            }
+
         }
         else if (scene.name.Equals("Tutorial"))
         {
