@@ -18,4 +18,9 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("StartMenu");
         audioSource.Play();
     }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 }
