@@ -43,10 +43,10 @@ public class groundscript : MonoBehaviour
             
                 Debug.Log("hitedge");
 
-                juggernautscript.HitCollider = this.gameObject;
-                juggernautscript.isChasingPlayer = false;
-                juggernautscript.ReachedEdge = true;
-                juggernautscript.left_right *= -1;
+                collision.gameObject.GetComponent<EnemyAiScript>().HitCollider = this.gameObject;
+                collision.gameObject.GetComponent<EnemyAiScript>().isChasingPlayer = false;
+                collision.gameObject.GetComponent<EnemyAiScript>().ReachedEdge = true;
+                collision.gameObject.GetComponent<EnemyAiScript>().left_right *= -1;
 
             }
 

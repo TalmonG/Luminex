@@ -4,25 +4,36 @@ using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
+
+    GameObject Player;
     public GameObject Pistol;
     public GameObject BR;
     public GameObject Shotgun;
     public GameObject GL;
-
+    GameObject Text;
+    bool infront;
+    bool activated;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Text = transform.GetChild(0).gameObject;
+        activated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(PlayerPrefs.GetInt("PistolAmmo"));
+        // Debug.Log(PlayerPrefs.GetInt("PistolAmmo"));
 
-       // Debug.Log( BR.GetComponent<Weapon>().Ammo[1,0]);
+        // Debug.Log( BR.GetComponent<Weapon>().Ammo[1,0]);#
+
+        if (infront && Input.GetKeyDown(KeyCode.E) && !activated)
+        {
+            StartCoroutine(SaveCheckpoint());
+        }
     }
 
 
@@ -32,21 +43,8 @@ public class CheckpointScript : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                collision.GetComponent<PlayerScript>().SavePlayerStats();
 
-
-
-                // collision.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Weapon>().SaveWeaponPrefs();
-                // collision.transform.GetChild(0).transform.GetChild(1).gameObject.GetComponent<Weapon>().SaveWeaponPrefs();
-                // collision.transform.GetChild(0).transform.GetChild(2).gameObject.GetComponent<Weapon>().SaveWeaponPrefs();
-                // collision.transform.GetChild(0).transform.GetChild(3).gameObject.GetComponent<Weapon>().SaveWeaponPrefs();#
-
-                Pistol.GetComponent<Weapon>().SaveWeaponPrefs();
-                BR.GetComponent<Weapon>().SaveWeaponPrefs();
-                Shotgun.GetComponent<Weapon>().SaveWeaponPrefs();
-                GL.GetComponent<Weapon>().SaveWeaponPrefs();
-
-
+                infront = true;
               
 
             }
@@ -56,8 +54,37 @@ public class CheckpointScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+
+                infront = false;
+
+
+            }
 
 
 
+        }
+    }
+
+    IEnumerator SaveCheckpoint()
+    {
+        activated = true;
+        Text.SetActive(true);
+        Player.GetComponent<PlayerScript>().SavePlayerStats();
+
+        Pistol.GetComponent<Weapon>().SaveWeaponPrefs();
+        BR.GetComponent<Weapon>().SaveWeaponPrefs();
+        Shotgun.GetComponent<Weapon>().SaveWeaponPrefs();
+        GL.GetComponent<Weapon>().SaveWeaponPrefs();
+
+        yield return new WaitForSeconds(3);
+
+        Text.SetActive(false);
+    }
 
 }

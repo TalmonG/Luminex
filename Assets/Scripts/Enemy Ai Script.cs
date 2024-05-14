@@ -8,10 +8,10 @@ using UnityEngine;
 //[RequireComponent(typeof(BoxCollider2D))]
 public class EnemyAiScript : MonoBehaviour
 {
+
     GameObject player;
-    public List<Transform> points;
-    public int nextID;
-    int idchangeValue = 1;
+    SpriteRenderer sprite;
+    Animator animator;
     public float speed = 2;
     public int left_right = 1;
     public bool isChasingPlayer = false;
@@ -26,50 +26,38 @@ public class EnemyAiScript : MonoBehaviour
     public GameObject bulletParent;
     private float distance;
     bool seenplayer;
+    Rigidbody2D rb;
+    public bool dead;
 
+    public bool InRangeOfMelee;
+    bool alerted;
+    bool HasAttacked;
+
+    AudioSource audioSource;
+    public AudioClip DeathGrowl;
+    public AudioClip AlertGrowl;
+    public AudioClip SlashSound;
+    int i = 0;
     // Start is called before the first frame update
 
-    private void Reset()
-    {
-        Init();
-
-    }
-    private void Init()
-    {
-        GetComponent<BoxCollider2D>().isTrigger = true;
-        GameObject root = new GameObject(name + "_Root");
-        root.transform.position = transform.position;
-        transform.SetParent(root.transform);
-        GameObject waypoints = new GameObject("Waypoints");
-        waypoints.transform.SetParent(root.transform);
-        waypoints.transform.position = root.transform.position;
-        GameObject p1 = new GameObject("Point1"); p1.transform.SetParent(waypoints.transform); p1.transform.position = Vector3.zero;
-        GameObject p2 = new GameObject("Point2"); p2.transform.SetParent(waypoints.transform); p2.transform.position = Vector3.zero;
-        points = new List<Transform>();
-        points.Add(p1.transform);
-        points.Add(p2.transform);
 
 
-
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("sadsad");
-        if (collision.transform.CompareTag("PlayerBullet"))
+        if (collision.transform.CompareTag("PlayerBullet") && !dead)
         {
-            health -= 10;
+            StartCoroutine(Damage(10));
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("PlayerBullet"))
+        if (collision.transform.CompareTag("PlayerBullet") && !dead)
         {
-            health -= 10;
+            StartCoroutine(Damage(5));
+            i += 5;
         }
-        if (health == 0)
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 
 
@@ -79,117 +67,201 @@ public class EnemyAiScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
+        rb = GetComponent<Rigidbody2D>();
+
+        animator = GetComponent<Animator>();
+
+        sprite = GetComponent<SpriteRenderer>();
+
+        audioSource = GetComponent<AudioSource>();
+
         TargetCollider = Colliders[1];
+
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HitCollider != null)
+
+        if (!dead)
         {
-            if (HitCollider.CompareTag("LeftCollider"))
+
+            if (HitCollider != null)
             {
-                TargetCollider = Colliders[1];
+                if (HitCollider.CompareTag("LeftCollider"))
+                {
+                    TargetCollider = Colliders[1];
+                }
+                if (HitCollider.CompareTag("RightCollider"))
+                {
+                    TargetCollider = Colliders[0];
+                }
             }
-            if (HitCollider.CompareTag("RightCollider"))
+
+           // if (rb.velocity.x != 0)
+               // animator.SetInteger("Velocity", 1);
+
+            if (rb.velocity.x > 0)
             {
-                TargetCollider = Colliders[0];
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+
+            }
+            Debug.Log(TargetCollider);
+
+
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+
+            if (distance < 1 && playerinrange)
+            {
+                seenplayer = true;
+                isChasingPlayer = true;
+
+                alerted = true;
+
+            }
+
+            if (alerted)
+            {
+                //audioSource.clip = AlertGrowl;
+                //  audioSource.Play();
+                // alerted=false;
+            }
+
+            if (!playerinrange)
+            {
+                isChasingPlayer = false;
+            }
+
+            //Debug.Log(TargetCollider.name);
+
+            if (isChasingPlayer)
+            {
+                chaseplayer();
+
+            }
+            if (ReachedEdge)
+            {
+                patrol();
+                ReachedEdge = false;
+            }
+
+            if (!isChasingPlayer) { patrol(); }
+
+
+            if (health <= 0)
+            {
+                Death();
+            }
+            if (InRangeOfMelee && !HasAttacked)
+            {
+                HasAttacked = true;
+                StartCoroutine(MeleeAttack());
+            }
+
+
+        }
+
+
+        if (dead)
+        {
+            if (GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>() != null)
+            {
+                Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>(), true);
+            }
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
+
+
+            if (Vector3.Distance(transform.position, player.transform.position) > 20)
+            {
+                Destroy(this.gameObject);
             }
         }
 
-        //Debug.Log(HitCollider.gameObject.name);
 
-        Debug.Log(playerinrange);
-
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-
-        if (distance < 4 && playerinrange)
-        {
-            seenplayer = true;
-            isChasingPlayer = true;
-
-        }
-
-        if (!playerinrange)
-        {
-            isChasingPlayer = false;
-        }
-
-        Debug.Log(TargetCollider.name);
-
-        if (isChasingPlayer) {
-            chaseplayer();
-
-        }
-        if (ReachedEdge)
-        {
-            patrol();
-            ReachedEdge = false;
-        }
-
-        if (!isChasingPlayer) { patrol(); }
-
-
-
-        // else { MoveToNextPoint(); }
-    }
-    
-    
-        
-    
-
-
-
-    void MoveToNextPoint()
-    {/*
-        Transform goalPoint = points[nextID];
-        if (goalPoint.transform.position.x > transform.position.x)
-            transform.localScale = new Vector3(-1, 1, 1);
-        else
-            transform.localScale =new Vector3(1, 1, 1);
-        transform.position = Vector2.MoveTowards(transform.position,goalPoint.position,speed*Time.deltaTime);
-        if (Vector2.Distance(transform.position, goalPoint.position)<0.2f)
-        {
-            if (nextID == points.Count - 1)
-                idchangeValue = -1;
-            if (nextID == 0)
-                idchangeValue = 1;
-            nextID += idchangeValue;
-        }
-        */
     }
 
-        
-    
+
+
+
     void chaseplayer()
     {
-        
-        Vector2 direction = player.transform.position - transform.position;
-        //transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-        
-        
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        
-        
+
+        speed = 2.3f;
+
+        float Xdirection = player.transform.position.x - transform.position.x;
+
+
+        rb.velocity = new Vector3(Xdirection * speed, rb.velocity.y, 0);
+
+
     }
-   
+
 
     void patrol()
     {
         if (TargetCollider.CompareTag("RightCollider"))
         {
 
-            
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            rb.velocity = new Vector3(1 * speed, rb.velocity.y, 0);
+
+            // transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
 
         if (TargetCollider.CompareTag("LeftCollider"))
         {
+            rb.velocity = new Vector3(-1 * speed, rb.velocity.y, 0);
 
-            
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            // transform.Translate(Vector2.left * speed * Time.deltaTime);
         }
+    }
+
+
+
+    IEnumerator MeleeAttack()
+    {
+        animator.SetTrigger("Slash");
+
+        audioSource.clip = SlashSound;
+        if (audioSource.isPlaying == false)
+            audioSource.Play();
+
+        StartCoroutine(player.GetComponent<PlayerScript>().Damage(10));
+
+
+        yield return new WaitForSeconds(1.5f);
+        HasAttacked = false;
+
+    }
+
+    void Death()
+    {
+        dead = true;
+
+        animator.SetBool("Dead", true);
+
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
+
+
+    }
+
+    public IEnumerator Damage(int damage)
+    {
+        health -= damage;
+
+        sprite.color = Color.red;
+
+        yield return new WaitForSeconds(0.3f);
+
+        sprite.color = Color.white;
+
+        yield return null;
     }
 
 }

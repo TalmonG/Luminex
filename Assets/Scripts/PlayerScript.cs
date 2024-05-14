@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     GameObject MousePosObj;
     public GameObject PauseMenu;
     bool RotatingClockwise;
-
+    Vector2 RespawnPosition;
     Animator animator;
     public AudioSource audioSource1;
     public AudioSource audioSource2;
@@ -346,41 +346,7 @@ public class PlayerScript : MonoBehaviour
             }
 
 
-        }
-        else { cam.transform.position = transform.position + Vector3.forward * -10; cam.orthographicSize = 3; }
-
-        if (Grotate)
-        {
-            int RotationSpeed = 500;
-
-            if (RotatingClockwise && degrees < 180)
-            {
-                transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
-                degrees += RotationSpeed * Time.deltaTime;
-
-                if (degrees >= 180)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
-                    Grotate = false;
-                    degrees = 0;
-                }
-
-            }
-            else if (degrees > -180)
-            {
-                transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
-                degrees -= RotationSpeed * Time.deltaTime;
-
-                if (!RotatingClockwise && degrees <= -180)
-                {
-                    transform.rotation = Quaternion.identity;
-                    Grotate = false;
-                    degrees = 0;
-                }
-
-            }
-            else { Grotate = false; degrees = 0; }
-        }
+       
 
         cam.transform.rotation = transform.rotation;
 
@@ -389,8 +355,11 @@ public class PlayerScript : MonoBehaviour
 
         MousePos.z = 0;
 
-        Vector2 targetpos = MousePos - Arm.transform.position;
-
+        Vector2 targetpos= Vector2.zero;
+        if (Arm != null)
+        {
+             targetpos = MousePos - Arm.transform.position;
+        }
         LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
         LookRotation.eulerAngles += Vector3.forward * 90;
 
@@ -483,7 +452,43 @@ public class PlayerScript : MonoBehaviour
         else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
-        //Debug.Log(Oxygen);
+            //Debug.Log(Oxygen);
+        }
+        else { cam.transform.position = transform.position + Vector3.forward * -10; cam.orthographicSize = 3; }
+
+
+        if (Grotate)
+        {
+            int RotationSpeed = 500;
+
+            if (RotatingClockwise && degrees < 180)
+            {
+                transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
+                degrees += RotationSpeed * Time.deltaTime;
+
+                if (degrees >= 180)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                    Grotate = false;
+                    degrees = 0;
+                }
+
+            }
+            else if (degrees > -180)
+            {
+                transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
+                degrees -= RotationSpeed * Time.deltaTime;
+
+                if (!RotatingClockwise && degrees <= -180)
+                {
+                    transform.rotation = Quaternion.identity;
+                    Grotate = false;
+                    degrees = 0;
+                }
+
+            }
+            else { Grotate = false; degrees = 0; }
+        }
 
 
     }
@@ -535,6 +540,9 @@ public class PlayerScript : MonoBehaviour
         //SAVE MONEY
         PlayerPrefs.SetInt("Money", Money);
 
+        PlayerPrefs.SetFloat("XPosition",transform.position.x);
+        PlayerPrefs.SetFloat("YPosition", transform.position.y);
+
         PlayerPrefs.Save();
 
 
@@ -552,12 +560,12 @@ public class PlayerScript : MonoBehaviour
         if (!isNewGame)
         {
             //SET HEALTH
-            Health = PlayerPrefs.GetInt("PlayerHealth");
-            MaxHealth = PlayerPrefs.GetInt("PlayerMaxHealth");
+            Health = PlayerPrefs.GetFloat("PlayerHealth");
+            MaxHealth = PlayerPrefs.GetFloat("PlayerMaxHealth");
 
             //SET OXYGEN
-            Oxygen = PlayerPrefs.GetInt("Oxygen");
-            MaxOxygen = PlayerPrefs.GetInt("MaxOxygen");
+            Oxygen = PlayerPrefs.GetFloat("Oxygen");
+            MaxOxygen = PlayerPrefs.GetFloat("MaxOxygen");
 
             //SET Dimension
             isNormalDimension = (PlayerPrefs.GetInt("Dimension") != 0);
@@ -565,6 +573,8 @@ public class PlayerScript : MonoBehaviour
 
             //SET MONEY
             Money = PlayerPrefs.GetInt("Money");
+
+            RespawnPosition = new Vector2(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"));
 
         }
         else
@@ -592,6 +602,8 @@ public class PlayerScript : MonoBehaviour
 
         animator.SetBool("Dead", true);
         animator.SetTrigger("Died");
+
+        audioSource1.Stop();
 
         audioSource2.clip = DeathSound;
         audioSource2.Play();

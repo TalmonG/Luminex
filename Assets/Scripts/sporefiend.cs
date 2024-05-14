@@ -42,7 +42,6 @@ public class sporefiend : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("sadsad");
         if (collision.transform.CompareTag("PlayerBullet")&&!dead)
         {
             StartCoroutine(Damage(10));
@@ -83,7 +82,7 @@ public class sporefiend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(i);
+  
         if (!dead)
         {
 
@@ -169,10 +168,12 @@ public class sporefiend : MonoBehaviour
 
         if (dead)
         {
-           
+            if (GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>()!=null)
+            {
+                Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>(), true);
+            }
             Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), player.GetComponent<Collider2D>(), true);
-            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("FrictionCollider").gameObject.GetComponent<Collider2D>(), true);
-     
+           
 
             if (Vector3.Distance(transform.position, player.transform.position) > 20)
             {
