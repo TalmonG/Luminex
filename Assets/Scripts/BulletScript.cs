@@ -33,7 +33,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position,Player.transform.position)>50){ Destroy(this.gameObject); }
+        if(Vector3.Distance(transform.position,Player.transform.position)>20){ Destroy(this.gameObject); }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,13 +66,35 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      
+        if ((collision.gameObject.CompareTag("Sporefiend") || collision.gameObject.CompareTag("Juggernaut")))
+        {
+            if (collision.gameObject.GetComponent<sporefiend>().dead == false)
+            {
+
+                GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+
+                Explosion.GetComponent<AudioSource>().Play();
+
+
+                Destroy(Explosion, 0.8f);
+                Destroy(this.gameObject);
+            }
+
+        }
+        else
+        {
             StartCoroutine(Life());
-        
+        }
+
+
+
     }
 
     IEnumerator Life()
     {
+
+
+
         yield return new WaitForSeconds(lifetime);
         GameObject Explosion=Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 

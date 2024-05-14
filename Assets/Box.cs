@@ -39,15 +39,9 @@ public class Box : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (playerinrange)
-        {
-            
-            timer += Time.deltaTime;
-            if (timer > 1)
-            {
-                timer = 0;
-                shoot();
-            }
-        }
+
+        transform.parent.GetComponent<EnemyAiScript>().InRangeOfShoot = playerinrange;
+
+     
     }
 }

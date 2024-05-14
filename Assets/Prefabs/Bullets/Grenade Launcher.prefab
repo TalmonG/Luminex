@@ -4929,6 +4929,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  gravityScale: 2
+  gravityScale: 1
   BulletImpactEffect: {fileID: 9185412532042347259, guid: 2721bc6776932c440ac5546df3a6aac0, type: 3}
   ExplosionPrefab: {fileID: 4816150491124350697, guid: 99d01c577035b8948b90b2c587c9e205, type: 3}

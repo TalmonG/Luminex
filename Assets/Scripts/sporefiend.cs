@@ -8,7 +8,6 @@ public class sporefiend : MonoBehaviour
 
     GameObject player;
     SpriteRenderer sprite;
-    public int nextID;
     Animator animator;
     public float speed = 2;
     public int left_right = 1;
@@ -19,9 +18,6 @@ public class sporefiend : MonoBehaviour
     public GameObject TargetCollider;
     public GameObject HitCollider;
     public GameObject[] Colliders;
-    public float ShootingRange;
-    public GameObject bullet;
-    public GameObject bulletParent;
     private float distance;
     bool seenplayer;
     Rigidbody2D rb;
@@ -115,7 +111,7 @@ public class sporefiend : MonoBehaviour
 
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
-            if (distance < 4 && playerinrange)
+            if (distance < 5 && playerinrange)
             {
                 seenplayer = true;
                 isChasingPlayer = true;

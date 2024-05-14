@@ -23,6 +23,7 @@ public class EnemyAiScript : MonoBehaviour
     public GameObject[] Colliders;
     public float ShootingRange;
     public GameObject bullet;
+    public GameObject bulletSpawnPos;
     public GameObject bulletParent;
     private float distance;
     bool seenplayer;
@@ -30,8 +31,10 @@ public class EnemyAiScript : MonoBehaviour
     public bool dead;
 
     public bool InRangeOfMelee;
+    public bool InRangeOfShoot;
     bool alerted;
     bool HasAttacked;
+    bool HasShot;
 
     AudioSource audioSource;
     public AudioClip DeathGrowl;
@@ -88,84 +91,98 @@ public class EnemyAiScript : MonoBehaviour
         if (!dead)
         {
 
-            if (HitCollider != null)
+            if (InRangeOfShoot)
             {
-                if (HitCollider.CompareTag("LeftCollider"))
+                rb.velocity = new Vector3(0,rb.velocity.y,0);
+                if (!HasShot)
                 {
-                    TargetCollider = Colliders[1];
-                }
-                if (HitCollider.CompareTag("RightCollider"))
-                {
-                    TargetCollider = Colliders[0];
+                    HasShot = true;
+                    StartCoroutine(Shoot());
                 }
             }
-
-           // if (rb.velocity.x != 0)
-               // animator.SetInteger("Velocity", 1);
-
-            if (rb.velocity.x > 0)
+            else
             {
-                transform.localScale = new Vector3(2, 2, 1);
+
+                if (HitCollider != null)
+                {
+                    if (HitCollider.CompareTag("LeftCollider"))
+                    {
+                        TargetCollider = Colliders[1];
+                    }
+                    if (HitCollider.CompareTag("RightCollider"))
+                    {
+                        TargetCollider = Colliders[0];
+                    }
+                }
+
+                // if (rb.velocity.x != 0)
+                // animator.SetInteger("Velocity", 1);
+
+                if (rb.velocity.x > 0)
+                {
+                    transform.localScale = new Vector3(2, 2, 1);
+                }
+                else if (rb.velocity.x < 0)
+                {
+                    transform.localScale = new Vector3(-2, 2, 1);
+
+                }
+                Debug.Log(TargetCollider);
+
+
+                float distance = Vector2.Distance(transform.position, player.transform.position);
+
+                if (distance < 1 && playerinrange)
+                {
+                    seenplayer = true;
+                    isChasingPlayer = true;
+
+                    alerted = true;
+
+                }
+
+                if (alerted)
+                {
+                    //audioSource.clip = AlertGrowl;
+                    //  audioSource.Play();
+                    // alerted=false;
+                }
+
+                if (!playerinrange)
+                {
+                    isChasingPlayer = false;
+                }
+
+                //Debug.Log(TargetCollider.name);
+
+                if (isChasingPlayer)
+                {
+                    chaseplayer();
+
+                }
+                if (ReachedEdge)
+                {
+                    patrol();
+                    ReachedEdge = false;
+                }
+
+                if (!isChasingPlayer) { patrol(); }
+
+
+                if (health <= 0)
+                {
+                    Death();
+                }
+                if (InRangeOfMelee && !HasAttacked)
+                {
+                    HasAttacked = true;
+                    StartCoroutine(MeleeAttack());
+                }
             }
-            else if (rb.velocity.x < 0)
-            {
-                transform.localScale = new Vector3(-2, 2, 1);
-
-            }
-            Debug.Log(TargetCollider);
-
-
-            float distance = Vector2.Distance(transform.position, player.transform.position);
-
-            if (distance < 1 && playerinrange)
-            {
-                seenplayer = true;
-                isChasingPlayer = true;
-
-                alerted = true;
-
-            }
-
-            if (alerted)
-            {
-                //audioSource.clip = AlertGrowl;
-                //  audioSource.Play();
-                // alerted=false;
-            }
-
-            if (!playerinrange)
-            {
-                isChasingPlayer = false;
-            }
-
-            //Debug.Log(TargetCollider.name);
-
-            if (isChasingPlayer)
-            {
-                chaseplayer();
-
-            }
-            if (ReachedEdge)
-            {
-                patrol();
-                ReachedEdge = false;
-            }
-
-            if (!isChasingPlayer) { patrol(); }
-
-
-            if (health <= 0)
-            {
-                Death();
-            }
-            if (InRangeOfMelee && !HasAttacked)
-            {
-                HasAttacked = true;
-                StartCoroutine(MeleeAttack());
-            }
-
 
         }
+
+       
 
 
         if (dead)
@@ -222,7 +239,22 @@ public class EnemyAiScript : MonoBehaviour
     }
 
 
+    IEnumerator Shoot()
+    {
+        Vector3 BulletDirection = player.transform.position - transform.position;
 
+        Quaternion BulletRotation = Quaternion.LookRotation(Vector3.forward, BulletDirection);
+
+        BulletRotation.eulerAngles += Vector3.forward*90;
+
+        Instantiate(bullet, bulletSpawnPos.transform.position, BulletRotation);
+
+        yield return new WaitForSeconds(0.7f);
+
+        HasShot = false;
+
+        yield return null;  
+    }
     IEnumerator MeleeAttack()
     {
         animator.SetTrigger("Slash");
