@@ -30,10 +30,14 @@ public class PlayerScript : MonoBehaviour
     GameObject MousePosObj;
     //public GameObject PauseMenu;
     bool RotatingClockwise;
-
+    Vector2 RespawnPosition;
     Animator animator;
-    AudioSource audioSource;
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
     public AudioClip BreathingSound;
+    public AudioClip GravityShiftSound;
+    public AudioClip DimensionShiftSound;
+    public AudioClip DeathSound;
 
     // Referencing
     public DimensionManager dimensionManager;
@@ -230,6 +234,10 @@ public class PlayerScript : MonoBehaviour
     public bool damaged;
     int DimensionCharge;
 
+    bool isNewGame=false;
+
+    bool CantBreathe;
+
     float DimensionDeviceChargeRate;
 
     // Start is called before the first frame update
@@ -239,6 +247,7 @@ public class PlayerScript : MonoBehaviour
 
         //DontDestroyOnLoad(this.gameObject); //-- its adding multiple players to scenes and giving errors
         //Debug.Log("Check this error, its causeing player spawning issues, canvas and more");
+       // DontDestroyOnLoad(this.gameObject);
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         BulletSpawnPos = transform.GetChild(0).GetChild(1).gameObject;
@@ -263,7 +272,22 @@ public class PlayerScript : MonoBehaviour
         //DontDestroyOnLoad(GameObject.Find("HUDCanvas"));
 
         SetPlayerPrefs();
+        animator = GetComponent<Animator>();
+
+        HUD = GameObject.FindGameObjectWithTag("HUDCanvas");
+
+        death = false;
+
+        isNormalDimension = true;
+
+        //DontDestroyOnLoad(GameObject.Find("Canvas"));
+
+        SetPlayerPrefs();
+
+        
     }
+    
+
 
     // Update is called once per frame
     void Update()
@@ -304,6 +328,9 @@ public class PlayerScript : MonoBehaviour
             LevelChecker();
         }
 
+       
+        
+       
         if (!death)
         {
             GlobalReferenceScript.instance.Health.value = Health;
@@ -319,9 +346,9 @@ public class PlayerScript : MonoBehaviour
 
                 Oxygen = Mathf.Clamp(Oxygen, 0, 100);
 
-                if (!audioSource.isPlaying)
+                if (!audioSource1.isPlaying)
                 {
-                    audioSource.Play();
+                    audioSource1.Play();
                 }
             }
             else
@@ -329,7 +356,7 @@ public class PlayerScript : MonoBehaviour
                 Oxygen += (Time.deltaTime * 12);
 
                 Oxygen = Mathf.Clamp(Oxygen, 0, 100);
-                audioSource.Stop();
+                audioSource1.Stop();
             }
 
             if (Oxygen <= 0)
@@ -337,6 +364,35 @@ public class PlayerScript : MonoBehaviour
                 Health -= Time.deltaTime * 15;
             }
 
+            // Dimension Switch
+            if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == true /*&& canSwitchDimensions == true*/)
+            {
+                if (DimensionCharge > 0)
+                {
+                    isNormalDimension = false;
+                    //  DimensionDeviceChargeRate = 0;
+                    DimensionCharge--;
+                    CantBreathe = true;
+                    LevelChecker();
+
+
+                    audioSource2.clip = DimensionShiftSound;
+
+                    audioSource2.Play();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.F) && isNormalDimension == false/* && canSwitchDimensions == true*/)
+            {
+                isNormalDimension = true;
+
+                CantBreathe = false;
+                LevelChecker();
+
+                audioSource2.clip = DimensionShiftSound;
+                audioSource2.Play();
+
+            }
+            Debug.Log(DimensionCharge);
             if (isNormalDimension)
             {
                 DimensionDeviceChargeRate += Time.deltaTime / 4;
@@ -395,6 +451,10 @@ public class PlayerScript : MonoBehaviour
                 Grotate = true;
                 RotatingClockwise = !RotatingClockwise;
 
+                audioSource2.clip = GravityShiftSound;
+
+                audioSource2.Play();
+
                 i *= -1;
             }
 
@@ -451,41 +511,7 @@ public class PlayerScript : MonoBehaviour
             }
 
 
-        }
-        else { cam.transform.position = transform.position + Vector3.forward * -10; cam.orthographicSize = 3; }
-
-        if (Grotate)
-        {
-            int RotationSpeed = 500;
-
-            if (RotatingClockwise && degrees < 180)
-            {
-                transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
-                degrees += RotationSpeed * Time.deltaTime;
-
-                if (degrees >= 180)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
-                    Grotate = false;
-                    degrees = 0;
-                }
-
-            }
-            else if (degrees > -180)
-            {
-                transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
-                degrees -= RotationSpeed * Time.deltaTime;
-
-                if (!RotatingClockwise && degrees <= -180)
-                {
-                    transform.rotation = Quaternion.identity;
-                    Grotate = false;
-                    degrees = 0;
-                }
-
-            }
-            else { Grotate = false; degrees = 0; }
-        }
+       
 
         cam.transform.rotation = transform.rotation;
 
@@ -494,8 +520,11 @@ public class PlayerScript : MonoBehaviour
 
         MousePos.z = 0;
 
-        Vector2 targetpos = MousePos - Arm.transform.position;
-
+        Vector2 targetpos= Vector2.zero;
+        if (Arm != null)
+        {
+             targetpos = MousePos - Arm.transform.position;
+        }
         LookRotation = Quaternion.LookRotation(Vector3.forward, targetpos);
         LookRotation.eulerAngles += Vector3.forward * 90;
 
@@ -511,7 +540,10 @@ public class PlayerScript : MonoBehaviour
         {
             Arm.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up * FacingDirection);
         }
-
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                SceneManager.LoadScene(7);
+            }
         //Head Rotation Bounds
 
         /*
@@ -588,7 +620,43 @@ public class PlayerScript : MonoBehaviour
         else if (rb.velocity.x < 0) { GetComponent<Animator>().SetInteger("Velocity", -1); }
         else { GetComponent<Animator>().SetInteger("Velocity", 0); }
 
+            //Debug.Log(Oxygen);
+        }
+        else { cam.transform.position = transform.position + Vector3.forward * -10; cam.orthographicSize = 3; }
 
+
+        if (Grotate)
+        {
+            int RotationSpeed = 500;
+
+            if (RotatingClockwise && degrees < 180)
+            {
+                transform.Rotate(Vector3.forward * RotationSpeed * Time.deltaTime);
+                degrees += RotationSpeed * Time.deltaTime;
+
+                if (degrees >= 180)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                    Grotate = false;
+                    degrees = 0;
+                }
+
+            }
+            else if (degrees > -180)
+            {
+                transform.Rotate(-Vector3.forward * RotationSpeed * Time.deltaTime);
+                degrees -= RotationSpeed * Time.deltaTime;
+
+                if (!RotatingClockwise && degrees <= -180)
+                {
+                    transform.rotation = Quaternion.identity;
+                    Grotate = false;
+                    degrees = 0;
+                }
+
+            }
+            else { Grotate = false; degrees = 0; }
+        }
 
 
     }
@@ -653,6 +721,8 @@ public class PlayerScript : MonoBehaviour
 
     public void SavePlayerStats()
     {
+        //float dimensionchargeamount = DimensionCharge;
+
         //SAVE HEALTH
         PlayerPrefs.SetFloat("PlayerHealth", Health);
         PlayerPrefs.SetFloat("PlayerMaxHealth", MaxHealth);
@@ -664,6 +734,7 @@ public class PlayerScript : MonoBehaviour
         //SAVE DIMENSION
         PlayerPrefs.SetInt("Dimension", (isNormalDimension ? 1 : 0));
         PlayerPrefs.SetInt("DimensionCharge", DimensionCharge);
+        PlayerPrefs.SetFloat("DimensionDeviceChargeRate", DimensionDeviceChargeRate);
 
         //SAVE DIMENSION
         PlayerPrefs.SetInt("isNormalDimension", (isNormalDimension ? 1 : 0));
@@ -673,6 +744,9 @@ public class PlayerScript : MonoBehaviour
 
         //SAVE MONEY
         PlayerPrefs.SetInt("Money", Money);
+
+        PlayerPrefs.SetFloat("XPosition",transform.position.x);
+        PlayerPrefs.SetFloat("YPosition", transform.position.y);
 
         PlayerPrefs.Save();
 
@@ -690,15 +764,16 @@ public class PlayerScript : MonoBehaviour
         if (!isNewGame)
         {
             //SET HEALTH
-            Health = PlayerPrefs.GetInt("PlayerHealth");
-            MaxHealth = PlayerPrefs.GetInt("PlayerMaxHealth");
+            Health = PlayerPrefs.GetFloat("PlayerHealth");
+            MaxHealth = PlayerPrefs.GetFloat("PlayerMaxHealth");
 
             //SET OXYGEN
-            Oxygen = PlayerPrefs.GetInt("Oxygen");
-            MaxOxygen = PlayerPrefs.GetInt("MaxOxygen");
+            Oxygen = PlayerPrefs.GetFloat("Oxygen");
+            MaxOxygen = PlayerPrefs.GetFloat("MaxOxygen");
 
             //SET Dimension
-            isNormalDimension = (PlayerPrefs.GetInt("isNormalDimension") != 0);
+            isNormalDimension = (PlayerPrefs.GetInt("Dimension") != 0);
+            DimensionDeviceChargeRate = PlayerPrefs.GetFloat("DimensionDeviceChargeRate");
             DimensionCharge = PlayerPrefs.GetInt("DimensionCharge");
 
             //SET canSwitchDimensions
@@ -706,6 +781,9 @@ public class PlayerScript : MonoBehaviour
 
             //SET MONEY
             Money = PlayerPrefs.GetInt("Money");
+
+            RespawnPosition = new Vector2(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"));
+
         }
         else
         {
@@ -733,6 +811,10 @@ public class PlayerScript : MonoBehaviour
         animator.SetBool("Dead", true);
         animator.SetTrigger("Died");
 
+        audioSource1.Stop();
+
+        audioSource2.clip = DeathSound;
+        audioSource2.Play();
 
         Destroy(transform.GetChild(0).gameObject);
         Destroy(transform.GetChild(1).gameObject);

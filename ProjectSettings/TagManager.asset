@@ -14,6 +14,20 @@ TagManager:
   - HUDCanvas
   - Sporefiend
   - PlayerBullet
+  - Platform Edge
+  - LeftCollider
+  - RightCollider
+  - Juggernaut
+  - RifleBulletBuy
+  - UpgradeTokenBuy
+  - PistolBulletBuy
+  - JetpackFuelBuy
+  - PistolArm
+  - RifleArm
+  - ShotgunArm
+  - GL Arm
+  - FrictionCollider
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -45,8 +59,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Enemies
+  - NoPlayerCollision
   m_SortingLayers:
   - name: Default
     uniqueID: 0

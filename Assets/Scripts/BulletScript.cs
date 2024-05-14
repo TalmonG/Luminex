@@ -33,7 +33,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position,Player.transform.position)>50){ Destroy(this.gameObject); }
+        if(Vector3.Distance(transform.position,Player.transform.position)>20){ Destroy(this.gameObject); }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,22 +49,103 @@ public class BulletScript : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
+            else if (collision.CompareTag("Sporefiend"))
+            {
+                if (collision.GetComponent<sporefiend>().dead == false)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else if (collision.CompareTag("Juggernaut"))
+            {
+                if (collision.GetComponent<EnemyAiScript>().dead == false)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            else if (collision.CompareTag("Turret"))
+            {
+                if (collision.GetComponent<Turret>().dead == false)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+           
+            
+
+
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (collision.gameObject.CompareTag("Sporefiend"))
+        {
+            if (collision.gameObject.GetComponent<sporefiend>().dead == false)
+            {
+                GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+
+                Explosion.GetComponent<AudioSource>().Play();
+
+
+                Destroy(Explosion, 0.8f);
+                Destroy(this.gameObject);
+            }
+
+        }
+
+       else if (collision.gameObject.CompareTag("Juggernaut"))
+        {
+            if (collision.gameObject.GetComponent<EnemyAiScript>().dead == false)
+            {
+                GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+
+                Explosion.GetComponent<AudioSource>().Play();
+
+
+                Destroy(Explosion, 0.8f);
+                Destroy(this.gameObject);
+            }
+
+        }
+       else if (collision.gameObject.CompareTag("Turret"))
+        {
+            if (collision.gameObject.GetComponent<Turret>().dead == false)
+            {
+                GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+
+                Explosion.GetComponent<AudioSource>().Play();
+
+
+                Destroy(Explosion, 0.8f);
+                Destroy(this.gameObject);
+            }
+
+        }
+
       
+        else
+        {
             StartCoroutine(Life());
-        
+        }
+
+
+
     }
 
     IEnumerator Life()
     {
+
+
+
         yield return new WaitForSeconds(lifetime);
         GameObject Explosion=Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 
-        Destroy(Explosion, 0.45f);
+        Explosion.GetComponent<AudioSource>().Play();
+
+        
+        Destroy(Explosion, 0.8f);
         Destroy(this.gameObject);
     }
 }

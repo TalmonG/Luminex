@@ -7,6 +7,7 @@ public class DimensionManager : MonoBehaviour
     // Enable the "NormalDimensionTutorial" GameObject
     public void EnableNormalDimensionTutorial()
     {
+<<<<<<< HEAD
         Transform normalDimensionTutorialTransform = transform.Find("NormalDimensionTutorial");
 
         if (normalDimensionTutorialTransform != null)
@@ -17,12 +18,20 @@ public class DimensionManager : MonoBehaviour
         else
         {
             Debug.LogError("NormalDimensionTutorial GameObject not found!");
+=======
+
+        if (normalDimension != null)
+        {
+            normalDimension.SetActive(true);
+            invertedDimension.SetActive(false);
+>>>>>>> Milo
         }
     }
 
     // Disable the "NormalDimensionTutorial" GameObject
     public void DisableNormalDimensionTutorial()
     {
+<<<<<<< HEAD
         Transform normalDimensionTutorialTransform = transform.Find("NormalDimensionTutorial");
 
         if (normalDimensionTutorialTransform != null)
@@ -35,6 +44,28 @@ public class DimensionManager : MonoBehaviour
             Debug.LogError("NormalDimensionTutorial GameObject not found!");
         }
     }
+=======
+        if (normalDimension != null && invertedDimension != null)
+        {
+            if (playerScript.isNormalDimension == true)
+            {
+
+                normalDimension.SetActive(true);
+                invertedDimension.SetActive(false);
+
+            }
+
+
+            else if (playerScript.isNormalDimension == false)
+            {
+
+                {
+                    normalDimension.SetActive(false);
+                    invertedDimension.SetActive(true);
+                }
+            }
+        }
+>>>>>>> Milo
 
     // Enable the "NormalDimensionLevelOne" GameObject
     public void EnableNormalDimensionLevelOne()
