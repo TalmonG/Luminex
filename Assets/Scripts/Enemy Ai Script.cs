@@ -105,11 +105,11 @@ public class EnemyAiScript : MonoBehaviour
 
             if (rb.velocity.x > 0)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(2, 2, 1);
             }
             else if (rb.velocity.x < 0)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-2, 2, 1);
 
             }
             Debug.Log(TargetCollider);
