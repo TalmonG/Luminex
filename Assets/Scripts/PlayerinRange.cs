@@ -7,17 +7,19 @@ public class PlayerinRange : MonoBehaviour
 
     bool Playerinrange;
     EnemyAiScript juggernautscript;
+    public GameObject LinkedEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        juggernautscript = GameObject.FindGameObjectWithTag("Juggernaut").transform.GetComponent<EnemyAiScript>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +27,17 @@ public class PlayerinRange : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Playerinrange = true;
-            juggernautscript.playerinrange = true;
+            Debug.Log("dfsd");
+
+            if (LinkedEnemy != null)
+
+            {
+                if (LinkedEnemy.gameObject.CompareTag("Sporefiend"))
+                {
+                    LinkedEnemy.gameObject.GetComponent<sporefiend>().playerinrange = true;
+                }
+
+            }
         }
     }
 
@@ -34,7 +46,18 @@ public class PlayerinRange : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Playerinrange = false;
-            juggernautscript.playerinrange = false;
+
+
+
+            if (LinkedEnemy != null)
+
+            {
+                if (LinkedEnemy.gameObject.CompareTag("Sporefiend"))
+                {
+                    LinkedEnemy.gameObject.GetComponent<sporefiend>().playerinrange = false;
+                }
+
+            }
         }
     }
 

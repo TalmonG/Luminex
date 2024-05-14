@@ -14,6 +14,17 @@ TagManager:
   - HUDCanvas
   - Sporefiend
   - PlayerBullet
+  - DimensionManager
+  - Platform Edge
+  - LeftCollider
+  - RightCollider
+  - Juggernaut
+  - FrictionCollider
+  - PistolArm
+  - RifleArm
+  - ShotgunArm
+  - GL Arm
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -39,7 +50,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Enemies
   - 
   - 
   - 
