@@ -375,9 +375,17 @@ PrefabInstance:
       value: NormalDimensionTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 5025034592699040920, guid: 11617fbec0534f04d882e86e69838be1, type: 3}
+      propertyPath: levelToLoad
+      value: HUB Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025034592699040920, guid: 11617fbec0534f04d882e86e69838be1, type: 3}
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1393838850}
+    - target: {fileID: 5025034592699040920, guid: 11617fbec0534f04d882e86e69838be1, type: 3}
+      propertyPath: currentLevelToSet
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6119818507010418373, guid: 11617fbec0534f04d882e86e69838be1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.69521

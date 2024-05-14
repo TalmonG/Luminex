@@ -30,6 +30,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: d9b64f4892a4f13408849f4be46828d2
   - enabled: 1
+    path: Assets/Scenes/GameOverScreenFungus.unity
+    guid: da4c84a2c3b24e544998ed4d257601a9
+  - enabled: 1
+    path: Assets/Scenes/GameOverScreenNormal.unity
+    guid: 67918117113d5e74eaf7f635036ff5e5
+  - enabled: 1
+    path: Assets/Scenes/Opening screen.unity
+    guid: 82389396bbebad54297266efabe7fdf3
+  - enabled: 1
+    path: Assets/Scenes/Opening text.unity
+    guid: d5ed1c2e7d433794c8de6ff25a99fb27
+  - enabled: 1
     path: Assets/Scenes/HUB Level.unity
     guid: e066872c24a73db4d9ef7c47147a54c2
   - enabled: 1

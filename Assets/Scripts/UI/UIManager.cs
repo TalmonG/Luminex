@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
 
     public void onClickStartButton()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Opening text");
     }
 
     public void onClickLoadButton()
