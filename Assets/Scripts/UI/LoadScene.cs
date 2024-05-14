@@ -19,8 +19,8 @@ public class LoadScene : MonoBehaviour
     }
     public void loadNewScene()
     {
-        SceneManager.LoadScene("StartMenu");
         audioSource.Play();
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void startaudio()

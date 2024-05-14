@@ -15,6 +15,7 @@ public class OnLaunchGame : MonoBehaviour
 
     void Start()
     {
+
         playerScript.SetPlayerPrefs();
         pauseMenuScript.isPaused = false;
         pauseMenuScript.pauseMenu.SetActive(false);

@@ -27,7 +27,7 @@ public class PlayerinRange : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Playerinrange = true;
-            Debug.Log("dfsd");
+            //Debug.Log("dfsd");
 
             if (LinkedEnemy != null)
 
