@@ -146,7 +146,7 @@ MonoBehaviour:
   InRangeOfMelee: 0
   InRangeOfShoot: 0
   DeathGrowl: {fileID: 0}
-  AlertGrowl: {fileID: 0}
+  AlertGrowl: {fileID: 8300000, guid: da155e8c08e2c914e9916fd435b31dfd, type: 3}
   SlashSound: {fileID: 0}
 --- !u!70 &3672853598925043705
 CapsuleCollider2D:

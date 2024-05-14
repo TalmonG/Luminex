@@ -32,5 +32,9 @@ public class ExplosionScript : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerScript>().damaged = true;
         }
+        else if (collision.CompareTag("Turret"))
+        {
+            StartCoroutine(collision.gameObject.GetComponent<Turret>().Damage(50));
+        }
     }
 }

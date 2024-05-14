@@ -49,9 +49,9 @@ public class BulletScript : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
-            else if ((collision.CompareTag("Sporefiend") || collision.CompareTag("Juggernaut")))
+            else if ((collision.CompareTag("Sporefiend") || collision.CompareTag("Juggernaut") || collision.CompareTag("Turret")))
             {
-                if (collision.GetComponent<sporefiend>().dead == false)
+                if (collision.GetComponent<sporefiend>().dead == false || collision.GetComponent<EnemyAiScript>().dead == false || collision.GetComponent<Turret>().dead == false)
                 {
                    
 
@@ -66,9 +66,9 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.CompareTag("Sporefiend") || collision.gameObject.CompareTag("Juggernaut")))
+        if ((collision.gameObject.CompareTag("Sporefiend") || collision.gameObject.CompareTag("Juggernaut") || collision.gameObject.CompareTag("Turret")))
         {
-            if (collision.gameObject.GetComponent<sporefiend>().dead == false)
+            if (collision.gameObject.GetComponent<sporefiend>().dead == false || collision.gameObject.GetComponent<EnemyAiScript>().dead == false || collision.gameObject.GetComponent<Turret>().dead == false)
             {
 
                 GameObject Explosion = Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);

@@ -4,6 +4,7 @@ using System.Net.Security;
 using Unity.Burst.CompilerServices;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class Turret : MonoBehaviour
 {
@@ -13,35 +14,47 @@ public class Turret : MonoBehaviour
     public GameObject bulletPos;
     private float timer;
     public int health;
+    SpriteRenderer sprite;
 
+    AudioSource audioSource;
+    public AudioClip deathSound;
+    public bool dead;
+
+    Vector3 direction;
+    Quaternion lookrotation;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        sprite = transform.GetChild(0).transform.GetComponent<SpriteRenderer>();
        //LayerMask = GameObject.Find("Platform").layer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health == 0)
+        if (health <= 0)
         {
-            Destroy(this.gameObject);
+            dead = true;
+            StartCoroutine(Death());
         }
 
-        Vector3 direction = Player.transform.position - transform.position;
+         direction = Player.transform.position - transform.position;
 
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 30);
 
+        Debug.Log(hit.transform.gameObject.name);
 
-       // if (hit.transform.gameObject == Player.gameObject)
-       // {
-            Quaternion lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
+        if (hit.transform.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("rayhit");
+
+            lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
             lookrotation.eulerAngles += Vector3.forward * -90;
             transform.rotation = lookrotation;
 
-       // }
+        }
 
 
         if (Player.transform.position.x < transform.position.x)
@@ -52,7 +65,7 @@ public class Turret : MonoBehaviour
         Debug.DrawRay(transform.position, direction);
 
         timer += Time.deltaTime;
-        if (timer > 1)
+        if (timer > 0.5f)
         {
             timer = 0;
             shoot();
@@ -61,26 +74,50 @@ public class Turret : MonoBehaviour
         
     }
     void shoot() {
-        Instantiate(bullet, bulletPos.transform.position, Quaternion.identity); 
+
+        
+
+
+        Instantiate(bullet, bulletPos.transform.position, lookrotation); 
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("sadsad");
         if (collision.transform.CompareTag("PlayerBullet"))
         {
-            health -= 10;
+           StartCoroutine(Damage(5));
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("PlayerBullet"))
         {
-            health -= 10;
+            StartCoroutine(Damage(5));
         }
-        
+
     }
-    
 
 
+    IEnumerator Death()
+    {
+        audioSource.clip = deathSound;
+        audioSource.Play();
+        
+        Destroy(this.gameObject);
+
+        yield return null;
+    }
+
+    public IEnumerator Damage(int damage)
+    {
+        health -= damage;
+
+        sprite.color = Color.red;
+
+        yield return new WaitForSeconds(0.3f);
+
+        sprite.color = Color.white;
+
+        yield return null;
+    }
 }

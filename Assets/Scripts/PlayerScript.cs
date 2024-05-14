@@ -375,7 +375,10 @@ public class PlayerScript : MonoBehaviour
         {
             Arm.transform.rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up * FacingDirection);
         }
-
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                SceneManager.LoadScene(7);
+            }
         //Head Rotation Bounds
 
         /*
