@@ -142,7 +142,98 @@ public class GameManager : MonoBehaviour
             if (HUDCanvas == null)
             {
                 HUDCanvas = Instantiate(HUDCanvasPrefab);
-                Debug.Log("JOOOOOOOOOOOOOOOOOOOOOO");
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+        else if (scene.name.Equals("Level 2"))
+        {
+            if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+        else if (scene.name.Equals("Level 3"))
+        {
+            if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+        else if (scene.name.Equals("Level 4"))
+        {
+            if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (manager == null)
+            {
+                manager = Instantiate(managerPrefab);
+            }
+        }
+        else if (scene.name.Equals("Zone1_Level5"))
+        {
+            if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+                if (player == null)
+                {
+                    player = Instantiate(playerPrefab);
+                }
+            }
+
+            // Instantiate HUDCanvas if not already present
+            if (HUDCanvas == null)
+            {
+                HUDCanvas = Instantiate(HUDCanvasPrefab);
             }
 
             // Instantiate HUDCanvas if not already present

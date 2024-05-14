@@ -126,33 +126,91 @@ public class PlayerScript : MonoBehaviour
                 dimensionManager.EnableNormalDimensionLevelOne();// Enable Normal
                 dimensionManager.DisableInvertedDimensionLevelOne();// Disable Inverted
                 //isNormalDimension = true;
-                Debug.Log("You enabled normalIN LEVEL ONE");
+                Debug.Log("You enabled normalIN LEVEL TWO");
             }
             if (isNormalDimension == false)
             {
                 dimensionManager.DisableNormalDimensionLevelOne();// Enable Normal
                 dimensionManager.EnableInvertedDimensionLevelOne();// Disable Inverted
                 //isNormalDimension = false;
-                Debug.Log("You enabled inverted in level ONE");
+                Debug.Log("You enabled inverted in level TWO");
             }
         }
         // Level 2
         else if (currentLevel == 2)
         {
-            canSwitchDimensions = true;
-            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelTwo();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelTwo();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL TWO");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelTwo();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelTwo();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level TWO");
+            }
         }
         // Level 3
         else if (currentLevel == 3)
         {
-            canSwitchDimensions = true;
-            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelThree();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelThree();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL Three");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelThree();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelThree();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level Three");
+            }
         }
         // Level 4
         else if (currentLevel == 4)
         {
-            canSwitchDimensions = true;
-            Debug.Log("canSwitchDimension is set to " + canSwitchDimensions + " for this level");
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelFour();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelFour();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL FOUR");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelFour();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelFour();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level FOUR");
+            }
+        }
+        // Level 5
+        else if (currentLevel == 5)
+        {
+            //canSwitchDimensions = true;
+            if (isNormalDimension == true) // if we want normal dimension
+            {
+                dimensionManager.EnableNormalDimensionLevelFive();// Enable Normal
+                dimensionManager.DisableInvertedDimensionLevelFive();// Disable Inverted
+                //isNormalDimension = true;
+                Debug.Log("You enabled normalIN LEVEL FIVE");
+            }
+            if (isNormalDimension == false)
+            {
+                dimensionManager.DisableNormalDimensionLevelFive();// Enable Normal
+                dimensionManager.EnableInvertedDimensionLevelFive();// Disable Inverted
+                //isNormalDimension = false;
+                Debug.Log("You enabled inverted in level FIVE");
+            }
         }
         // Errors
         else

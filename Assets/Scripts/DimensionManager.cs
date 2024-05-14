@@ -157,6 +157,35 @@ public class DimensionManager : MonoBehaviour
             Debug.LogError("NormalDimensionLevelFour GameObject not found!");
         }
     }
+    // Enable the "NormalDimensionLevelFive" GameObject
+    public void EnableNormalDimensionLevelFive()
+    {
+        Transform normalDimensionLevelFiveTransform = transform.Find("NormalDimensionLevelFive");
+
+        if (normalDimensionLevelFiveTransform != null)
+        {
+            normalDimensionLevelFiveTransform.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("NormalDimensionLevelFive GameObject not found!");
+        }
+    }
+
+    // Disable the "NormalDimensionLevelFour" GameObject
+    public void DisableNormalDimensionLevelFive()
+    {
+        Transform normalDimensionLevelFiveTransform = transform.Find("NormalDimensionLevelFive");
+
+        if (normalDimensionLevelFiveTransform != null)
+        {
+            normalDimensionLevelFiveTransform.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("NormalDimensionLevelFive GameObject not found!");
+        }
+    }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     // Inverted Section
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,6 +339,35 @@ public class DimensionManager : MonoBehaviour
         else
         {
             Debug.LogError("InvertedDimensionLevelFour GameObject not found!");
+        }
+    }
+    // Enable the "InvertedDimensionLevelFour" GameObject
+    public void EnableInvertedDimensionLevelFive()
+    {
+        Transform invertedDimensionLevelFiveTransform = transform.Find("InvertedDimensionLevelFive");
+
+        if (invertedDimensionLevelFiveTransform != null)
+        {
+            invertedDimensionLevelFiveTransform.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("InvertedDimensionLevelFive GameObject not found!");
+        }
+    }
+
+    // Disable the "InvertedDimensionLevelFour" GameObject
+    public void DisableInvertedDimensionLevelFive()
+    {
+        Transform invertedDimensionLevelFiveTransform = transform.Find("InvertedDimensionLevelFive");
+
+        if (invertedDimensionLevelFiveTransform != null)
+        {
+            invertedDimensionLevelFiveTransform.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("InvertedDimensionLevelFive GameObject not found!");
         }
     }
 }

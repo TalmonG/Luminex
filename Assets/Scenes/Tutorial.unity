@@ -307,10 +307,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9014322578058535939, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
-      propertyPath: PauseMenu
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9014322578058535939, guid: 91d83871ada321e479d7753652b0d82e, type: 3}
       propertyPath: dimensionManager
       value: 
       objectReference: {fileID: 1932652689}
@@ -704,6 +700,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1932652688}
   - {fileID: 2072837964}
-  - {fileID: 107110678}
   - {fileID: 1710965239}
+  - {fileID: 107110678}
   - {fileID: 1303972892}

@@ -178,9 +178,8 @@ MonoBehaviour:
   ActiveWeapon: 0
   BreathingSound: {fileID: 8300000, guid: 4ddf6c592ebc5354cab22444d1f0cf75, type: 3}
   dimensionManager: {fileID: 0}
-  HUD: {fileID: 0}
-  currentLevel: 0
-  canSwitchDimensions: 0
+  currentLevel: 2
+  canSwitchDimensions: 1
   isNormalDimension: 1
   canGRotate: 0
   Health: 100
