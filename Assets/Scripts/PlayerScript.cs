@@ -658,7 +658,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-
+    // SAVES DATA
     public void SavePlayerStats()
     {
         //float dimensionchargeamount = DimensionCharge;
@@ -681,7 +681,7 @@ public class PlayerScript : MonoBehaviour
 
         PlayerPrefs.SetFloat("XPosition", transform.position.x);
         PlayerPrefs.SetFloat("YPosition", transform.position.y);
-
+        Debug.Log("All player data has been Set to files");
         PlayerPrefs.Save();
 
 
@@ -692,6 +692,7 @@ public class PlayerScript : MonoBehaviour
         Application.Quit();
     }
 
+    // RECALS DATA
     public void SetPlayerPrefs()
     {
 
@@ -715,7 +716,7 @@ public class PlayerScript : MonoBehaviour
             aetheriumCoinCount = PlayerPrefs.GetInt("aetheriumCoinCount");
 
             RespawnPosition = new Vector2(PlayerPrefs.GetFloat("XPosition"), PlayerPrefs.GetFloat("YPosition"));
-
+            Debug.Log("All player data has been recalled from files");
         }
         else
         {

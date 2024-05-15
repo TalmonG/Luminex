@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class ExitDoorScript : MonoBehaviour
@@ -12,6 +13,7 @@ public class ExitDoorScript : MonoBehaviour
 
     public int currentLevelToSet;
     public string levelToLoad;
+    public TextMeshProUGUI aetheriumText;
 
     Animator DoorAnimator;
 
@@ -20,8 +22,26 @@ public class ExitDoorScript : MonoBehaviour
     {
         Player = GameObject.FindWithTag("Player");
         DoorAnimator = GetComponent<Animator>();
-
+        
+        GameObject aetheriumTextObject = GameObject.FindWithTag("AetheriumText");
+        aetheriumText = aetheriumTextObject.GetComponent<TextMeshProUGUI>();
+        SetAetheriumCoinText();
     }
+
+    public void SetAetheriumCoinText()
+    {
+        // Increment the count of aetherium coins
+
+        // Update the text to display "Aetherium: <count>"
+        aetheriumText.text = "Aetherium: " + playerScript.aetheriumCoinCount.ToString();
+
+        Debug.Log("Aetherium count updated: " + playerScript.aetheriumCoinCount);
+        playerScript.SavePlayerStats();
+        Debug.Log("HERE BOI");
+    }
+
+    
+    
 
     // Update is called once per frame
     void Update()
@@ -36,16 +56,18 @@ public class ExitDoorScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             PlayerinFront = false;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        playerScript.SavePlayerStats();
+        PlayerPrefs.SetInt("aetheriumCoinCount", playerScript.aetheriumCoinCount);
+        Debug.Log("Player Now Has " + PlayerPrefs.GetInt("aetheriumCoinCount") + " Coins");
+
         if (collision.CompareTag("Player"))
         {
             PlayerinFront = true;

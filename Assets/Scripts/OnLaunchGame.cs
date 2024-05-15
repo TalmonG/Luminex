@@ -19,6 +19,8 @@ public class OnLaunchGame : MonoBehaviour
         playerScript.SetPlayerPrefs();
         pauseMenuScript.isPaused = false;
         pauseMenuScript.pauseMenu.SetActive(false);
+        playerScript.SetPlayerPrefs();
+        Debug.Log("BOBMARKLEY");
     }
 
     void OnDestroy()
@@ -39,7 +41,6 @@ public class OnLaunchGame : MonoBehaviour
             playerScript.isNormalDimension = true;
             playerScript.canSwitchDimensions = false;
             playerScript.currentLevel = -1;
-            PlayerPrefs.SetInt("currentLevel", -1);
             PlayerPrefs.SetInt("currentLevel", -1);
 
             // Check if playerScript is assigned
