@@ -50,6 +50,8 @@ public class PlayerScript : MonoBehaviour
 
     public bool canGRotate = false;
 
+
+
     public int aetheriumCoinCount = 0;
 
     private bool isCheckingDeathAnimation = false;
@@ -691,6 +693,9 @@ public class PlayerScript : MonoBehaviour
 
         PlayerPrefs.SetFloat("XPosition", transform.position.x);
         PlayerPrefs.SetFloat("YPosition", transform.position.y);
+
+        
+
         Debug.Log("All player data has been Set to files");
         PlayerPrefs.Save();
 
