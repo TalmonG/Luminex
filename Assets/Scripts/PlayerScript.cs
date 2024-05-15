@@ -52,6 +52,8 @@ public class PlayerScript : MonoBehaviour
 
     public int aetheriumCoinCount = 0;
 
+    private bool isCheckingDeathAnimation = false;
+
     public void LevelChecker()
     {
         // Retrieve the integer value from PlayerPrefs
@@ -631,7 +633,15 @@ public class PlayerScript : MonoBehaviour
             else { Grotate = false; degrees = 0; }
         }
 
-
+        if (isCheckingDeathAnimation)
+        {
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("DeathScreen") && stateInfo.normalizedTime >= 1.0f)
+            {
+                isCheckingDeathAnimation = false;
+                PlayNextAnimation();
+            }
+        }
     }
     private void Awake()
     {
@@ -759,7 +769,10 @@ public class PlayerScript : MonoBehaviour
         // GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 
-
+        if (isNormalDimension)
+        {
+            isCheckingDeathAnimation = true;
+        }
 
     }
 
@@ -782,6 +795,13 @@ public class PlayerScript : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
 
         yield return null;
+    }
+
+    public void PlayNextAnimation()
+    {
+        // Play the next animation here
+        animator.Play("NextAnimationTrigger"); // Replace with your actual trigger/boolean
+        Debug.Log("Transfered to death screen");
     }
 
 }
