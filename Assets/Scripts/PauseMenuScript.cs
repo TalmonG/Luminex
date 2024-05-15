@@ -54,4 +54,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("StartMenu");
     }
 
+    public void SecretMainMenu()
+    {
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene("SecretMainMenu");
+    }
+
 }

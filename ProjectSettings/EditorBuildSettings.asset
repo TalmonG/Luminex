@@ -53,5 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zone1_Level1.unity
     guid: 19d4ec8b188a1544ca5c26204cc768a7
+  - enabled: 1
+    path: Assets/Scenes/SecretMainMenu.unity
+    guid: da0b3a171372f2b488e29ccfe2c3b965
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

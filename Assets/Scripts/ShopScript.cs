@@ -101,7 +101,7 @@ public class ShopScript : MonoBehaviour
     {
         if(Aetherium >= items["PistolBullet"])
         {
-            pistolbullets += 20;
+            PlayerPrefs.SetInt("ReservePistolAmmo",20);
             Aetherium -= items["PistolBullet"];
             audioSource.Play();
             SetAetheriumCoinTextShop();
