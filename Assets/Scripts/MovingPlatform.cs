@@ -22,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (towardspoint1)
         {
-            rb.velocity = (Points[0].transform.position - transform.position).normalized;
+            rb.velocity = (Points[0].transform.position - transform.position).normalized*2;
         }
         if (Vector3.Distance(transform.position, Points[0].transform.position) <1)
         {
@@ -31,7 +31,7 @@ public class MovingPlatform : MonoBehaviour
         }
         if (towardspoint2)
         {
-            rb.velocity = (Points[1].transform.position-transform.position).normalized;
+            rb.velocity = (Points[1].transform.position-transform.position).normalized*2;
 
         }
         if (Vector3.Distance(transform.position, Points[1].transform.position) < 1)

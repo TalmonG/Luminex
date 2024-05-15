@@ -45,21 +45,15 @@ public class Turret : MonoBehaviour
             StartCoroutine(Death());
 
         }
-        if (Vector3.Distance(transform.position, Player.transform.position) < 20)
+        if (Vector3.Distance(transform.position, Player.transform.position) < 15)
         {
 
             direction = Player.transform.position - transform.position;
 
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 30);
 
 
 
-            //  Debug.Log(hit.transform.position);
-
-            // if (hit.transform.gameObject.CompareTag("Player"))
-            //  {
-            //Debug.Log("rayhit");
 
             lookrotation = Quaternion.LookRotation(Vector3.forward, direction);
             lookrotation.eulerAngles += Vector3.forward * -90;
@@ -76,7 +70,7 @@ public class Turret : MonoBehaviour
             Debug.DrawRay(transform.position, direction);
 
             timer += Time.deltaTime;
-            if (timer > 0.5f)
+            if (timer > 1f)
             {
                 timer = 0;
                 shoot();

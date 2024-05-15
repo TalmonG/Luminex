@@ -26,6 +26,7 @@ public class AcidScript : MonoBehaviour
                 Invoke("EnableDamage", 0.5f);
             }
         }
+   
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

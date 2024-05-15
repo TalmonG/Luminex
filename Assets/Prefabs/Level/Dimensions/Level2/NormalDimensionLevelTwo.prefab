@@ -2327,6 +2327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e831f255221e04287c4ac1a7b45705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
+  PlayerinFront: 0
+  currentLevelToSet: 0
+  levelToLoad: 
+  aetheriumText: {fileID: 0}
 --- !u!61 &5898364856946262204
 BoxCollider2D:
   m_ObjectHideFlags: 0
