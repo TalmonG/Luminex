@@ -36,6 +36,11 @@ public class OnLaunchGame : MonoBehaviour
             // playerScript.currentLevel = -15;
             PlayerPrefs.SetInt("currentLevel", -25);
         }
+        if (scene.name.Equals("Credits"))
+        {
+            // playerScript.currentLevel = -15;
+            PlayerPrefs.SetInt("currentLevel", -2);
+        }
         else if (scene.name.Equals("HUB Level"))
         {
             playerScript.isNormalDimension = true;

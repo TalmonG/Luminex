@@ -50,8 +50,6 @@ public class PlayerScript : MonoBehaviour
 
     public bool canGRotate = false;
 
-
-
     public int aetheriumCoinCount = 0;
 
     private bool isCheckingDeathAnimation = false;
@@ -244,7 +242,6 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         dimensionManager = GameObject.FindWithTag("DimensionManager").GetComponent<DimensionManager>();
 
         // DontDestroyOnLoad(this.gameObject);
@@ -409,7 +406,7 @@ public class PlayerScript : MonoBehaviour
             ArmSprite = Arm.transform.GetChild(ActiveWeapon).gameObject;
             CurrentWeaponScript = ArmSprite.GetComponent<Weapon>();
 
-            if (Input.GetKeyDown(KeyCode.C) && isgrounded && (degrees % 180 == 0))
+            if (Input.GetKeyDown(KeyCode.C) && isgrounded && (degrees % 180 == 0) && canGRotate == true)
             {
                 rb.gravityScale *= -1;
                 degrees = 0;
@@ -755,7 +752,6 @@ public class PlayerScript : MonoBehaviour
 
     void Death()
     {
-
         animator.SetBool("Dead", true);
         animator.SetTrigger("Died");
 
@@ -785,6 +781,7 @@ public class PlayerScript : MonoBehaviour
     public IEnumerator Damage(int damage)
     {
         Health -= damage;
+        
 
 
         ArmSprite.GetComponent<SpriteRenderer>().color = Color.red;
@@ -807,6 +804,11 @@ public class PlayerScript : MonoBehaviour
         // Play the next animation here
         animator.Play("NextAnimationTrigger"); // Replace with your actual trigger/boolean
         Debug.Log("Transfered to death screen");
+    }
+
+    public void RestartAfterDeath()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

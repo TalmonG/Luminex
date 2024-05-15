@@ -220,9 +220,9 @@ public class sporefiend : MonoBehaviour
     {
         animator.SetTrigger("Slash");
 
-        audioSource.clip = SlashSound;
-        if (audioSource.isPlaying == false)
-            audioSource.Play();
+        //audioSource.clip = SlashSound;
+        /*if (audioSource.isPlaying == false)
+            audioSource.Play();*/
 
         StartCoroutine(player.GetComponent<PlayerScript>().Damage(10));
 

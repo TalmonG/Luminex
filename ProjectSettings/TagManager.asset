@@ -28,6 +28,12 @@ TagManager:
   - AetheriumCoin
   - AetheriumText
   - PauseMenuGameobject
+  - GameOverGameObject
+  - RifleBulletBuy
+  - UpgradeTokenBuy
+  - PistolBulletBuy
+  - JetpackFuelBuy
+  - GravityPickup
   layers:
   - Default
   - TransparentFX

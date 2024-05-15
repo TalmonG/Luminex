@@ -12,7 +12,8 @@ public enum CollectableType
     JetPack,
     PurpleGem,
     SilverCoin,
-    UpgradeToken
+    UpgradeToken,
+    GravityPickup
 }
 public class Collectables : MonoBehaviour
 {
@@ -92,9 +93,18 @@ public class Collectables : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") )
         {
-            AddAetheriumCoin();
+            if(this.gameObject.CompareTag("AetheriumCoin"))
+            {
+                AddAetheriumCoin();
+            }
+            else if (this.gameObject.CompareTag("GravityPickup"))
+            {
+                collision.GetComponent<PlayerScript>().canGRotate=true;
+
+                Destroy(this.gameObject);
+            }
         }
     }
 }
